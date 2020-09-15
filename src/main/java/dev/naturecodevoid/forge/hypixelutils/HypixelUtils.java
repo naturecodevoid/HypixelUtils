@@ -2,7 +2,6 @@ package dev.naturecodevoid.forge.hypixelutils;
 
 import dev.naturecodevoid.forge.hypixelutils.listeners.CoinListener;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,14 +16,14 @@ public class HypixelUtils {
     @Mod.Instance(HypixelUtils.MODID)
     public static HypixelUtils instance;
 
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        FMLCommonHandler.instance().bus().register(this);
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(new CoinListener());
-    }
-
     public static HypixelUtils get() {
         return instance;
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+        // FMLCommonHandler.instance().bus().register(this);
+        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new CoinListener());
     }
 }

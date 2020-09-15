@@ -1,6 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.listeners;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.EnumChatFormatting;
@@ -24,9 +25,9 @@ public class CoinListener {
 
     @SubscribeEvent
     public void render(RenderGameOverlayEvent event) {
-        if (event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.EXPERIENCE) {
-            return;
-        }
+        if (Util.hasGuiOpen()) return;
+        if (event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.EXPERIENCE) return;
+
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
         fRender.drawStringWithShadow(EnumChatFormatting.GREEN + "Session Coins: " + EnumChatFormatting.WHITE + HypixelUtils.totalCoins, 5, 5, 0);
     }
