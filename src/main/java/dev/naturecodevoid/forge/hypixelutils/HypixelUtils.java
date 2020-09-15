@@ -44,6 +44,6 @@ public class HypixelUtils {
             return;
         }
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-        fRender.drawString(EnumChatFormatting.GREEN + "Coins: " + EnumChatFormatting.WHITE + totalCoins, 5, 5, 0);
+        fRender.drawStringWithShadow(EnumChatFormatting.GREEN + "Coins: " + EnumChatFormatting.WHITE + totalCoins, 5, 5, 0);
     }
 }
