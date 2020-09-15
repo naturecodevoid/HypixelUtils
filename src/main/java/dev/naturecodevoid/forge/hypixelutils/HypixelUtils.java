@@ -13,7 +13,5 @@ public class HypixelUtils {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        // some example code
-        System.out.println("DIRT BLOCK >> " + Blocks.dirt.getUnlocalizedName());
     }
 }
