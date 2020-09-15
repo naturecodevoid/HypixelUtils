@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -34,7 +33,6 @@ public class HypixelUtilsCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + "test"));
         MinecraftForge.EVENT_BUS.register(this);
     }
 
