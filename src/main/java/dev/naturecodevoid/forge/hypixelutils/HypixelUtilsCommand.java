@@ -22,11 +22,6 @@ public class HypixelUtilsCommand extends CommandBase {
     }
 
     @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return null;
-    }
-
-    @Override
     public int getRequiredPermissionLevel() {
         return -1;
     }

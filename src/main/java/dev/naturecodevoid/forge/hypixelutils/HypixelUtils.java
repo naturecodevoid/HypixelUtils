@@ -25,12 +25,12 @@ public class HypixelUtils {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        // FMLCommonHandler.instance().bus().register(this);
         MinecraftForge.EVENT_BUS.register(this);
+
         MinecraftForge.EVENT_BUS.register(new CoinListener());
+
         ClientCommandHandler.instance.registerCommand(new HypixelUtilsCommand());
 
         config = new HypixelUtilsConfig();
-        config.preload();
     }
 }
