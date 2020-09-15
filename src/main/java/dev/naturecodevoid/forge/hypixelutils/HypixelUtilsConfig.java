@@ -11,7 +11,6 @@ public class HypixelUtilsConfig extends Vigilant {
             type = PropertyType.SWITCH,
             name = "HypixelUtils",
             category = "General",
-            subcategory = "General",
             description = "Toggle HypixelUtils."
     )
     public boolean enabled = true;
@@ -19,8 +18,7 @@ public class HypixelUtilsConfig extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Coin Tracker",
-            category = "General",
-            subcategory = "General",
+            category = "Features",
             description = "Toggle the coin tracker."
     )
     public boolean coinsEnabled = true;
