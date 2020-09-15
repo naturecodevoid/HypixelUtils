@@ -15,7 +15,7 @@ public class HypixelUtils {
     public static final String NAME = "@MOD_NAME@";
     public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
     public static HypixelUtilsConfig config;
-    public static Integer totalCoins = 0;
+    public static int totalCoins = 0;
     @Mod.Instance(HypixelUtils.MODID)
     public static HypixelUtils instance;
 
