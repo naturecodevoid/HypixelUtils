@@ -1,13 +1,14 @@
 package dev.naturecodevoid.forge.hypixelutils.commands;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.gui.GeneralGUI;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-public class ConfigCommand extends CommandBase {
+public class GeneralCommand extends CommandBase {
     @Override
     public String getCommandName() {
-        return "hypixelconfig";
+        return "hypixelutils";
     }
 
     @Override
@@ -22,6 +23,6 @@ public class ConfigCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        HypixelUtils.gui = HypixelUtils.config.gui();
+        HypixelUtils.gui = new GeneralGUI();
     }
 }

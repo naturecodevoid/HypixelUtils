@@ -2,7 +2,7 @@
 {
   "modid": "hypixelutils",
   "name": "HypixelUtils",
-  "description": "Random hypixel utilities. Run /hypixelutils for configuration, and /hypixelhud for GUI editing.",
+  "description": "Random hypixel utilities. Run /hypixelconfig for configuration, and /hypixelhud for GUI editing. Run /hypixelutils if confused.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/naturecodevoid/HypixelUtils",

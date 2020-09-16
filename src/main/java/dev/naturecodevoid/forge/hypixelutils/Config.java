@@ -17,32 +17,34 @@ public class Config extends Vigilant {
 
     @Property(
             type = PropertyType.SWITCH,
-            name = "Coin Tracker",
+            name = "Enabled",
             category = "Features",
+            subcategory = "Coin Tracker",
             description = "Toggle the coin tracker."
     )
     public boolean coinsEnabled = true;
 
-    /*
     @Property(
-            type = PropertyType.NUMBER,
+            type = PropertyType.SLIDER,
             name = "Coin Tracker X",
-            category = "gui",
-            hidden = true
+            category = "Features",
+            subcategory = "Coin Tracker",
+            max = 100
     )
-    public int coinTrackerX = 10;
+    public int coinTrackerX = 0;
 
     @Property(
-            type = PropertyType.NUMBER,
+            type = PropertyType.SLIDER,
             name = "Coin Tracker Y",
-            category = "gui",
-            hidden = true
+            category = "Features",
+            subcategory = "Coin Tracker",
+            max = 100
     )
-    public int coinTrackerY = 5;
-     */
+    public int coinTrackerY = 0;
 
     public Config() {
         super(new File("./config/hypixelutils.toml"));
         initialize();
+        preload();
     }
 }
