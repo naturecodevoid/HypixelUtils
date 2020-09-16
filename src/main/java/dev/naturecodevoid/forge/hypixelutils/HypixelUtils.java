@@ -1,5 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils;
 
+import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
+import dev.naturecodevoid.forge.hypixelutils.commands.HUDCommand;
 import dev.naturecodevoid.forge.hypixelutils.listeners.CoinListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -18,7 +20,7 @@ public class HypixelUtils {
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "@MOD_NAME@";
     public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
-    public static HypixelUtilsConfig config;
+    public static Config config;
     public static GuiScreen gui = null;
     public static int totalCoins = 0;
     @Mod.Instance(HypixelUtils.MODID)
@@ -31,14 +33,15 @@ public class HypixelUtils {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        config = new HypixelUtilsConfig();
+        config = new Config();
         config.preload();
 
         // Listeners
         MinecraftForge.EVENT_BUS.register(new CoinListener());
 
         // Commands
-        ClientCommandHandler.instance.registerCommand(new HypixelUtilsCommand());
+        ClientCommandHandler.instance.registerCommand(new ConfigCommand());
+        ClientCommandHandler.instance.registerCommand(new HUDCommand());
     }
 
     @SubscribeEvent

@@ -1,9 +1,10 @@
-package dev.naturecodevoid.forge.hypixelutils;
+package dev.naturecodevoid.forge.hypixelutils.commands;
 
+import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-public class HypixelUtilsCommand extends CommandBase {
+public class ConfigCommand extends CommandBase {
     @Override
     public String getCommandName() {
         return "hypixelutils";

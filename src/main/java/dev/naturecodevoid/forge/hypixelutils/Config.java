@@ -6,7 +6,7 @@ import club.sk1er.vigilance.data.PropertyType;
 
 import java.io.File;
 
-public class HypixelUtilsConfig extends Vigilant {
+public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "HypixelUtils",
@@ -23,7 +23,7 @@ public class HypixelUtilsConfig extends Vigilant {
     )
     public boolean coinsEnabled = true;
 
-    public HypixelUtilsConfig() {
+    public Config() {
         super(new File("./config/hypixelutils.toml"));
         initialize();
     }
