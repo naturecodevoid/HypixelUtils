@@ -29,6 +29,7 @@ public class Config extends Vigilant {
             name = "Coin Tracker X",
             category = "Features",
             subcategory = "Coin Tracker",
+            description = "Manually change the coin tracker X position. /hutilsg is the recommended method. (value is percentage of screen)",
             max = 100
     )
     public int coinTrackerX = 0;
@@ -38,6 +39,7 @@ public class Config extends Vigilant {
             name = "Coin Tracker Y",
             category = "Features",
             subcategory = "Coin Tracker",
+            description = "Manually change the coin tracker Y position. /hutilsg is the recommended method. (value is percentage of screen)",
             max = 100
     )
     public int coinTrackerY = 0;

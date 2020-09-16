@@ -25,7 +25,7 @@ public class Util {
         return Minecraft.getMinecraft().isFullScreen();
     }
 
-    public static Position getPosFromPercent(float percentX, float percentY) {
+    public static Coordinate2D getPosFromPercent(float percentX, float percentY) {
         int width;
         int height;
         try {
@@ -45,9 +45,31 @@ public class Util {
                 height = 0;
             }
         }
-        return new Position(
-                Math.floor(percentX / 100 * width),
-                Math.floor(percentY / 100 * height)
+        return new Coordinate2D(
+                Math.floor((percentX / 100) * width),
+                Math.floor((percentY / 100) * height)
+        );
+    }
+
+    public static Coordinate2D getPercentFromPos(float posX, float posY) {
+        int width;
+        int height;
+        try {
+            ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
+            width = res.getScaledWidth();
+            height = res.getScaledHeight();
+        } catch (Exception e) {
+            try {
+                width = Minecraft.getMinecraft().displayWidth / 2;
+                height = Minecraft.getMinecraft().displayHeight / 2;
+            } catch (Exception e2) {
+                width = 0;
+                height = 0;
+            }
+        }
+        return new Coordinate2D(
+                Math.floor((posX * 100) / width),
+                Math.floor((posY * 100) / height)
         );
     }
 }
