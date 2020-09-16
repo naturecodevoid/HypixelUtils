@@ -17,6 +17,14 @@ public class Util {
         sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
     }
 
+    public static boolean isFullscreen() {
+        try {
+            // TODO: add code here that checks if mac fullscreen is on, if so return true
+        } catch (Exception ignored) {
+        }
+        return Minecraft.getMinecraft().isFullScreen();
+    }
+
     public static Position getPosFromPercent(float percentX, float percentY) {
         int width;
         int height;
@@ -24,6 +32,10 @@ public class Util {
             ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
             width = res.getScaledWidth();
             height = res.getScaledHeight();
+            if (isFullscreen()) {
+                percentX -= 20;
+                percentY -= 6;
+            }
         } catch (Exception e) {
             try {
                 width = Minecraft.getMinecraft().displayWidth / 2;

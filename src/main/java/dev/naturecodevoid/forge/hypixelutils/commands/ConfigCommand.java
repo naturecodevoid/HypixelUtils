@@ -4,10 +4,13 @@ import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ConfigCommand extends CommandBase {
     @Override
     public String getCommandName() {
-        return "hypixelconfig";
+        return "hypixelutilsconfig";
     }
 
     @Override
@@ -18,6 +21,11 @@ public class ConfigCommand extends CommandBase {
     @Override
     public int getRequiredPermissionLevel() {
         return -1;
+    }
+
+    @Override
+    public List<String> getCommandAliases() {
+        return Collections.singletonList("hutilsc");
     }
 
     @Override

@@ -1,9 +1,12 @@
 package dev.naturecodevoid.forge.hypixelutils.commands;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.gui.GeneralGUI;
+import dev.naturecodevoid.forge.hypixelutils.gui.GeneralGui;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+
+import java.util.Collections;
+import java.util.List;
 
 public class GeneralCommand extends CommandBase {
     @Override
@@ -22,7 +25,12 @@ public class GeneralCommand extends CommandBase {
     }
 
     @Override
+    public List<String> getCommandAliases() {
+        return Collections.singletonList("hutils");
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        HypixelUtils.gui = new GeneralGUI();
+        HypixelUtils.gui = new GeneralGui();
     }
 }

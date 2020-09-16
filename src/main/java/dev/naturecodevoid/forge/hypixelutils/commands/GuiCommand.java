@@ -1,14 +1,17 @@
 package dev.naturecodevoid.forge.hypixelutils.commands;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.gui.HUDGui;
+import dev.naturecodevoid.forge.hypixelutils.gui.EditorGui;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-public class HUDCommand extends CommandBase {
+import java.util.Collections;
+import java.util.List;
+
+public class GuiCommand extends CommandBase {
     @Override
     public String getCommandName() {
-        return "hypixelhud";
+        return "hypixelutilsgui";
     }
 
     @Override
@@ -22,7 +25,12 @@ public class HUDCommand extends CommandBase {
     }
 
     @Override
+    public List<String> getCommandAliases() {
+        return Collections.singletonList("hutilsg");
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        HypixelUtils.gui = new HUDGui();
+        HypixelUtils.gui = new EditorGui();
     }
 }

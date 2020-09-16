@@ -2,9 +2,9 @@ package dev.naturecodevoid.forge.hypixelutils;
 
 import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
-import dev.naturecodevoid.forge.hypixelutils.commands.HUDCommand;
+import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.listeners.CoinListener;
+import dev.naturecodevoid.forge.hypixelutils.listeners.CoinTrackerListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -42,12 +42,12 @@ public class HypixelUtils {
         features.add(new CoinTracker());
 
         // Listeners
-        MinecraftForge.EVENT_BUS.register(new CoinListener());
+        MinecraftForge.EVENT_BUS.register(new CoinTrackerListener());
 
         // Commands
-        ClientCommandHandler.instance.registerCommand(new ConfigCommand());
-        ClientCommandHandler.instance.registerCommand(new HUDCommand());
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());
+        ClientCommandHandler.instance.registerCommand(new GuiCommand());
+        ClientCommandHandler.instance.registerCommand(new ConfigCommand());
     }
 
     @SubscribeEvent

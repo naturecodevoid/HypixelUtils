@@ -7,7 +7,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CoinListener {
+public class CoinTrackerListener {
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/
     @SubscribeEvent
     public void onChat(ClientChatReceivedEvent event) {

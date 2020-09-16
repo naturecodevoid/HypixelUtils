@@ -18,15 +18,16 @@ public class CoinTracker implements IFeature {
 
     @Override
     public void render(RenderGameOverlayEvent event) {
+        String text = EnumChatFormatting.GREEN + "Session Coins: " + EnumChatFormatting.WHITE + HypixelUtils.totalCoins;
+        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
         Position pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
         pos.x += 4;
         if (pos.y <= Minecraft.getMinecraft().displayHeight / 2 / 2) {
             pos.y += 16;
         }
         if (pos.x >= Minecraft.getMinecraft().displayWidth / 2 / 2) {
-            pos.x -= 29 * 3;
+            pos.x -= fRender.getStringWidth(text) + 8;
         }
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-        fRender.drawStringWithShadow(EnumChatFormatting.GREEN + "Session Coins: " + EnumChatFormatting.WHITE + HypixelUtils.totalCoins, pos.x, pos.y - 12, 0);
+        fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
     }
 }
