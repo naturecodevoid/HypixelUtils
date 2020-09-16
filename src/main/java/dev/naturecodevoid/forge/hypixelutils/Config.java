@@ -23,6 +23,24 @@ public class Config extends Vigilant {
     )
     public boolean coinsEnabled = true;
 
+    /*
+    @Property(
+            type = PropertyType.NUMBER,
+            name = "Coin Tracker X",
+            category = "gui",
+            hidden = true
+    )
+    public int coinTrackerX = 10;
+
+    @Property(
+            type = PropertyType.NUMBER,
+            name = "Coin Tracker Y",
+            category = "gui",
+            hidden = true
+    )
+    public int coinTrackerY = 5;
+     */
+
     public Config() {
         super(new File("./config/hypixelutils.toml"));
         initialize();
