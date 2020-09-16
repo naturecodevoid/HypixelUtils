@@ -14,6 +14,8 @@ public class HUDGui extends GuiScreen {
 
         CoinTracker.instance.render(null);
 
+        // TODO: make features draggable
+
         super.drawScreen(x, y, partialTicks);
     }
 }
