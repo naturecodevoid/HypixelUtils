@@ -23,14 +23,12 @@ public class HypixelUtils {
     public static Config config;
     public static GuiScreen gui = null;
     public static int totalCoins = 0;
+
     @Mod.Instance(HypixelUtils.MODID)
     public static HypixelUtils instance;
 
-    public static HypixelUtils get() {
-        return instance;
-    }
-
     @EventHandler
+
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         config = new Config();
