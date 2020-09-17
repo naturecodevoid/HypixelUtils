@@ -7,6 +7,8 @@ import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
@@ -36,11 +38,12 @@ public class EditorGui extends GuiScreen {
 
     @Override
     public void drawScreen(int x, int y, float partialTicks) {
-        super.drawDefaultBackground();
-
-        HypixelUtils.features.forEach(BaseFeature::render);
+        if (mc.theWorld != null) this.drawGradientRect(0, 0, this.width, this.height, -1608507360, -1608507360);
+        MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this));
 
         super.drawScreen(x, y, partialTicks);
+
+        HypixelUtils.features.forEach(BaseFeature::render);
     }
 
     @Override

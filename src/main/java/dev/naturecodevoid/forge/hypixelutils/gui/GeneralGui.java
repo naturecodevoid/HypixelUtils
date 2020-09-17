@@ -6,6 +6,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 public class GeneralGui extends GuiScreen {
     public void initGui() {
@@ -27,7 +29,8 @@ public class GeneralGui extends GuiScreen {
 
     @Override
     public void drawScreen(int x, int y, float partialTicks) {
-        super.drawDefaultBackground();
+        if (mc.theWorld != null) this.drawGradientRect(0, 0, this.width, this.height, -1608507360, -1608507360);
+        MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this));
 
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
         String text = EnumChatFormatting.WHITE + "HypixelUtils v" + HypixelUtils.VERSION;
