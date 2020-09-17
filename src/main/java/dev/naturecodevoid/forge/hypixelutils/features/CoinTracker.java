@@ -6,7 +6,6 @@ import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class CoinTracker implements IFeature {
@@ -18,7 +17,7 @@ public class CoinTracker implements IFeature {
 
     @Override
     public void render(RenderGameOverlayEvent event) {
-        String text = EnumChatFormatting.GREEN + "Session Coins: " + EnumChatFormatting.WHITE + HypixelUtils.totalCoins;
+        String text = Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + HypixelUtils.totalCoins;
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
         Coordinate2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
         pos.x += 4;

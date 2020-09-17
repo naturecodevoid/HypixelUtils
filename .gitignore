@@ -20,7 +20,9 @@ build
 # other
 eclipse
 run
-HypixelUtils.*
+
+./HypixelUtils.*
+# !HypixelUtils.iws
 !*.java
 
 # Examples taken from <https://github.com/github/gitignore>

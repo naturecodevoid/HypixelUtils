@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 public class Util {
     public static boolean hasGuiOpen() {
@@ -71,5 +72,45 @@ public class Util {
                 Math.floor((posX * 100) / width),
                 Math.floor((posY * 100) / height)
         );
+    }
+
+    public static EnumChatFormatting getColorFromString(String str) {
+        String string = str.toUpperCase().replaceAll(" ", "_");
+
+        switch (string) {
+            case "BLACK":
+                return EnumChatFormatting.BLACK;
+            case "DARK_BLUE":
+                return EnumChatFormatting.DARK_BLUE;
+            case "DARK_AQUA":
+                return EnumChatFormatting.DARK_AQUA;
+            case "DARK_RED":
+                return EnumChatFormatting.DARK_RED;
+            case "DARK_PURPLE":
+                return EnumChatFormatting.DARK_PURPLE;
+            case "GOLD":
+                return EnumChatFormatting.GOLD;
+            case "GRAY":
+                return EnumChatFormatting.GRAY;
+            case "DARK_GRAY":
+                return EnumChatFormatting.DARK_GRAY;
+            case "BLUE":
+                return EnumChatFormatting.BLUE;
+            case "GREEN":
+                return EnumChatFormatting.GREEN;
+            case "AQUA":
+                return EnumChatFormatting.AQUA;
+            case "RED":
+                return EnumChatFormatting.RED;
+            case "LIGHT_PURPLE":
+                return EnumChatFormatting.LIGHT_PURPLE;
+            case "YELLOW":
+                return EnumChatFormatting.YELLOW;
+            case "WHITE":
+                return EnumChatFormatting.WHITE;
+            default:
+                return EnumChatFormatting.RESET;
+
+        }
     }
 }

@@ -7,6 +7,8 @@ import club.sk1er.vigilance.data.PropertyType;
 import java.io.File;
 
 public class Config extends Vigilant {
+    public final String[] colors = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/};
+
     @Property(
             type = PropertyType.SWITCH,
             name = "HypixelUtils",
@@ -23,6 +25,37 @@ public class Config extends Vigilant {
             description = "Toggle the coin tracker."
     )
     public boolean coinsEnabled = true;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "Coins Message",
+            category = "Features",
+            subcategory = "Coin Tracker",
+            description = "Change the coin tracker message.",
+            options = {"Session Coins", "Coins", "Earned Coins"}
+    )
+    public Integer coinsMessage = 1;
+    public String[] coinsMessages = {"Session Coins", "Coins", "Earned Coins"};
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "Coins Message Color",
+            category = "Features",
+            subcategory = "Coin Tracker",
+            description = "Change the coin tracker message color.",
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+    )
+    public Integer coinsColor1 = 4;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "Coins Color",
+            category = "Features",
+            subcategory = "Coin Tracker",
+            description = "Change the coin color.",
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+    )
+    public Integer coinsColor2 = 1;
 
     @Property(
             type = PropertyType.SLIDER,
