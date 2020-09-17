@@ -12,6 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Util {
+    public static int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
     public static boolean hasGuiOpen() {
         if (Minecraft.getMinecraft().gameSettings.showDebugInfo) return true;
         return Minecraft.getMinecraft().currentScreen != null && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat);
@@ -19,14 +23,6 @@ public class Util {
 
     public static void sendMessage(ICommandSender sender, String text) {
         sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
-    }
-
-    public static boolean isFullscreen() {
-        try {
-            // TODO: add code here that checks if mac fullscreen is on, if so return true
-        } catch (Exception ignored) {
-        }
-        return Minecraft.getMinecraft().isFullScreen();
     }
 
     public static Coordinate2D getScreenSize() {
@@ -59,8 +55,8 @@ public class Util {
     public static Coordinate2D getPercentFromPos(float posX, float posY) {
         Coordinate2D size = getScreenSize();
         return new Coordinate2D(
-                Math.round((posX * 100) / size.x),
-                Math.round((posY * 100) / size.y)
+                clamp(Math.round((posX * 100) / size.x), 0, 100),
+                clamp(Math.round((posY * 100) / size.y), 0, 100)
         );
     }
 
@@ -128,5 +124,11 @@ public class Util {
     public static boolean isModEnabled() {
         if (!HypixelUtils.config.otherServers) return HypixelUtils.config.enabled && isOnHypixel();
         return HypixelUtils.config.enabled;
+    }
+
+    public static double distance(Coordinate2D pos1, Coordinate2D pos2) {
+        int x = pos1.x - pos2.x;
+        int y = pos1.y - pos2.y;
+        return new Coordinate2D(x, y).length();
     }
 }

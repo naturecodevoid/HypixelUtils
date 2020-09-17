@@ -18,6 +18,10 @@ public class CoinTracker extends BaseFeature {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    private String getText() {
+        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + HypixelUtils.totalCoins;
+    }
+
     @Override
     public void render() {
         ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
@@ -26,14 +30,14 @@ public class CoinTracker extends BaseFeature {
 
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
-        String text = Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + HypixelUtils.totalCoins;
+        String text = getText();
         Coordinate2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
-        if (pos.y <= height / 2 / 2) {
+        if (pos.y <= height / 2) {
             pos.y += 16;
         }
-        if (pos.x >= width / 2 / 2) {
+        if (pos.x >= width / 2) {
             pos.x -= fRender.getStringWidth(text) + 8;
         }
 
@@ -44,6 +48,16 @@ public class CoinTracker extends BaseFeature {
     public void resetPosition() {
         HypixelUtils.config.coinTrackerX = 0;
         HypixelUtils.config.coinTrackerY = 0;
+    }
+
+    @Override
+    public Coordinate2D getPosition() {
+        return new Coordinate2D(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+    }
+
+    @Override
+    public Coordinate2D getSize() {
+        return new Coordinate2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()), 12);
     }
 
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/

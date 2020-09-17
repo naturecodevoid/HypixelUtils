@@ -2,6 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
 import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.gui.GuiButton;
@@ -55,9 +56,32 @@ public class EditorGui extends GuiScreen {
     @Override
     public void mouseClickMove(int x, int y, int lastButtonClicked, long timeSinceClick) {
         if (this.isDragging) {
-            Coordinate2D percent = Util.getPercentFromPos(x, y);
-            HypixelUtils.config.coinTrackerX = percent.x;
-            HypixelUtils.config.coinTrackerY = percent.y;
+            String closest = "";
+            BaseFeature closestFeature = null;
+            double closestDist = 999999;
+
+            for (Feature feature : Feature.values()) {
+                Coordinate2D pos = feature.featureClass.getPosition();
+
+                double dist = Util.distance(
+                        new Coordinate2D(x, y),
+                        Util.getPosFromPercent(pos.x, pos.y)
+                );
+
+                if (dist <= closestDist && dist <= 30) {
+                    closest = feature.featureClass.toString();
+                    closestFeature = feature.featureClass;
+                    closestDist = dist;
+                }
+            }
+
+            switch (closest) {
+                case "CoinTracker":
+                    Coordinate2D percent = Util.getPercentFromPos(x/* + (closestFeature.getSize().x / 2)*/, y/* + (closestFeature.getSize().y / 2)*/);
+                    HypixelUtils.config.coinTrackerX = percent.x;
+                    HypixelUtils.config.coinTrackerY = percent.y;
+                    break;
+            }
 
             this.lastX = x;
             this.lastY = y;
@@ -71,5 +95,15 @@ public class EditorGui extends GuiScreen {
         HypixelUtils.config.markDirty();
         HypixelUtils.config.writeData();
         Keyboard.enableRepeatEvents(false);
+    }
+
+    public enum Feature {
+        COINTRACKER(CoinTracker.instance);
+
+        public BaseFeature featureClass;
+
+        Feature(BaseFeature featureClass) {
+            this.featureClass = featureClass;
+        }
     }
 }

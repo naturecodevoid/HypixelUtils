@@ -25,4 +25,13 @@ public class Coordinate2D {
         this.y = (int) y;
         return this;
     }
+
+    public double length() {
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    }
+
+    @Override
+    public String toString() {
+        return "X: " + x + " | Y: " + y;
+    }
 }
