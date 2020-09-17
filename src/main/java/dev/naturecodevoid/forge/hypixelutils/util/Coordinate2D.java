@@ -13,4 +13,16 @@ public class Coordinate2D {
         this.x = (int) x;
         this.y = (int) y;
     }
+
+    public Coordinate2D set(int x, int y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
+    public Coordinate2D set(double x, double y) {
+        this.x = (int) x;
+        this.y = (int) y;
+        return this;
+    }
 }

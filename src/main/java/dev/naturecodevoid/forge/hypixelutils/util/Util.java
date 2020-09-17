@@ -29,17 +29,13 @@ public class Util {
         return Minecraft.getMinecraft().isFullScreen();
     }
 
-    public static Coordinate2D getPosFromPercent(float percentX, float percentY) {
+    public static Coordinate2D getScreenSize() {
         int width;
         int height;
         try {
             ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
             width = res.getScaledWidth();
             height = res.getScaledHeight();
-            if (isFullscreen()) {
-                percentX -= 20;
-                percentY -= 6;
-            }
         } catch (Exception e) {
             try {
                 width = Minecraft.getMinecraft().displayWidth / 2;
@@ -49,31 +45,22 @@ public class Util {
                 height = 0;
             }
         }
+        return new Coordinate2D(width, height);
+    }
+
+    public static Coordinate2D getPosFromPercent(float percentX, float percentY) {
+        Coordinate2D size = getScreenSize();
         return new Coordinate2D(
-                Math.floor((percentX / 100) * width),
-                Math.floor((percentY / 100) * height)
+                Math.round((percentX / 100) * size.x),
+                Math.round((percentY / 100) * size.y)
         );
     }
 
     public static Coordinate2D getPercentFromPos(float posX, float posY) {
-        int width;
-        int height;
-        try {
-            ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
-            width = res.getScaledWidth();
-            height = res.getScaledHeight();
-        } catch (Exception e) {
-            try {
-                width = Minecraft.getMinecraft().displayWidth / 2;
-                height = Minecraft.getMinecraft().displayHeight / 2;
-            } catch (Exception e2) {
-                width = 0;
-                height = 0;
-            }
-        }
+        Coordinate2D size = getScreenSize();
         return new Coordinate2D(
-                Math.floor((posX * 100) / width),
-                Math.floor((posY * 100) / height)
+                Math.round((posX * 100) / size.x),
+                Math.round((posY * 100) / size.y)
         );
     }
 

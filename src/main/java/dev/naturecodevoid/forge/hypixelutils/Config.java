@@ -21,7 +21,7 @@ public class Config extends Vigilant {
             type = PropertyType.SWITCH,
             name = "Enabled on other servers",
             category = "General",
-            description = "Turn on to enable on other servers. Turn off to only enable on Hypixel."
+            description = "Turn on to enable on other servers/singleplayer. Turn off to only enable on Hypixel."
     )
     public boolean otherServers = false;
 
@@ -53,7 +53,7 @@ public class Config extends Vigilant {
             description = "Change the coin tracker message color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
     )
-    public Integer coinsColor1 = 4;
+    public Integer coinsColor1 = 9;
 
     @Property(
             type = PropertyType.SELECTOR,
@@ -71,6 +71,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Manually change the coin tracker X position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
             max = 100
     )
     public int coinTrackerX = 0;
@@ -81,6 +82,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Manually change the coin tracker Y position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
             max = 100
     )
     public int coinTrackerY = 0;

@@ -4,7 +4,6 @@ import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.listeners.CoinTrackerListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -24,7 +23,7 @@ public class HypixelUtils {
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "@MOD_NAME@";
     public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
-    public static ArrayList<IFeature> features = new ArrayList<IFeature>();
+    public static ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
     public static Config config;
     public static GuiScreen gui = null;
     public static int totalCoins = 0;
@@ -33,16 +32,12 @@ public class HypixelUtils {
     public static HypixelUtils instance;
 
     @EventHandler
-
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         config = new Config();
 
         // Features
         features.add(new CoinTracker());
-
-        // Listeners
-        MinecraftForge.EVENT_BUS.register(new CoinTrackerListener());
 
         // Commands
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());

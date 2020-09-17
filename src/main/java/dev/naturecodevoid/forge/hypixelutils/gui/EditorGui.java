@@ -1,7 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.gui;
 
+import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
 import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.gui.GuiButton;
@@ -21,14 +21,14 @@ public class EditorGui extends GuiScreen {
                 this.height - 20,
                 150,
                 20,
-                "Save"
+                "Reset Positions"
         ));
     }
 
     public void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 1:
-                this.mc.displayGuiScreen(null);
+                HypixelUtils.features.forEach(BaseFeature::resetPosition);
                 return;
         }
     }
@@ -37,9 +37,7 @@ public class EditorGui extends GuiScreen {
     public void drawScreen(int x, int y, float partialTicks) {
         super.drawDefaultBackground();
 
-        CoinTracker.instance.render(null);
-
-        // TODO: make features draggable
+        HypixelUtils.features.forEach(BaseFeature::render);
 
         super.drawScreen(x, y, partialTicks);
     }
@@ -60,8 +58,6 @@ public class EditorGui extends GuiScreen {
             Coordinate2D percent = Util.getPercentFromPos(x, y);
             HypixelUtils.config.coinTrackerX = percent.x;
             HypixelUtils.config.coinTrackerY = percent.y;
-            if (HypixelUtils.config.coinTrackerX == 99) HypixelUtils.config.coinTrackerX++;
-            if (HypixelUtils.config.coinTrackerY == 99) HypixelUtils.config.coinTrackerY++;
 
             this.lastX = x;
             this.lastY = y;
