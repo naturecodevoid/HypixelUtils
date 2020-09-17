@@ -11,11 +11,19 @@ public class Config extends Vigilant {
 
     @Property(
             type = PropertyType.SWITCH,
-            name = "HypixelUtils",
+            name = "Enabled",
             category = "General",
             description = "Toggle HypixelUtils."
     )
     public boolean enabled = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enabled on other servers",
+            category = "General",
+            description = "Turn on to enable on other servers. Turn off to only enable on Hypixel."
+    )
+    public boolean otherServers = false;
 
     @Property(
             type = PropertyType.SWITCH,

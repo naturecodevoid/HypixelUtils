@@ -8,6 +8,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Util {
     public static boolean hasGuiOpen() {
         if (Minecraft.getMinecraft().gameSettings.showDebugInfo) return true;
@@ -112,5 +115,31 @@ public class Util {
                 return EnumChatFormatting.RESET;
 
         }
+    }
+
+    // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/java/codes/biscuit/skyblockaddons/utils/Utils.java#L189
+    public static boolean isOnHypixel() {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+
+        Minecraft mc = Minecraft.getMinecraft();
+
+        if (!mc.isSingleplayer() && mc.thePlayer.getClientBrand() != null) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isModEnabled() {
+        if (!HypixelUtils.config.otherServers) return HypixelUtils.config.enabled && isOnHypixel();
+        return HypixelUtils.config.enabled;
     }
 }

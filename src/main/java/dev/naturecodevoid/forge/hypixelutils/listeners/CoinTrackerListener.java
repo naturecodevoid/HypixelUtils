@@ -23,7 +23,7 @@ public class CoinTrackerListener {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent event) {
-        if (!(HypixelUtils.config.coinsEnabled) || !(HypixelUtils.config.enabled)) return;
+        if (!(HypixelUtils.config.coinsEnabled) || !(Util.isModEnabled())) return;
         if (Util.hasGuiOpen()) return;
         if (event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.EXPERIENCE) return;
 
