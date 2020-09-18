@@ -2,11 +2,10 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,28 +17,27 @@ public class CoinTracker extends BaseFeature {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private String getText() {
-        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + HypixelUtils.totalCoins;
+    public String getText() {
+        return getText(true);
+    }
+
+    public String getText(boolean showActualCoins) {
+        return getText(showActualCoins, 0);
+    }
+
+    public String getText(boolean showActualCoins, int coins) {
+        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + (showActualCoins ? HypixelUtils.totalCoins : coins);
     }
 
     @Override
     public void render() {
-        ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
-        int width = res.getScaledWidth();
-        int height = res.getScaledHeight();
-
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText();
         Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
-        if (pos.y <= height / 2) {
-            pos.y += 16;
-        }
-        if (pos.x >= width / 2) {
-            pos.x -= fRender.getStringWidth(text) + 8;
-        }
+        pos.y += 16;
 
         fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
     }
@@ -57,7 +55,7 @@ public class CoinTracker extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()), 12);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false, 30)) + 7, 12);
     }
 
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/

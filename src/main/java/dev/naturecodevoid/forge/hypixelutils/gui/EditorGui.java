@@ -3,8 +3,8 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -82,7 +82,7 @@ public class EditorGui extends GuiScreen {
 
             switch (closest) {
                 case "CoinTracker":
-                    Coordinate2D percent = Util.getPercentFromPos(x/* + (closestFeature.getSize().x / 2)*/, y/* + (closestFeature.getSize().y / 2)*/);
+                    Vector2D percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
                     HypixelUtils.config.coinTrackerX = percent.x;
                     HypixelUtils.config.coinTrackerY = percent.y;
                     break;
