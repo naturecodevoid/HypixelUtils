@@ -25,7 +25,7 @@ public class Util {
         sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
     }
 
-    public static Coordinate2D getScreenSize() {
+    public static Vector2D getScreenSize() {
         int width;
         int height;
         try {
@@ -41,20 +41,20 @@ public class Util {
                 height = 0;
             }
         }
-        return new Coordinate2D(width, height);
+        return new Vector2D(width, height);
     }
 
-    public static Coordinate2D getPosFromPercent(float percentX, float percentY) {
-        Coordinate2D size = getScreenSize();
-        return new Coordinate2D(
+    public static Vector2D getPosFromPercent(float percentX, float percentY) {
+        Vector2D size = getScreenSize();
+        return new Vector2D(
                 Math.round((percentX / 100) * size.x),
                 Math.round((percentY / 100) * size.y)
         );
     }
 
-    public static Coordinate2D getPercentFromPos(float posX, float posY) {
-        Coordinate2D size = getScreenSize();
-        return new Coordinate2D(
+    public static Vector2D getPercentFromPos(float posX, float posY) {
+        Vector2D size = getScreenSize();
+        return new Vector2D(
                 clamp(Math.round((posX * 100) / size.x), 0, 100),
                 clamp(Math.round((posY * 100) / size.y), 0, 100)
         );
@@ -126,9 +126,9 @@ public class Util {
         return HypixelUtils.config.enabled;
     }
 
-    public static double distance(Coordinate2D pos1, Coordinate2D pos2) {
+    public static double distance(Vector2D pos1, Vector2D pos2) {
         int x = pos1.x - pos2.x;
         int y = pos1.y - pos2.y;
-        return new Coordinate2D(x, y).length();
+        return new Vector2D(x, y).length();
     }
 }

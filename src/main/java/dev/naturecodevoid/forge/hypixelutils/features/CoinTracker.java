@@ -2,7 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
+import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -31,7 +31,7 @@ public class CoinTracker extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText();
-        Coordinate2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
         if (pos.y <= height / 2) {
@@ -51,13 +51,13 @@ public class CoinTracker extends BaseFeature {
     }
 
     @Override
-    public Coordinate2D getPosition() {
-        return new Coordinate2D(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+    public Vector2D getPosition() {
+        return new Vector2D(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
     }
 
     @Override
-    public Coordinate2D getSize() {
-        return new Coordinate2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()), 12);
+    public Vector2D getSize() {
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()), 12);
     }
 
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/

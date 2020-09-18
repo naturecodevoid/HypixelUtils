@@ -1,6 +1,6 @@
 package dev.naturecodevoid.forge.hypixelutils;
 
-import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
+import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import org.apache.commons.lang3.NotImplementedException;
 
 public abstract class BaseFeature {
@@ -18,11 +18,11 @@ public abstract class BaseFeature {
         throw new NotImplementedException("Please override the resetPosition function!");
     }
 
-    public Coordinate2D getPosition() {
+    public Vector2D getPosition() {
         throw new NotImplementedException("Please override the getPosition function!");
     }
 
-    public Coordinate2D getSize() {
+    public Vector2D getSize() {
         throw new NotImplementedException("Please override the getSize function!");
     }
 

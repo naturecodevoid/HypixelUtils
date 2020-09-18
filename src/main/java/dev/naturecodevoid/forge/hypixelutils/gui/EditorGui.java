@@ -3,7 +3,7 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.util.Coordinate2D;
+import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -63,11 +63,13 @@ public class EditorGui extends GuiScreen {
             BaseFeature closestFeature = null;
             double closestDist = 999999;
 
+            Vector2D screenSize = Util.getScreenSize();
+
             for (Feature feature : Feature.values()) {
-                Coordinate2D pos = feature.featureClass.getPosition();
+                Vector2D pos = feature.featureClass.getPosition();
 
                 double dist = Util.distance(
-                        new Coordinate2D(x, y),
+                        new Vector2D(x, y),
                         Util.getPosFromPercent(pos.x, pos.y)
                 );
 
