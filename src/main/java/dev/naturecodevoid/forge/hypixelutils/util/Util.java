@@ -147,4 +147,17 @@ public class Util {
     public static boolean getEnabled(RenderGameOverlayEvent event, boolean featureEnabled) {
         return !(featureEnabled) || !(Util.isModEnabled()) || Util.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
     }
+
+    public static String addZeros(int num) {
+        return Util.addZeros(num, 1);
+    }
+
+    public static String addZeros(int num, int amount) {
+        String tmp = String.valueOf(num);
+        int length = tmp.length();
+        for (int i = 0; i < (amount + 1) - length; i++) {
+            tmp = "0" + tmp;
+        }
+        return tmp;
+    }
 }

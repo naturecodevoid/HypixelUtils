@@ -24,14 +24,13 @@ public class Clock extends BaseFeature {
 
     public String getText(boolean showActual) {
         String text = "";
-        // TODO: add a zero if the number only has 1 digit (minute/second only) (example: minute: 04. displayed as: 4. needs to be displayed as 04)
         if (HypixelUtils.config.clock24hr) {
             Date date = new Date();
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
-            text += calendar.get(Calendar.HOUR_OF_DAY);
-            text += ":" + calendar.get(Calendar.MINUTE);
-            if (HypixelUtils.config.clockSeconds) text += ":" + calendar.get(Calendar.SECOND);
+            text += Util.addZeros(calendar.get(Calendar.HOUR_OF_DAY));
+            text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+            if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
         } else {
             Date date = new Date();
             Calendar calendar = GregorianCalendar.getInstance();
@@ -39,8 +38,8 @@ public class Clock extends BaseFeature {
             int hour = calendar.get(Calendar.HOUR);
             if (hour == 0) hour = 12;
             text += hour;
-            text += ":" + calendar.get(Calendar.MINUTE);
-            if (HypixelUtils.config.clockSeconds) text += ":" + calendar.get(Calendar.SECOND);
+            text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+            if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
             text += " " + (calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
         }
         return Util.getColor(HypixelUtils.config.clockColor) + text;
