@@ -2,8 +2,6 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.features.FPSDisplay;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.gui.GuiButton;
