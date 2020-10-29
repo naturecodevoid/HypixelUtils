@@ -75,7 +75,7 @@ public class TemplateFeature extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + 7, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAddSmall /* + Util.textAdd */, 16);
     }
 
     @Override

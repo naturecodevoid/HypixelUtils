@@ -34,7 +34,7 @@ public class CPSDisplay extends BaseFeature {
 
     public String getText(boolean showActual) {
         String cpsText = String.valueOf(cps);
-        if (HypixelUtils.config.cpsRight) cpsText += " | " + String.valueOf(cpsRight);
+        if (HypixelUtils.config.cpsRight) cpsText += " | " + cpsRight;
 
         String cpsTextFake = "10";
         if (HypixelUtils.config.cpsRight) cpsTextFake += " | 10";
@@ -85,7 +85,7 @@ public class CPSDisplay extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + 7, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAdd, 16);
     }
 
     @Override

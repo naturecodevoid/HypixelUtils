@@ -20,7 +20,7 @@ public class FPSDisplay extends BaseFeature {
 
     public String getText(boolean showActualFPS) {
         String text = HypixelUtils.config.fpsMessages[HypixelUtils.config.fpsMessage].replace("$1", showActualFPS ? String.valueOf(Minecraft.getDebugFPS()) : "999");
-        return Util.getColor(HypixelUtils.config.fpsColor)+ text;
+        return Util.getColor(HypixelUtils.config.fpsColor) + text;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class FPSDisplay extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + 7, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Util.textAddSmall, 16);
     }
 
     @Override

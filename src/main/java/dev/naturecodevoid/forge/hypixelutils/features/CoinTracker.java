@@ -66,7 +66,7 @@ public class CoinTracker extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + 7, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Util.textAddSmall, 16);
     }
 
     @Override

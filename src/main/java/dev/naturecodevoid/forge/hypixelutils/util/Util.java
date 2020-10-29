@@ -13,6 +13,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Util {
+    public static final int textAdd = 18;
+    public static final int textAddSmall = 7;
+
     public static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
