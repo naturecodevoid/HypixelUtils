@@ -67,7 +67,6 @@ public class EditorGui extends GuiScreen {
 
             for (BaseFeature feature : HypixelUtils.features) {
                 Vector2D pos = feature.getPosition();
-                System.out.println(feature);
 
                 double dist = Util.distance(
                         new Vector2D(x, y),

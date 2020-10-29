@@ -33,7 +33,14 @@ public class CPSDisplay extends BaseFeature {
     }
 
     public String getText(boolean showActual) {
-        return Util.getColor(HypixelUtils.config.cpsColor) + String.valueOf(cps) + " " + String.valueOf(cpsRight);
+        String cpsText = String.valueOf(cps);
+        if (HypixelUtils.config.cpsRight) cpsText += " | " + String.valueOf(cpsRight);
+
+        String cpsTextFake = "10";
+        if (HypixelUtils.config.cpsRight) cpsTextFake += " | 10";
+
+        String text = HypixelUtils.config.cpsMessages[HypixelUtils.config.cpsMessage].replace("$1", showActual ? cpsText : cpsTextFake);
+        return Util.getColor(HypixelUtils.config.cpsColor) + text;
     }
 
     @Override
