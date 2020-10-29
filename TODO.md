@@ -1,5 +1,6 @@
 # Todo
 
+-   Make feature template
 -   Clock/CPS/FPS
 -   Toggle text shadow
 -   Change text alignment (right, left, centered)
