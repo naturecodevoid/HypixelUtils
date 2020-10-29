@@ -13,10 +13,16 @@ import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraftforge.client.event.MouseEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CPSDisplay extends BaseFeature {
     public static CPSDisplay instance;
     public static int cps = 0;
+    public static int cpsRight = 0;
 
     public CPSDisplay() {
         this.init();
@@ -27,7 +33,7 @@ public class CPSDisplay extends BaseFeature {
     }
 
     public String getText(boolean showActual) {
-        return "CPS";
+        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.cpsColor]) + String.valueOf(cps) + " " + cpsRight;
     }
 
     @Override
@@ -78,5 +84,40 @@ public class CPSDisplay extends BaseFeature {
     @Override
     public boolean isEnabled() {
         return HypixelUtils.config.cpsEnabled;
+    }
+
+    @SubscribeEvent
+    public void onMouseClick(MouseEvent event) {
+        if (event.buttonstate) switch (event.button) {
+            case 0:
+                // Left click
+                addClick();
+                break;
+
+            case 1:
+                // Right click
+                addClickRight();
+                break;
+        }
+    }
+
+    public void addClick() {
+        cps++;
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                cps--;
+            }
+        }, 1000);
+    }
+
+    public void addClickRight() {
+        cpsRight++;
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                cpsRight--;
+            }
+        }, 1000);
     }
 }
