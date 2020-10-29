@@ -21,7 +21,7 @@ public class CoinTracker extends BaseFeature {
     }
 
     public String getText(boolean showActualCoins) {
-        return Util.getColor(HypixelUtils.config.coinsColor1) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColor(HypixelUtils.config.coinsColor2) + (showActualCoins ? HypixelUtils.totalCoins : 1234);
+        return Util.getColor(HypixelUtils.config.coinsColor1) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage].replace("$1", Util.getColor(HypixelUtils.config.coinsColor2) + String.valueOf(showActualCoins ? HypixelUtils.totalCoins : 1234));
     }
 
     @Override

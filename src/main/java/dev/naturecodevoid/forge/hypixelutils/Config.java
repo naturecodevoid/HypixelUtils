@@ -44,10 +44,10 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin tracker message.",
-            options = {"Session Coins", "Coins", "Earned Coins"}
+            options = {"Session Coins: 1234", "Coins: 1234", "Earned Coins: 1234"}
     )
     public Integer coinsMessage = 1;
-    public String[] coinsMessages = {"Session Coins", "Coins", "Earned Coins"};
+    public String[] coinsMessages = {"Session Coins: $1", "Coins: $1", "Earned Coins: $1"};
 
     @Property(
             type = PropertyType.SELECTOR,
@@ -166,10 +166,10 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "CPS Display",
             description = "Change the CPS display message.",
-            options = {"CPS: 10", "10 CPS"}
+            options = {"CPS: 10", "10 CPS", "10"}
     )
     public Integer cpsMessage = 1;
-    public String[] cpsMessages = {"CPS: $1", "$1 CPS"};
+    public String[] cpsMessages = {"CPS: $1", "$1 CPS", "$1"};
 
     @Property(
             type = PropertyType.SWITCH,
