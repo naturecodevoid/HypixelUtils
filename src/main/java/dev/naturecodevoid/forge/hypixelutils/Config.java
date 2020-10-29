@@ -7,7 +7,7 @@ import club.sk1er.vigilance.data.PropertyType;
 import java.io.File;
 
 public class Config extends Vigilant {
-    public final String[] colors = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/};
+    public final String[] colors = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/};
 
     @Property(
             type = PropertyType.SWITCH,
@@ -55,7 +55,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin tracker message color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
     )
     public Integer coinsColor1 = 9;
 
@@ -65,7 +65,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
     )
     public Integer coinsColor2 = 1;
 
@@ -121,9 +121,9 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "FPS Display",
             description = "Change the FPS display color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
     )
-    public Integer fpsColor = 10;
+    public Integer fpsColor = 9;
 
     @Property(
             type = PropertyType.SLIDER,
@@ -146,6 +146,71 @@ public class Config extends Vigilant {
             max = 100
     )
     public int fpsY = 0;
+
+    ////
+    //// CPS Display
+    ////
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enabled",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Toggle the CPS display."
+    )
+    public boolean cpsEnabled = true;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "CPS Display Message",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Change the CPS display message.",
+            options = {"CPS: 10", "10 CPS"}
+    )
+    public Integer cpsMessage = 1;
+    public String[] cpsMessages = {"CPS: $1", "$1 CPS"};
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Right CPS",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Toggle the right CPS display."
+    )
+    public boolean cpsRight = true;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "CPS Color",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Change the CPS display color.",
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+    )
+    public Integer cpsColor = 9;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "CPS Display X",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Manually change the CPS display X position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int cpsX = 30;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "CPS Display Y",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Manually change the CPS display Y position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int cpsY = 0;
 
     public Config() {
         super(new File("./config/hypixelutils.toml"));
