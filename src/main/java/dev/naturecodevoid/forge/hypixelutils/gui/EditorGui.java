@@ -3,6 +3,7 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
+import dev.naturecodevoid.forge.hypixelutils.features.FPSDisplay;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.gui.GuiButton;
@@ -43,7 +44,7 @@ public class EditorGui extends GuiScreen {
 
         super.drawScreen(x, y, partialTicks);
 
-        HypixelUtils.features.forEach(BaseFeature::render);
+        HypixelUtils.features.forEach(BaseFeature::renderEditor);
     }
 
     @Override
@@ -80,11 +81,17 @@ public class EditorGui extends GuiScreen {
                 }
             }
 
+            Vector2D percent;
             switch (closest) {
                 case "CoinTracker":
-                    Vector2D percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
+                    percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
                     HypixelUtils.config.coinTrackerX = percent.x;
                     HypixelUtils.config.coinTrackerY = percent.y;
+                    break;
+                case "FPSDisplay":
+                    percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
+                    HypixelUtils.config.fpsX = percent.x;
+                    HypixelUtils.config.fpsY = percent.y;
                     break;
             }
 
@@ -103,7 +110,8 @@ public class EditorGui extends GuiScreen {
     }
 
     public enum Feature {
-        COINTRACKER(CoinTracker.instance);
+        COINTRACKER(CoinTracker.instance),
+        FPSDISPLAY(FPSDisplay.instance);
 
         public BaseFeature featureClass;
 

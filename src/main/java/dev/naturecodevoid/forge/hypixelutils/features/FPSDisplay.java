@@ -6,13 +6,12 @@ import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CoinTracker extends BaseFeature {
-    public CoinTracker() {
+public class FPSDisplay extends BaseFeature {
+    public FPSDisplay() {
         super();
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -21,8 +20,9 @@ public class CoinTracker extends BaseFeature {
         return getText(true);
     }
 
-    public String getText(boolean showActualCoins) {
-        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]) + HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage] + ": " + Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]) + (showActualCoins ? HypixelUtils.totalCoins : 1234);
+    public String getText(boolean showActualFPS) {
+        String text = HypixelUtils.config.fpsMessages[HypixelUtils.config.fpsMessage].replace("$1", showActualFPS ? String.valueOf(Minecraft.getDebugFPS()) : "999");
+        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.fpsColor]) + text;
     }
 
     @Override
@@ -30,10 +30,10 @@ public class CoinTracker extends BaseFeature {
         this.render(true);
     }
 
-    public void render(boolean showActualCoins) {
+    public void render(boolean showActualFPS) {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
-        String text = getText(showActualCoins);
+        String text = getText(showActualFPS);
         Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
@@ -49,13 +49,13 @@ public class CoinTracker extends BaseFeature {
 
     @Override
     public void resetPosition() {
-        HypixelUtils.config.coinTrackerX = 0;
-        HypixelUtils.config.coinTrackerY = 0;
+        HypixelUtils.config.fpsX = 0;
+        HypixelUtils.config.fpsY = 0;
     }
 
     @Override
     public Vector2D getPosition() {
-        return new Vector2D(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+        return new Vector2D(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
     }
 
     @Override
@@ -63,22 +63,9 @@ public class CoinTracker extends BaseFeature {
         return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + 7, 16);
     }
 
-    // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/
-    @SubscribeEvent
-    public void onChat(ClientChatReceivedEvent event) {
-        String message = event.message.getUnformattedText();
-        if (message.startsWith("+") && message.contains("coins") && !message.endsWith("for being generous")) {
-            String[] splittedMessage = message.split("coins");
-            message = splittedMessage[0].replace("+", "");
-            message = message.replace(" ", "");
-            int coins = Integer.parseInt(message);
-            HypixelUtils.totalCoins += coins;
-        }
-    }
-
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent event) {
-        if (Util.getEnabled(event, HypixelUtils.config.coinsEnabled))
+        if (Util.getEnabled(event, HypixelUtils.config.fpsEnabled))
             return;
 
         this.render();

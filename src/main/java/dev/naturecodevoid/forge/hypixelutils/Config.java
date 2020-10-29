@@ -25,6 +25,10 @@ public class Config extends Vigilant {
     )
     public boolean otherServers = false;
 
+    ////
+    //// COIN TRACKER
+    ////
+
     @Property(
             type = PropertyType.SWITCH,
             name = "Enabled",
@@ -86,6 +90,62 @@ public class Config extends Vigilant {
             max = 100
     )
     public int coinTrackerY = 0;
+
+    ////
+    //// FPS Display
+    ////
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enabled",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Toggle the FPS display."
+    )
+    public boolean fpsEnabled = true;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "FPS Display Message",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Change the FPS display message.",
+            options = {"FPS: 999", "999 FPS"}
+    )
+    public Integer fpsMessage = 1;
+    public String[] fpsMessages = {"FPS: $1", "$1 FPS"};
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "FPS Color",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Change the FPS display color.",
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "None" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+    )
+    public Integer fpsColor = 10;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "FPS Display X",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Manually change the FPS display X position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int fpsX = 0;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "FPS Display Y",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Manually change the FPS display Y position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int fpsY = 0;
 
     public Config() {
         super(new File("./config/hypixelutils.toml"));

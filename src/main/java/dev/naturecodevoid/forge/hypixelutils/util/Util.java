@@ -7,6 +7,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -130,5 +131,13 @@ public class Util {
         int x = pos1.x - pos2.x;
         int y = pos1.y - pos2.y;
         return new Vector2D(x, y).length();
+    }
+
+    public static boolean getEnabled(RenderGameOverlayEvent event) {
+        return getEnabled(event, true);
+    }
+
+    public static boolean getEnabled(RenderGameOverlayEvent event, boolean featureEnabled) {
+        return !(featureEnabled) || !(Util.isModEnabled()) || Util.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
     }
 }
