@@ -18,10 +18,10 @@ import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
-public class Template extends BaseFeature {
-    public static Template instance;
+public class TemplateFeature extends BaseFeature {
+    public static TemplateFeature instance;
 
-    public Template() {
+    public TemplateFeature() {
         this.init();
     }
 
@@ -30,7 +30,7 @@ public class Template extends BaseFeature {
     }
 
     public String getText(boolean showActual) {
-        return "Template";
+        return "TemplateFeature";
     }
 
     @Override
