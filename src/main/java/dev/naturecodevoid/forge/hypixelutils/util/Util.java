@@ -61,7 +61,7 @@ public class Util {
         );
     }
 
-    public static EnumChatFormatting getColorFromString(String str) {
+    public static EnumChatFormatting getColor(String str) {
         String string = str.toUpperCase().replaceAll(" ", "_");
 
         switch (string) {
@@ -99,6 +99,10 @@ public class Util {
                 return EnumChatFormatting.RESET;
 
         }
+    }
+
+    public static EnumChatFormatting getColor(int index) {
+        return Util.getColor(HypixelUtils.config.colors[index]);
     }
 
     // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/java/codes/biscuit/skyblockaddons/utils/Utils.java#L189

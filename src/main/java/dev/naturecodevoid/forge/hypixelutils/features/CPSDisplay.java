@@ -33,7 +33,7 @@ public class CPSDisplay extends BaseFeature {
     }
 
     public String getText(boolean showActual) {
-        return Util.getColorFromString(HypixelUtils.config.colors[HypixelUtils.config.cpsColor]) + String.valueOf(cps) + " " + cpsRight;
+        return Util.getColor(HypixelUtils.config.cpsColor) + String.valueOf(cps) + " " + String.valueOf(cpsRight);
     }
 
     @Override
