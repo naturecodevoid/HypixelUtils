@@ -134,7 +134,7 @@ public class Config extends Vigilant {
             hidden = true,
             max = 100
     )
-    public int fpsX = 0;
+    public int fpsX = 30;
 
     @Property(
             type = PropertyType.SLIDER,

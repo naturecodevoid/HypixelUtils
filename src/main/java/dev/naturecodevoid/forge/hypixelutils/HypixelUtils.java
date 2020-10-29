@@ -4,6 +4,7 @@ import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
+import dev.naturecodevoid.forge.hypixelutils.features.FPSDisplay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -38,6 +39,7 @@ public class HypixelUtils {
 
         // Features
         features.add(new CoinTracker());
+        features.add(new FPSDisplay());
 
         // Commands
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());

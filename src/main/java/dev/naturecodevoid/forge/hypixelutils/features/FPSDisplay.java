@@ -6,14 +6,13 @@ import dev.naturecodevoid.forge.hypixelutils.util.Util;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class FPSDisplay extends BaseFeature {
+    public static FPSDisplay instance;
+
     public FPSDisplay() {
-        super();
-        MinecraftForge.EVENT_BUS.register(this);
+        this.init();
     }
 
     public String getText() {
@@ -34,7 +33,7 @@ public class FPSDisplay extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText(showActualFPS);
-        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
 
         pos.x += 4;
         pos.y += 16;
@@ -49,7 +48,7 @@ public class FPSDisplay extends BaseFeature {
 
     @Override
     public void resetPosition() {
-        HypixelUtils.config.fpsX = 0;
+        HypixelUtils.config.fpsX = 30;
         HypixelUtils.config.fpsY = 0;
     }
 
@@ -59,15 +58,19 @@ public class FPSDisplay extends BaseFeature {
     }
 
     @Override
+    public Vector2D setPosition(int xPercent, int yPercent) {
+        HypixelUtils.config.fpsX = xPercent;
+        HypixelUtils.config.fpsY = yPercent;
+        return getPosition();
+    }
+
+    @Override
     public Vector2D getSize() {
         return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + 7, 16);
     }
 
-    @SubscribeEvent
-    public void onRender(RenderGameOverlayEvent event) {
-        if (Util.getEnabled(event, HypixelUtils.config.fpsEnabled))
-            return;
-
-        this.render();
+    @Override
+    public boolean isEnabled() {
+        return HypixelUtils.config.fpsEnabled;
     }
 }

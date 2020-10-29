@@ -7,14 +7,14 @@ import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CoinTracker extends BaseFeature {
+    public static CoinTracker instance;
+
     public CoinTracker() {
-        super();
-        MinecraftForge.EVENT_BUS.register(this);
+        this.init();
     }
 
     public String getText() {
@@ -59,8 +59,20 @@ public class CoinTracker extends BaseFeature {
     }
 
     @Override
+    public Vector2D setPosition(int xPercent, int yPercent) {
+        HypixelUtils.config.coinTrackerX = xPercent;
+        HypixelUtils.config.coinTrackerY = yPercent;
+        return getPosition();
+    }
+
+    @Override
     public Vector2D getSize() {
         return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + 7, 16);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return HypixelUtils.config.coinsEnabled;
     }
 
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/
@@ -74,13 +86,5 @@ public class CoinTracker extends BaseFeature {
             int coins = Integer.parseInt(message);
             HypixelUtils.totalCoins += coins;
         }
-    }
-
-    @SubscribeEvent
-    public void onRender(RenderGameOverlayEvent event) {
-        if (Util.getEnabled(event, HypixelUtils.config.coinsEnabled))
-            return;
-
-        this.render();
     }
 }

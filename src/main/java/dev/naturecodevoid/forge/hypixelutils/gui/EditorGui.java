@@ -53,6 +53,8 @@ public class EditorGui extends GuiScreen {
             this.isDragging = true;
             this.lastX = x;
             this.lastY = y;
+        } else {
+            this.isDragging = false;
         }
         super.mouseClicked(x, y, time);
     }
@@ -60,39 +62,29 @@ public class EditorGui extends GuiScreen {
     @Override
     public void mouseClickMove(int x, int y, int lastButtonClicked, long timeSinceClick) {
         if (this.isDragging) {
-            String closest = "";
             BaseFeature closestFeature = null;
             double closestDist = 999999;
 
             Vector2D screenSize = Util.getScreenSize();
 
-            for (Feature feature : Feature.values()) {
-                Vector2D pos = feature.featureClass.getPosition();
+            for (BaseFeature feature : HypixelUtils.features) {
+                Vector2D pos = feature.getPosition();
+                System.out.println(feature);
 
                 double dist = Util.distance(
                         new Vector2D(x, y),
                         Util.getPosFromPercent(pos.x, pos.y)
                 );
 
-                if (dist <= closestDist && dist <= 30) {
-                    closest = feature.featureClass.toString();
-                    closestFeature = feature.featureClass;
+                if (dist <= closestDist && dist <= 25) {
+                    closestFeature = feature;
                     closestDist = dist;
                 }
             }
 
-            Vector2D percent;
-            switch (closest) {
-                case "CoinTracker":
-                    percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
-                    HypixelUtils.config.coinTrackerX = percent.x;
-                    HypixelUtils.config.coinTrackerY = percent.y;
-                    break;
-                case "FPSDisplay":
-                    percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - 16));
-                    HypixelUtils.config.fpsX = percent.x;
-                    HypixelUtils.config.fpsY = percent.y;
-                    break;
+            if (closestDist != 999999) {
+                Vector2D percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - closestFeature.getSize().y));
+                closestFeature.setPosition(percent);
             }
 
             this.lastX = x;
@@ -107,16 +99,5 @@ public class EditorGui extends GuiScreen {
         HypixelUtils.config.markDirty();
         HypixelUtils.config.writeData();
         Keyboard.enableRepeatEvents(false);
-    }
-
-    public enum Feature {
-        COINTRACKER(CoinTracker.instance),
-        FPSDISPLAY(FPSDisplay.instance);
-
-        public BaseFeature featureClass;
-
-        Feature(BaseFeature featureClass) {
-            this.featureClass = featureClass;
-        }
     }
 }
