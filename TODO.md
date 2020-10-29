@@ -1,7 +1,7 @@
 # Todo
 
--   Make feature template
--   Clock/CPS/FPS
+-   CPS
+-   Clock
 -   Toggle text shadow
 -   Change text alignment (right, left, centered)
 -   XP tracker
