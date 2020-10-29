@@ -33,6 +33,9 @@ public class CPSDisplay extends BaseFeature {
         if (HypixelUtils.config.cpsRight) cpsTextFake += " | 10";
 
         String text = HypixelUtils.config.cpsMessages[HypixelUtils.config.cpsMessage].replace("$1", showActual ? cpsText : cpsTextFake);
+
+        if (HypixelUtils.config.cpsBrackets) text = "[" + text + "]";
+
         return Util.getColor(HypixelUtils.config.cpsColor) + text;
     }
 

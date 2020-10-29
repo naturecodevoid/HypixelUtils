@@ -28,20 +28,30 @@ public class Clock extends BaseFeature {
             Date date = new Date();
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
+
             text += Util.addZeros(calendar.get(Calendar.HOUR_OF_DAY));
+
             text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+
             if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
         } else {
             Date date = new Date();
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
+
             int hour = calendar.get(Calendar.HOUR);
             if (hour == 0) hour = 12;
             text += hour;
+
             text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+
             if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
+
             text += " " + (calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
         }
+
+        if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
+
         return Util.getColor(HypixelUtils.config.clockColor) + text;
     }
 

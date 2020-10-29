@@ -116,6 +116,15 @@ public class Config extends Vigilant {
     public String[] fpsMessages = {"FPS: $1", "$1 FPS"};
 
     @Property(
+            type = PropertyType.SWITCH,
+            name = "Brackets",
+            category = "Features",
+            subcategory = "FPS Display",
+            description = "Toggle surrounding the FPS display with brackets (example: '[999 FPS]')."
+    )
+    public boolean fpsBrackets = true;
+
+    @Property(
             type = PropertyType.SELECTOR,
             name = "FPS Color",
             category = "Features",
@@ -173,6 +182,15 @@ public class Config extends Vigilant {
 
     @Property(
             type = PropertyType.SWITCH,
+            name = "Brackets",
+            category = "Features",
+            subcategory = "CPS Display",
+            description = "Toggle surrounding the CPS display with brackets (example: '[10 CPS]')."
+    )
+    public boolean cpsBrackets = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
             name = "Right CPS",
             category = "Features",
             subcategory = "CPS Display",
@@ -213,7 +231,7 @@ public class Config extends Vigilant {
     public int cpsY = 15;
 
     ////
-    //// CPS Display
+    //// Clock
     ////
 
     @Property(
@@ -242,6 +260,15 @@ public class Config extends Vigilant {
             description = "Toggle showing seconds."
     )
     public boolean clockSeconds = false;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Brackets",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Toggle surrounding the clock with brackets (example: '[10:15 AM]')."
+    )
+    public boolean clockBrackets = true;
 
     @Property(
             type = PropertyType.SELECTOR,
