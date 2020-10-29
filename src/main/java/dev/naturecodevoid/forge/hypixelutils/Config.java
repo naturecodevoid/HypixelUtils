@@ -210,7 +210,70 @@ public class Config extends Vigilant {
             hidden = true,
             max = 100
     )
-    public int cpsY = 0;
+    public int cpsY = 15;
+
+    ////
+    //// CPS Display
+    ////
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enabled",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Toggle the clock."
+    )
+    public boolean clockEnabled = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "24 hour",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Toggle 24 hour clock format."
+    )
+    public boolean clock24hr = false;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Show seconds",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Toggle showing seconds."
+    )
+    public boolean clockSeconds = false;
+
+    @Property(
+            type = PropertyType.SELECTOR,
+            name = "Clock Color",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Change the clock color.",
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+    )
+    public Integer clockColor = 9;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "Clock X",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Manually change the clock X position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int clockX = 0;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "Clock Y",
+            category = "Features",
+            subcategory = "Clock",
+            description = "Manually change the clock Y position. /hutilsg is the recommended method. (value is percentage of screen)",
+            hidden = true,
+            max = 100
+    )
+    public int clockY = 15;
 
     public Config() {
         super(new File("./config/hypixelutils.toml"));

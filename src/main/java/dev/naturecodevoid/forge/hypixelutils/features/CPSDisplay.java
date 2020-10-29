@@ -1,12 +1,5 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
-/*
-New feature todo:
-- Search for 'template' and change the results
-- Code the feature + test
-- Remove this comment
- */
-
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Util;
@@ -67,8 +60,8 @@ public class CPSDisplay extends BaseFeature {
 
     @Override
     public void resetPosition() {
-        HypixelUtils.config.cpsX = 0;
-        HypixelUtils.config.cpsY = 0;
+        HypixelUtils.config.cpsX = 30;
+        HypixelUtils.config.cpsY = 15;
     }
 
     @Override

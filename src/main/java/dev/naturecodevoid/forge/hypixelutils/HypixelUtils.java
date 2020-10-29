@@ -4,6 +4,7 @@ import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
 import dev.naturecodevoid.forge.hypixelutils.features.CPSDisplay;
+import dev.naturecodevoid.forge.hypixelutils.features.Clock;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
 import dev.naturecodevoid.forge.hypixelutils.features.FPSDisplay;
 import net.minecraft.client.Minecraft;
@@ -42,6 +43,7 @@ public class HypixelUtils {
         features.add(new CoinTracker());
         features.add(new FPSDisplay());
         features.add(new CPSDisplay());
+        features.add(new Clock());
 
         // Commands
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());
