@@ -8,6 +8,7 @@ New feature todo:
 - Add the class to the feature list in HypixelUtils.java
 - Add config values
 - Code the feature + test
+- See if getSize is good by moving to right side in gui editor, if not change textAddSmall to textAdd
 - Remove this comment
  */
 

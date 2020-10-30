@@ -81,7 +81,7 @@ public class CPSDisplay extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAdd, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAdd + 1, 16);
     }
 
     @Override

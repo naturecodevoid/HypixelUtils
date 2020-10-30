@@ -44,10 +44,19 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin tracker message.",
-            options = {"Session Coins: 1234", "Coins: 1234", "Earned Coins: 1234"}
+            options = {"Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins"}
     )
     public Integer coinsMessage = 1;
-    public String[] coinsMessages = {"Session Coins: $1", "Coins: $1", "Earned Coins: $1"};
+    public String[] coinsMessages = {"$2Session Coins: $3$1", "$3$1 $2Session Coins", "$2Coins: $3$1", "$3$1 $2Coins", "$2Earned Coins: $3$1", "$3$1 $2Earned Coins"};
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Brackets",
+            category = "Features",
+            subcategory = "Coin Tracker",
+            description = "Toggle surrounding the coin tracker with brackets (example: '[Coins: 1234]')."
+    )
+    public boolean coinsBrackets = true;
 
     @Property(
             type = PropertyType.SELECTOR,
