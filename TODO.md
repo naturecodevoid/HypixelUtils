@@ -5,6 +5,7 @@
     -   Use functions to get/set config values
 -   Work on gui editor
 -   Make custom config gui, with config values defined per feature (?)
+    -   Add backgrounds to text features using this to get color
 -   Change text alignment (right, left, centered)
 -   When dragging in the gui editor, align the mouse to the center of the gui object
 -   Toggle text shadow
