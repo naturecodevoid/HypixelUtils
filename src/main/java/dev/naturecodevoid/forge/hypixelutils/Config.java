@@ -311,6 +311,66 @@ public class Config extends Vigilant {
     )
     public int clockY = 15;
 
+    ////
+    //// Particle Changer
+    ////
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Critical Particles",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Toggle critical particles."
+    )
+    public boolean particleCritEnabled = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Sharpness Particles",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Toggle sharpness particles."
+    )
+    public boolean particleSharpEnabled = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Always Show Sharpness Particles",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Toggle always showing sharpness particles. Requires sharpness particles to be enabled."
+    )
+    public boolean particleAlwaysSharpEnabled = false;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "Particle multiplier",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Particle multiplier.",
+            max = 15,
+            min = 1
+    )
+    public int particleMultiply = 0;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Multiply Critical Particles",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Toggle multiplying critical particles."
+    )
+    public boolean particleCritMultiply = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Multiply Sharpness Particles",
+            category = "Features",
+            subcategory = "Particle Changer",
+            description = "Toggle multiplying sharpness particles."
+    )
+    public boolean particleSharpMultiply = true;
+
     public Config() {
         super(new File("./config/hypixelutils.toml"));
         initialize();

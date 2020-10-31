@@ -1,0 +1,8 @@
+{
+  "package": "dev.naturecodevoid.forge.hypixelutils.mixins",
+  "refmap": "mixins.hypixelutils.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinEntityFX"
+  ]
+}

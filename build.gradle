@@ -5,13 +5,16 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven { url = "https://repo.spongepowered.org/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
         classpath group: 'com.github.jengelman.gradle.plugins', name: 'shadow', version: '4.0.4'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'idea'
 
@@ -20,6 +23,7 @@ archivesBaseName = project.modName
 
 repositories {
     jcenter()
+    maven { url = "https://repo.spongepowered.org/maven" }
     maven {
         url = "https://repo.sk1er.club/repository/maven-public"
     }
@@ -28,6 +32,15 @@ repositories {
 dependencies {
     compile "club.sk1er:Vigilance:1-$project.mcVersion-SNAPSHOT"
     compile "club.sk1er:Elementa:1.7.1-$project.mcVersion"
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude module: 'gson'
+        exclude module: 'guava'
+        exclude module: 'commons-io'
+    }
+}
+
+mixin {
+    add sourceSets.main, "mixins.${project.modId}.refmap.json"
 }
 
 targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +51,7 @@ minecraft {
     runDir = "run"
     mappings = "stable_22"
     makeObfSourceJar = true
+    clientJvmArgs += "-Dfml.coreMods.load=dev.naturecodevoid.forge.hypixelutils.HypixelUtilsLoadingPlugin"
 
     // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/build.gradle#L30
     replace("@MOD_ID@": project.modId,
@@ -48,37 +62,49 @@ minecraft {
 
 }
 
-processResources
-        {
-            // this will ensure that this task is redone when the versions change.
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
 
-                // replace version and mcversion
-                expand 'version': project.version, 'mcversion': project.minecraft.version
-            }
+        // replace version and mcversion
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
 
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    enabled = false
+}
 
 shadowJar {
     minimize()
-    exclude 'dummyThing'
-    exclude 'LICENSE.txt'
+
+    archiveName = tasks.jar.archiveName
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest.attributes(
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': "mixins.${project.modId}.json",
+            'FMLCorePluginContainsFMLMod': true,
+            "ForceLoadAsMod": true,
+            'ModSide': 'CLIENT',
+    )
 
     classifier = ''
 }
 
+reobfJar.dependsOn tasks.shadowJar
 
 reobf { shadowJar { mappingType = 'SEARGE' } }
-tasks.reobfShadowJar.mustRunAfter shadowJar
 
 
 configurations {
