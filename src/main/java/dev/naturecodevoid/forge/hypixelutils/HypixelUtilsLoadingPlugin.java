@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
 
-// ONLY needed in development environment, the mixin tweaker handles this in prod.
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class HypixelUtilsLoadingPlugin implements IFMLLoadingPlugin {
 
