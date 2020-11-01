@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityFX.class)
 public class MixinEntityFX {
-    @Inject(method = "renderParticle", at = @At(value = "HEAD"))
+    @Inject(method = "renderParticle", at = @At("HEAD"))
     public void onRenderParticle(CallbackInfo ci) {
         System.out.println("test");
     }
