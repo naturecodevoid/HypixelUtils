@@ -1,6 +1,6 @@
 package dev.naturecodevoid.forge.hypixelutils;
 
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -63,7 +63,7 @@ public abstract class BaseFeature {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent event) {
-        if (Util.getEnabled(event, this.isEnabled()))
+        if (Utils.getEnabled(event, this.isEnabled()))
             return;
 
         this.render();

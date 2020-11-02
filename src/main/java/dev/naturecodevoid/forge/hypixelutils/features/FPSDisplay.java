@@ -2,7 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -23,7 +23,7 @@ public class FPSDisplay extends BaseFeature {
 
         if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
 
-        return Util.getColor(HypixelUtils.config.fpsColor) + text;
+        return Utils.getColor(HypixelUtils.config.fpsColor) + text;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class FPSDisplay extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText(showActualFPS);
-        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
+        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
 
         pos.x += 4;
         pos.y += 16;
@@ -68,7 +68,7 @@ public class FPSDisplay extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Util.textAddSmall, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Utils.textAddSmall, 16);
     }
 
     @Override

@@ -9,10 +9,11 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
+import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Util {
+public class Utils {
     public static final int textAdd = 18;
     public static final int textAddSmall = 7;
 
@@ -105,7 +106,7 @@ public class Util {
     }
 
     public static EnumChatFormatting getColor(int index) {
-        return Util.getColor(HypixelUtils.config.colors[index]);
+        return Utils.getColor(HypixelUtils.config.colors[index]);
     }
 
     // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/java/codes/biscuit/skyblockaddons/utils/Utils.java#L189
@@ -145,11 +146,19 @@ public class Util {
     }
 
     public static boolean getEnabled(RenderGameOverlayEvent event, boolean featureEnabled) {
-        return !(featureEnabled) || !(Util.isModEnabled()) || Util.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
+        return !(featureEnabled) || !(Utils.isModEnabled()) || Utils.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
+    }
+
+    public static String addZeros(String num) {
+        return Utils.addZeros(Integer.parseInt(num), 1);
+    }
+
+    public static String addZeros(String num, int amount) {
+        return Utils.addZeros(Integer.parseInt(num), amount);
     }
 
     public static String addZeros(int num) {
-        return Util.addZeros(num, 1);
+        return Utils.addZeros(num, 1);
     }
 
     public static String addZeros(int num, int amount) {
@@ -159,5 +168,29 @@ public class Util {
             tmp = "0" + tmp;
         }
         return tmp;
+    }
+
+    // https://stackoverflow.com/a/17853589
+    public static int toHex(String red, String green, String blue, String alpha) {
+        String hex = addZeros(alpha) + addZeros(red) + addZeros(green) + addZeros(blue);
+        return Integer.parseInt(hex, 16);
+    }
+
+    public static int toHex(int red, int green, int blue, int alpha) {
+        return Utils.toHex(String.valueOf(red), String.valueOf(green), String.valueOf(blue), String.valueOf(alpha));
+    }
+
+    public static int toHex(Color color) {
+        return Utils.toHex(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    }
+
+    public static int toHex(String hex, int alpha) {
+        Color color = Color.decode(hex);
+
+        return Utils.toHex(new Color(color.getRed(), color.getBlue(), color.getGreen(), alpha));
+    }
+
+    public static int toHex(String hex) {
+        return Utils.toHex(hex, 255);
     }
 }

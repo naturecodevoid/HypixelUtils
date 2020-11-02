@@ -2,7 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -22,13 +22,14 @@ public class CoinTracker extends BaseFeature {
 
     public String getText(boolean showActualCoins) {
         String text = HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage]
-                .replace("$1", Util.getColor(HypixelUtils.config.coinsColor2) + String.valueOf(showActualCoins ? HypixelUtils.totalCoins : 1234))
-                .replace("$2", Util.getColor(HypixelUtils.config.coinsColor1).toString())
-                .replace("$3", Util.getColor(HypixelUtils.config.coinsColor2).toString());
+                .replace("$1", Utils.getColor(HypixelUtils.config.coinsColor2) + String.valueOf(showActualCoins ? HypixelUtils.totalCoins : 1234))
+                .replace("$2", Utils.getColor(HypixelUtils.config.coinsColor1).toString())
+                .replace("$3", Utils.getColor(HypixelUtils.config.coinsColor2).toString());
 
-        if (HypixelUtils.config.coinsBrackets) text = "[" + text + Util.getColor(HypixelUtils.config.coinsColor1) + "]";
+        if (HypixelUtils.config.coinsBrackets)
+            text = "[" + text + Utils.getColor(HypixelUtils.config.coinsColor1) + "]";
 
-        return Util.getColor(HypixelUtils.config.coinsColor1) + text;
+        return Utils.getColor(HypixelUtils.config.coinsColor1) + text;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class CoinTracker extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText(showActualCoins);
-        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
+        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
         pos.y += 16;
@@ -73,7 +74,7 @@ public class CoinTracker extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Util.textAddSmall, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Utils.textAddSmall, 16);
     }
 
     @Override

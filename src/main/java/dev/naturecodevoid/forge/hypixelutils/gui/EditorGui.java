@@ -2,7 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -63,14 +63,14 @@ public class EditorGui extends GuiScreen {
             BaseFeature closestFeature = null;
             double closestDist = 999999;
 
-            Vector2D screenSize = Util.getScreenSize();
+            Vector2D screenSize = Utils.getScreenSize();
 
             for (BaseFeature feature : HypixelUtils.features) {
                 Vector2D pos = feature.getPosition();
 
-                double dist = Util.distance(
+                double dist = Utils.distance(
                         new Vector2D(x, y),
-                        Util.getPosFromPercent(pos.x, pos.y)
+                        Utils.getPosFromPercent(pos.x, pos.y)
                 );
 
                 if (dist <= closestDist && dist <= 25) {
@@ -80,7 +80,7 @@ public class EditorGui extends GuiScreen {
             }
 
             if (closestDist != 999999) {
-                Vector2D percent = Util.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Util.clamp(y, 0, screenSize.y - closestFeature.getSize().y));
+                Vector2D percent = Utils.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Utils.clamp(y, 0, screenSize.y - closestFeature.getSize().y));
                 closestFeature.setPosition(percent);
             }
 

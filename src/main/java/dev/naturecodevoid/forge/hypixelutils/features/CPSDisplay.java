@@ -2,7 +2,8 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -36,7 +37,7 @@ public class CPSDisplay extends BaseFeature {
 
         if (HypixelUtils.config.cpsBrackets) text = "[" + text + "]";
 
-        return Util.getColor(HypixelUtils.config.cpsColor) + text;
+        return Utils.getColor(HypixelUtils.config.cpsColor) + text;
     }
 
     @Override
@@ -48,10 +49,12 @@ public class CPSDisplay extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText(showActual);
-        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.cpsX, HypixelUtils.config.cpsY);
+        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.cpsX, HypixelUtils.config.cpsY);
 
         pos.x += 4;
         pos.y += 16;
+
+        DrawUtils.drawString("test", 0, 0, "123456");
 
         fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
     }
@@ -81,7 +84,7 @@ public class CPSDisplay extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAdd + 1, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Utils.textAdd + 1, 16);
     }
 
     @Override

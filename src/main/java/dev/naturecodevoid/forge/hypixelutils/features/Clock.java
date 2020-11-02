@@ -2,7 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.Util;
+import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -29,11 +29,11 @@ public class Clock extends BaseFeature {
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.setTime(date);
 
-            text += Util.addZeros(calendar.get(Calendar.HOUR_OF_DAY));
+            text += Utils.addZeros(calendar.get(Calendar.HOUR_OF_DAY));
 
-            text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+            text += ":" + Utils.addZeros(calendar.get(Calendar.MINUTE));
 
-            if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
+            if (HypixelUtils.config.clockSeconds) text += ":" + Utils.addZeros(calendar.get(Calendar.SECOND));
         } else {
             Date date = new Date();
             Calendar calendar = GregorianCalendar.getInstance();
@@ -43,16 +43,16 @@ public class Clock extends BaseFeature {
             if (hour == 0) hour = 12;
             text += hour;
 
-            text += ":" + Util.addZeros(calendar.get(Calendar.MINUTE));
+            text += ":" + Utils.addZeros(calendar.get(Calendar.MINUTE));
 
-            if (HypixelUtils.config.clockSeconds) text += ":" + Util.addZeros(calendar.get(Calendar.SECOND));
+            if (HypixelUtils.config.clockSeconds) text += ":" + Utils.addZeros(calendar.get(Calendar.SECOND));
 
             text += " " + (calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM");
         }
 
         if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
 
-        return Util.getColor(HypixelUtils.config.clockColor) + text;
+        return Utils.getColor(HypixelUtils.config.clockColor) + text;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Clock extends BaseFeature {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
         String text = getText(showActual);
-        Vector2D pos = Util.getPosFromPercent(HypixelUtils.config.clockX, HypixelUtils.config.clockY);
+        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.clockX, HypixelUtils.config.clockY);
 
         pos.x += 4;
         pos.y += 16;
@@ -97,7 +97,7 @@ public class Clock extends BaseFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Util.textAddSmall, 16);
+        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Utils.textAddSmall, 16);
     }
 
     @Override
