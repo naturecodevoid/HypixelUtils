@@ -149,21 +149,21 @@ public class Utils {
         return !(featureEnabled) || !(Utils.isModEnabled(hypixel)) || Utils.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
     }
 
-    public static String addZeros(String num) {
-        return Utils.addZeros(Integer.parseInt(num), 1);
-    }
-
-    public static String addZeros(String num, int amount) {
-        return Utils.addZeros(Integer.parseInt(num), amount);
-    }
-
     public static String addZeros(int num) {
-        return Utils.addZeros(num, 1);
+        return Utils.addZeros(String.valueOf(num), 1);
     }
 
     public static String addZeros(int num, int amount) {
-        String tmp = String.valueOf(num);
-        int length = tmp.length();
+        return Utils.addZeros(String.valueOf(num), amount);
+    }
+
+    public static String addZeros(String num) {
+        return Utils.addZeros(num, 1);
+    }
+
+    public static String addZeros(String num, int amount) {
+        String tmp = "" + num;
+        int length = num.length();
         for (int i = 0; i < (amount + 1) - length; i++) {
             tmp = "0" + tmp;
         }
@@ -171,9 +171,20 @@ public class Utils {
     }
 
     // https://stackoverflow.com/a/17853589
+    // https://stackoverflow.com/a/18194652
+    // https://stackoverflow.com/a/32530035
     public static int toHex(String red, String green, String blue) {
-        String hex = "00" + addZeros(red) + addZeros(green) + addZeros(blue);
-        return Integer.parseInt(hex, 16);
+        Color color = new Color(Integer.parseInt(red), Integer.parseInt(green), Integer.parseInt(blue));
+
+        String buf = Integer.toHexString(color.getRGB());
+        String hex = buf.substring(buf.length() - 6);
+
+        String red2 = hex.substring(0, hex.length() / 3);
+        String green2 = hex.substring(hex.length() / 3, hex.length() / 3 * 2);
+        String blue2 = hex.substring(hex.length() / 3 * 2);
+
+        String hexnum = "00" + addZeros(red2) + addZeros(green2) + addZeros(blue2);
+        return Integer.parseInt(hexnum, 16);
     }
 
     public static int toHex(int red, int green, int blue) {
@@ -185,6 +196,8 @@ public class Utils {
     }
 
     public static int toHex(String hex) {
-        return Utils.toHex(Color.decode(hex));
+        hex = hex.replaceAll("#", "");
+        hex = "00" + hex;
+        return Integer.parseInt(hex, 16);
     }
 }

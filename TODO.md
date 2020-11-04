@@ -1,6 +1,9 @@
 # Todo
 
 -   draw utils
+    -   add scale to text
+    -   add alignment (left, right, center and top, bottom, center) to text
+    -   add function to draw an item
 -   Work on gui editor
     -   store percents as double so you can be more percise
 -   Remake feature system, using a more modular and less feature code approach

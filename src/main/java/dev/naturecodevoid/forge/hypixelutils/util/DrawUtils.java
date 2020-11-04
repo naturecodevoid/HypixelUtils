@@ -1,7 +1,6 @@
 package dev.naturecodevoid.forge.hypixelutils.util;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 
 public class DrawUtils {
     //
@@ -37,8 +36,6 @@ public class DrawUtils {
     }
 
     public static int drawString(String text, int x, int y, String hex, boolean shadow) {
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-
-        return fRender.drawString(text, x, y, Utils.toHex(hex), shadow);
+        return Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, Utils.toHex(hex), shadow);
     }
 }

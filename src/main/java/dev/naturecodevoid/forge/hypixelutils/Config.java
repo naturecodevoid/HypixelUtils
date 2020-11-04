@@ -7,7 +7,7 @@ import club.sk1er.vigilance.data.PropertyType;
 import java.io.File;
 
 public class Config extends Vigilant {
-    public final String[] colors = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/};
+    public final String[] colors = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"};
 
     @Property(
             type = PropertyType.SWITCH,
@@ -64,7 +64,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin tracker message color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer coinsColor1 = 9;
 
@@ -74,7 +74,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Coin Tracker",
             description = "Change the coin color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer coinsColor2 = 1;
 
@@ -139,7 +139,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "FPS Display",
             description = "Change the FPS display color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer fpsColor = 9;
 
@@ -213,7 +213,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "CPS Display",
             description = "Change the CPS display color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer cpsColor = 9;
 
@@ -285,7 +285,7 @@ public class Config extends Vigilant {
             category = "Features",
             subcategory = "Clock",
             description = "Change the clock color.",
-            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White" /*"Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray",*/}
+            options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer clockColor = 9;
 
