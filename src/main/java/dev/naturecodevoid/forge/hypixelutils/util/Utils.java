@@ -130,8 +130,8 @@ public class Utils {
         }
     }
 
-    public static boolean isModEnabled() {
-        if (!HypixelUtils.config.otherServers) return HypixelUtils.config.enabled && isOnHypixel();
+    public static boolean isModEnabled(boolean hypixel) {
+        if (!HypixelUtils.config.otherServers && hypixel) return HypixelUtils.config.enabled && isOnHypixel();
         return HypixelUtils.config.enabled;
     }
 
@@ -141,12 +141,12 @@ public class Utils {
         return new Vector2D(x, y).length();
     }
 
-    public static boolean getEnabled(RenderGameOverlayEvent event) {
-        return getEnabled(event, true);
+    public static boolean getEnabled(RenderGameOverlayEvent event, boolean hypixel) {
+        return getEnabled(event, hypixel, true);
     }
 
-    public static boolean getEnabled(RenderGameOverlayEvent event, boolean featureEnabled) {
-        return !(featureEnabled) || !(Utils.isModEnabled()) || Utils.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
+    public static boolean getEnabled(RenderGameOverlayEvent event, boolean hypixel, boolean featureEnabled) {
+        return !(featureEnabled) || !(Utils.isModEnabled(hypixel)) || Utils.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
     }
 
     public static String addZeros(String num) {

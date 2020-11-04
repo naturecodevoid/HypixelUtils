@@ -54,7 +54,7 @@ public class CPSDisplay extends BaseFeature {
         pos.x += 4;
         pos.y += 16;
 
-        DrawUtils.drawString("test", 0, 0, "123456");
+        DrawUtils.drawString("test", 0, 0, "123456", 100);
 
         fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
     }
@@ -90,6 +90,11 @@ public class CPSDisplay extends BaseFeature {
     @Override
     public boolean isEnabled() {
         return HypixelUtils.config.cpsEnabled;
+    }
+
+    @Override
+    public boolean isHypixel() {
+        return false;
     }
 
     @SubscribeEvent

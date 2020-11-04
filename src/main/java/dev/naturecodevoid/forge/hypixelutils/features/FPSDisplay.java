@@ -75,4 +75,9 @@ public class FPSDisplay extends BaseFeature {
     public boolean isEnabled() {
         return HypixelUtils.config.fpsEnabled;
     }
+
+    @Override
+    public boolean isHypixel() {
+        return false;
+    }
 }

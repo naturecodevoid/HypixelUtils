@@ -82,6 +82,11 @@ public class CoinTracker extends BaseFeature {
         return HypixelUtils.config.coinsEnabled;
     }
 
+    @Override
+    public boolean isHypixel() {
+        return true;
+    }
+
     // https://hypixel.net/threads/guide-how-to-start-create-coding-minecraft-forge-mods.551741/
     @SubscribeEvent
     public void onChat(ClientChatReceivedEvent event) {

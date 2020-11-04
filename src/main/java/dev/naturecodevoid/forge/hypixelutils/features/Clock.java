@@ -104,4 +104,9 @@ public class Clock extends BaseFeature {
     public boolean isEnabled() {
         return HypixelUtils.config.clockEnabled;
     }
+
+    @Override
+    public boolean isHypixel() {
+        return false;
+    }
 }

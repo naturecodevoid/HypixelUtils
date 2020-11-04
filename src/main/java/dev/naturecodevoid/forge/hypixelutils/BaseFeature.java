@@ -55,6 +55,10 @@ public abstract class BaseFeature {
         throw new NotImplementedException("Please override the isEnabled function! This checks if the feature is enabled.");
     }
 
+    public boolean isHypixel() {
+        throw new NotImplementedException("Please override the isHypixel function! This checks if the feature is hypixel only.");
+    }
+
     @Override
     public String toString() {
         String[] array = getClass().getName().split("\\.");
@@ -63,7 +67,7 @@ public abstract class BaseFeature {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent event) {
-        if (Utils.getEnabled(event, this.isEnabled()))
+        if (Utils.getEnabled(event, this.isHypixel(), this.isEnabled()))
             return;
 
         this.render();
