@@ -2,10 +2,10 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 
 public class FPSDisplay extends BaseFeature {
     public static FPSDisplay instance;
@@ -32,15 +32,13 @@ public class FPSDisplay extends BaseFeature {
     }
 
     public void render(boolean showActualFPS) {
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-
         String text = getText(showActualFPS);
         Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
 
         pos.x += 4;
-        pos.y += 16;
+        pos.y += 4;
 
-        fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
+        DrawUtils.drawStringWithShadow(text, pos.x, pos.y);
     }
 
     @Override

@@ -4,33 +4,41 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
 public class DrawUtils {
-    /**
-     * ALPHA IS OUT OF 255
-     */
-    public static void drawString(String text, int x, int y, String hex, boolean shadow) {
-        drawString(text, x, y, hex, 255, shadow);
+    //
+    // STRING DRAWING
+    //
+
+    public static int drawStringWithShadow(String text, int x, int y) {
+        return DrawUtils.drawString(text, x, y, "ffffff", true);
     }
 
-    /**
-     * ALPHA IS OUT OF 255
-     */
-    public static void drawString(String text, int x, int y, String hex) {
-        drawString(text, x, y, hex, 255, true);
+    public static int drawStringWithShadow(String text, int x, int y, String hex) {
+        return DrawUtils.drawString(text, x, y, hex, true);
     }
 
-    /**
-     * ALPHA IS OUT OF 255
-     */
-    public static void drawString(String text, int x, int y, String hex, int alpha) {
-        drawString(text, x, y, hex, alpha, true);
+    public static int drawStringWithoutShadow(String text, int x, int y) {
+        return DrawUtils.drawString(text, x, y, "ffffff", false);
     }
 
-    /**
-     * ALPHA IS OUT OF 255
-     */
-    public static void drawString(String text, int x, int y, String hex, int alpha, boolean shadow) {
+    public static int drawStringWithoutShadow(String text, int x, int y, String hex) {
+        return DrawUtils.drawString(text, x, y, hex, false);
+    }
+
+    public static int drawString(String text, int x, int y) {
+        return DrawUtils.drawString(text, x, y, "ffffff", true);
+    }
+
+    public static int drawString(String text, int x, int y, String hex) {
+        return DrawUtils.drawString(text, x, y, hex, true);
+    }
+
+    public static int drawString(String text, int x, int y, boolean shadow) {
+        return DrawUtils.drawString(text, x, y, "ffffff", shadow);
+    }
+
+    public static int drawString(String text, int x, int y, String hex, boolean shadow) {
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
 
-        fRender.drawString(text, x, y, Utils.toHex(hex, alpha), shadow);
+        return fRender.drawString(text, x, y, Utils.toHex(hex), shadow);
     }
 }

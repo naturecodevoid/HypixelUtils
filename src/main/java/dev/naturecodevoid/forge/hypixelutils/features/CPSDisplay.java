@@ -6,7 +6,6 @@ import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -46,17 +45,13 @@ public class CPSDisplay extends BaseFeature {
     }
 
     public void render(boolean showActual) {
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-
         String text = getText(showActual);
         Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.cpsX, HypixelUtils.config.cpsY);
 
         pos.x += 4;
-        pos.y += 16;
+        pos.y += 4;
 
-        DrawUtils.drawString("test", 0, 0, "123456", 100);
-
-        fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
+        DrawUtils.drawStringWithShadow(text, pos.x, pos.y);
     }
 
     @Override

@@ -2,10 +2,10 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -61,15 +61,13 @@ public class Clock extends BaseFeature {
     }
 
     public void render(boolean showActual) {
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-
         String text = getText(showActual);
         Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.clockX, HypixelUtils.config.clockY);
 
         pos.x += 4;
-        pos.y += 16;
+        pos.y += 4;
 
-        fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
+        DrawUtils.drawStringWithShadow(text, pos.x, pos.y - 12);
     }
 
     @Override

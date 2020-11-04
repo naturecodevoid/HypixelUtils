@@ -2,10 +2,10 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -38,15 +38,13 @@ public class CoinTracker extends BaseFeature {
     }
 
     public void render(boolean showActualCoins) {
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-
         String text = getText(showActualCoins);
         Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
 
         pos.x += 4;
-        pos.y += 16;
+        pos.y += 4;
 
-        fRender.drawStringWithShadow(text, pos.x, pos.y - 12, 0);
+        DrawUtils.drawStringWithShadow(text, pos.x, pos.y - 12);
     }
 
     @Override

@@ -67,10 +67,6 @@ processResources {
     }
 }
 
-jar {
-    enabled = false
-}
-
 shadowJar {
     minimize()
     classifier = ''

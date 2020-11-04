@@ -171,26 +171,20 @@ public class Utils {
     }
 
     // https://stackoverflow.com/a/17853589
-    public static int toHex(String red, String green, String blue, String alpha) {
-        String hex = addZeros(alpha) + addZeros(red) + addZeros(green) + addZeros(blue);
+    public static int toHex(String red, String green, String blue) {
+        String hex = "00" + addZeros(red) + addZeros(green) + addZeros(blue);
         return Integer.parseInt(hex, 16);
     }
 
-    public static int toHex(int red, int green, int blue, int alpha) {
-        return Utils.toHex(String.valueOf(red), String.valueOf(green), String.valueOf(blue), String.valueOf(alpha));
+    public static int toHex(int red, int green, int blue) {
+        return Utils.toHex(String.valueOf(red), String.valueOf(green), String.valueOf(blue));
     }
 
     public static int toHex(Color color) {
-        return Utils.toHex(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-    }
-
-    public static int toHex(String hex, int alpha) {
-        Color color = Color.decode(hex);
-
-        return Utils.toHex(new Color(color.getRed(), color.getBlue(), color.getGreen(), alpha));
+        return Utils.toHex(color.getRed(), color.getGreen(), color.getBlue());
     }
 
     public static int toHex(String hex) {
-        return Utils.toHex(hex, 255);
+        return Utils.toHex(Color.decode(hex));
     }
 }
