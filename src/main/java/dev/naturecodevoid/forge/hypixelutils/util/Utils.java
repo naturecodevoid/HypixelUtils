@@ -2,6 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.util;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.command.ICommandSender;
@@ -28,6 +29,18 @@ public class Utils {
 
     public static void sendMessage(ICommandSender sender, String text) {
         sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
+    }
+
+    public static void sendMessageNoPrefix(ICommandSender sender, String text) {
+        sender.addChatMessage(new ChatComponentText(text));
+    }
+
+    public static void sendMessage(EntityPlayerSP sender, String text) {
+        sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
+    }
+
+    public static void sendMessageNoPrefix(EntityPlayerSP sender, String text) {
+        sender.addChatMessage(new ChatComponentText(text));
     }
 
     public static Vector2D getScreenSize() {
@@ -141,11 +154,11 @@ public class Utils {
         return new Vector2D(x, y).length();
     }
 
-    public static boolean getEnabled(RenderGameOverlayEvent event, boolean hypixel) {
-        return getEnabled(event, hypixel, true);
+    public static boolean getNotEnabled(RenderGameOverlayEvent event, boolean hypixel) {
+        return getNotEnabled(event, hypixel, true);
     }
 
-    public static boolean getEnabled(RenderGameOverlayEvent event, boolean hypixel, boolean featureEnabled) {
+    public static boolean getNotEnabled(RenderGameOverlayEvent event, boolean hypixel, boolean featureEnabled) {
         return !(featureEnabled) || !(Utils.isModEnabled(hypixel)) || Utils.hasGuiOpen() || event.isCancelable() || event.type != RenderGameOverlayEvent.ElementType.TEXT;
     }
 

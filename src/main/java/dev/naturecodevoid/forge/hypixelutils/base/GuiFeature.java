@@ -42,7 +42,7 @@ public abstract class GuiFeature extends BaseFeature {
 
     @SubscribeEvent
     public void onRender(RenderGameOverlayEvent event) {
-        if (Utils.getEnabled(event, this.isHypixel(), this.isEnabled()))
+        if (Utils.getNotEnabled(event, this.isHypixel(), this.isEnabled()))
             return;
 
         this.render();
