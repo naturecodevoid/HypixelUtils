@@ -5,10 +5,7 @@ import dev.naturecodevoid.forge.hypixelutils.base.GuiFeature;
 import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
-import dev.naturecodevoid.forge.hypixelutils.features.CPSDisplay;
-import dev.naturecodevoid.forge.hypixelutils.features.Clock;
-import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
-import dev.naturecodevoid.forge.hypixelutils.features.FPSDisplay;
+import dev.naturecodevoid.forge.hypixelutils.features.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -53,6 +50,7 @@ public class HypixelUtils {
         guiFeatures.add(new Clock());
 
         // Other
+        features.add(new ChatPing());
 
         //
         // Commands

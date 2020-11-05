@@ -284,6 +284,35 @@ public class Config extends Vigilant {
     )
     public int clockY = 15;
 
+    ////
+    //// Chat Ping
+    ////
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Enabled",
+            category = "Chat Ping",
+            description = "Toggle chat ping."
+    )
+    public boolean chatPingEnabled = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Ping on username",
+            category = "Chat Ping",
+            description = "Toggle making a ping sound when your username is said in the chat (includes messages you send)."
+    )
+    public boolean chatPingUsername = true;
+
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "Ping Volume",
+            category = "Chat Ping",
+            description = "Change username ping volume. High values are not recommended.",
+            max = 10
+    )
+    public int chatPingVolume = 2;
+
     public Config() {
         super(new File("./config/hypixelutils.toml"));
         initialize();
