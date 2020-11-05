@@ -322,6 +322,14 @@ public class Config extends Vigilant {
     public boolean chatPingHighlight = true;
 
     @Property(
+            type = PropertyType.SWITCH,
+            name = "Username Color Enabled",
+            category = "Chat Ping",
+            description = "Toggle highlighting your name in the chat with colors."
+    )
+    public boolean chatPingColorEnabled = true;
+
+    @Property(
             type = PropertyType.SELECTOR,
             name = "Username Color",
             category = "Chat Ping",
@@ -329,6 +337,30 @@ public class Config extends Vigilant {
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
     public Integer chatPingColor = 4;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Username Bold",
+            category = "Chat Ping",
+            description = "Toggle highlighting your name in the chat with bold."
+    )
+    public boolean chatPingBold = false;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Username Italics",
+            category = "Chat Ping",
+            description = "Toggle highlighting your name in the chat with italics."
+    )
+    public boolean chatPingItalics = true;
+
+    @Property(
+            type = PropertyType.SWITCH,
+            name = "Username Underline",
+            category = "Chat Ping",
+            description = "Toggle underlining your name in chat."
+    )
+    public boolean chatPingUnderline = true;
 
     public Config() {
         super(new File("./config/hypixelutils.toml"));

@@ -43,8 +43,19 @@ public class ChatPing extends BaseFeature {
             if (HypixelUtils.config.chatPingHighlight) {
                 String text2 = event.message.getFormattedText();
 
+                String nameText = mc.thePlayer.getName() + EnumChatFormatting.RESET;
+
+                if (HypixelUtils.config.chatPingColorEnabled)
+                    nameText = Utils.getColor(HypixelUtils.config.chatPingColor) + nameText;
+
+                if (HypixelUtils.config.chatPingBold) nameText = EnumChatFormatting.BOLD + nameText;
+
+                if (HypixelUtils.config.chatPingItalics) nameText = EnumChatFormatting.ITALIC + nameText;
+
+                if (HypixelUtils.config.chatPingUnderline) nameText = EnumChatFormatting.UNDERLINE + nameText;
+
                 text2 = text2
-                        .replaceAll(mc.thePlayer.getName(), Utils.getColor(HypixelUtils.config.chatPingColor) + mc.thePlayer.getName() + EnumChatFormatting.RESET);
+                        .replaceAll(mc.thePlayer.getName(), nameText);
 
                 String[] tmp = text2.split(" ");
                 int count = 0;
@@ -54,7 +65,7 @@ public class ChatPing extends BaseFeature {
                 }
 
                 if (count >= 2)
-                    text2 = text2.replaceFirst(Utils.getColor(HypixelUtils.config.chatPingColor) + mc.thePlayer.getName() + EnumChatFormatting.RESET, mc.thePlayer.getName());
+                    text2 = text2.replaceFirst(nameText, mc.thePlayer.getName());
 
                 Utils.sendMessageNoPrefix(mc.thePlayer, text2);
 

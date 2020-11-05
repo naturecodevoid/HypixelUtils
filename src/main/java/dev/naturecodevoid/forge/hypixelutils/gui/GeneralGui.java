@@ -33,7 +33,7 @@ public class GeneralGui extends GuiScreen {
         MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this));
 
         FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
-        String text = EnumChatFormatting.WHITE + "HypixelUtils v" + HypixelUtils.VERSION;
+        String text = EnumChatFormatting.WHITE + HypixelUtils.NAME + " v" + HypixelUtils.VERSION;
         fRender.drawStringWithShadow(text, ((float) this.width) / 2 - ((float) fRender.getStringWidth(text)) / 2, ((float) this.height) / 2 - 33, 0);
 
         super.drawScreen(x, y, partialTicks);
