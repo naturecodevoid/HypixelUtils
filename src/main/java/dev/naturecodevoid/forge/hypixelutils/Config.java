@@ -32,8 +32,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Enabled",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Toggle the coin tracker."
     )
     public boolean coinsEnabled = true;
@@ -41,8 +40,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "Coins Message",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Change the coin tracker message.",
             options = {"Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins"}
     )
@@ -52,8 +50,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Brackets",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Toggle surrounding the coin tracker with brackets (example: '[Coins: 1234]')."
     )
     public boolean coinsBrackets = true;
@@ -61,8 +58,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "Coins Message Color",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Change the coin tracker message color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
@@ -71,8 +67,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "Coins Color",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Change the coin color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
@@ -81,8 +76,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "Coin Tracker X",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Manually change the coin tracker X position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -92,8 +86,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "Coin Tracker Y",
-            category = "Features",
-            subcategory = "Coin Tracker",
+            category = "Coin Tracker",
             description = "Manually change the coin tracker Y position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -107,8 +100,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Enabled",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Toggle the FPS display."
     )
     public boolean fpsEnabled = true;
@@ -116,8 +108,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "FPS Display Message",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Change the FPS display message.",
             options = {"FPS: 999", "999 FPS"}
     )
@@ -127,8 +118,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Brackets",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Toggle surrounding the FPS display with brackets (example: '[999 FPS]')."
     )
     public boolean fpsBrackets = true;
@@ -136,8 +126,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "FPS Color",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Change the FPS display color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
@@ -146,8 +135,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "FPS Display X",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Manually change the FPS display X position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -157,8 +145,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "FPS Display Y",
-            category = "Features",
-            subcategory = "FPS Display",
+            category = "FPS Display",
             description = "Manually change the FPS display Y position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -172,8 +159,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Enabled",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Toggle the CPS display."
     )
     public boolean cpsEnabled = true;
@@ -181,8 +167,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "CPS Display Message",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Change the CPS display message.",
             options = {"CPS: 10", "10 CPS", "10"}
     )
@@ -192,8 +177,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Brackets",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Toggle surrounding the CPS display with brackets (example: '[10 CPS]')."
     )
     public boolean cpsBrackets = true;
@@ -201,8 +185,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Right CPS",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Toggle the right CPS display."
     )
     public boolean cpsRight = true;
@@ -210,8 +193,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "CPS Color",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Change the CPS display color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
@@ -220,8 +202,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "CPS Display X",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Manually change the CPS display X position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -231,8 +212,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "CPS Display Y",
-            category = "Features",
-            subcategory = "CPS Display",
+            category = "CPS Display",
             description = "Manually change the CPS display Y position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -246,8 +226,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Enabled",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Toggle the clock."
     )
     public boolean clockEnabled = true;
@@ -255,8 +234,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "24 hour",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Toggle 24 hour clock format."
     )
     public boolean clock24hr = false;
@@ -264,8 +242,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Show seconds",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Toggle showing seconds."
     )
     public boolean clockSeconds = false;
@@ -273,8 +250,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SWITCH,
             name = "Brackets",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Toggle surrounding the clock with brackets (example: '[10:15 AM]')."
     )
     public boolean clockBrackets = true;
@@ -282,8 +258,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SELECTOR,
             name = "Clock Color",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Change the clock color.",
             options = {"Black", "Gold", "Gray", "Blue", "Green", "Aqua", "Red", "Light Purple", "Yellow", "White", "Dark Blue", "Dark Green", "Dark Aqua", "Dark Red", "Dark Purple", "Dark Gray"}
     )
@@ -292,8 +267,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "Clock X",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Manually change the clock X position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
@@ -303,8 +277,7 @@ public class Config extends Vigilant {
     @Property(
             type = PropertyType.SLIDER,
             name = "Clock Y",
-            category = "Features",
-            subcategory = "Clock",
+            category = "Clock",
             description = "Manually change the clock Y position. /hutilsg is the recommended method. (value is percentage of screen)",
             hidden = true,
             max = 100
