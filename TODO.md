@@ -6,9 +6,6 @@
     -   add function to draw an item
 -   Work on gui editor
     -   store percents as double so you can be more percise
--   Remake feature system, using a more modular and less feature code approach
-    -   Different types of base features, like text features and other things
-    -   Use functions to get/set config values
 -   Make custom config gui, with config values defined per feature (?)
     -   Add backgrounds to text features using this to get color
     -   Add buttons to gui editor that opens config gui for different features

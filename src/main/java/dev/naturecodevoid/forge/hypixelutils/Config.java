@@ -327,7 +327,7 @@ public class Config extends Vigilant {
             category = "Chat Ping",
             description = "Toggle highlighting your name in the chat with colors."
     )
-    public boolean chatPingColorEnabled = true;
+    public boolean chatPingColorEnabled = false;
 
     @Property(
             type = PropertyType.SELECTOR,
@@ -352,7 +352,7 @@ public class Config extends Vigilant {
             category = "Chat Ping",
             description = "Toggle highlighting your name in the chat with italics."
     )
-    public boolean chatPingItalics = true;
+    public boolean chatPingItalics = false;
 
     @Property(
             type = PropertyType.SWITCH,

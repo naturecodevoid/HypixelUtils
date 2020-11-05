@@ -48,6 +48,8 @@ public class ChatPing extends BaseFeature {
                 if (HypixelUtils.config.chatPingColorEnabled)
                     nameText = Utils.getColor(HypixelUtils.config.chatPingColor) + nameText;
 
+                // TODO: make bold, italics, underline actually work
+
                 if (HypixelUtils.config.chatPingBold) nameText = EnumChatFormatting.BOLD + nameText;
 
                 if (HypixelUtils.config.chatPingItalics) nameText = EnumChatFormatting.ITALIC + nameText;
