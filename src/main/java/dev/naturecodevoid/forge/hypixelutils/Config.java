@@ -19,9 +19,9 @@ public class Config extends Vigilant {
 
     @Property(
             type = PropertyType.SWITCH,
-            name = "Enabled on other servers",
+            name = "Hypixel features enabled on other servers",
             category = "General",
-            description = "Turn on to enable on other servers/singleplayer. Turn off to only enable on Hypixel."
+            description = "Turn on to enable hypixel features on other servers/singleplayer. Turn off to only enable hypixel features on Hypixel."
     )
     public boolean otherServers = false;
 
