@@ -1,23 +1,18 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
-import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CoinTracker extends BaseFeature {
+public class CoinTracker extends TextFeature {
     public static CoinTracker instance;
 
     public CoinTracker() {
         this.init();
-    }
-
-    public String getText() {
-        return getText(true);
     }
 
     public String getText(boolean showActualCoins) {
@@ -30,26 +25,6 @@ public class CoinTracker extends BaseFeature {
             text = "[" + text + Utils.getColor(HypixelUtils.config.coinsColor1) + "]";
 
         return Utils.getColor(HypixelUtils.config.coinsColor1) + text;
-    }
-
-    @Override
-    public void render() {
-        this.render(true);
-    }
-
-    public void render(boolean showActualCoins) {
-        String text = getText(showActualCoins);
-        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.coinTrackerX, HypixelUtils.config.coinTrackerY);
-
-        pos.x += 4;
-        pos.y += 4;
-
-        DrawUtils.drawStringWithShadow(text, pos.x, pos.y - 12);
-    }
-
-    @Override
-    public void renderEditor() {
-        this.render(false);
     }
 
     @Override

@@ -1,28 +1,12 @@
-package dev.naturecodevoid.forge.hypixelutils;
+package dev.naturecodevoid.forge.hypixelutils.base;
 
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.commons.lang3.NotImplementedException;
 
-public abstract class BaseFeature {
-    public BaseFeature instance;
-
-    /*
-    public static CHANGEME instance;
-
-    public CHANGEME() {
-        this.init();
-    }
-    */
-
-    public void init() {
-        instance = this;
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
+public abstract class GuiFeature extends BaseFeature {
     public void render() {
         throw new NotImplementedException("Please override the render function! This runs when rendering features.");
     }
@@ -51,18 +35,9 @@ public abstract class BaseFeature {
         throw new NotImplementedException("Please override the getSize function! This gets the feature size.");
     }
 
-    public boolean isEnabled() {
-        throw new NotImplementedException("Please override the isEnabled function! This checks if the feature is enabled.");
-    }
-
-    public boolean isHypixel() {
-        throw new NotImplementedException("Please override the isHypixel function! This checks if the feature is hypixel only.");
-    }
-
     @Override
-    public String toString() {
-        String[] array = getClass().getName().split("\\.");
-        return array[array.length - 1];
+    public boolean isGui() {
+        return true;
     }
 
     @SubscribeEvent

@@ -1,8 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
-import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
@@ -12,17 +11,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class CPSDisplay extends BaseFeature {
+public class CPSDisplay extends TextFeature {
     public static CPSDisplay instance;
     public static int cps = 0;
     public static int cpsRight = 0;
 
     public CPSDisplay() {
         this.init();
-    }
-
-    public String getText() {
-        return getText(true);
     }
 
     public String getText(boolean showActual) {
@@ -37,26 +32,6 @@ public class CPSDisplay extends BaseFeature {
         if (HypixelUtils.config.cpsBrackets) text = "[" + text + "]";
 
         return Utils.getColor(HypixelUtils.config.cpsColor) + text;
-    }
-
-    @Override
-    public void render() {
-        this.render(true);
-    }
-
-    public void render(boolean showActual) {
-        String text = getText(showActual);
-        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.cpsX, HypixelUtils.config.cpsY);
-
-        pos.x += 4;
-        pos.y += 4;
-
-        DrawUtils.drawStringWithShadow(text, pos.x, pos.y);
-    }
-
-    @Override
-    public void renderEditor() {
-        this.render(false);
     }
 
     @Override

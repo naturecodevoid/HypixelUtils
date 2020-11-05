@@ -1,7 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.gui;
 
-import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.GuiFeature;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.gui.GuiButton;
@@ -30,7 +30,7 @@ public class EditorGui extends GuiScreen {
     public void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 1:
-                HypixelUtils.features.forEach(BaseFeature::resetPosition);
+                HypixelUtils.guiFeatures.forEach(GuiFeature::resetPosition);
                 return;
         }
     }
@@ -42,7 +42,7 @@ public class EditorGui extends GuiScreen {
 
         super.drawScreen(x, y, partialTicks);
 
-        HypixelUtils.features.forEach(BaseFeature::renderEditor);
+        HypixelUtils.guiFeatures.forEach(GuiFeature::renderEditor);
     }
 
     @Override
@@ -60,12 +60,12 @@ public class EditorGui extends GuiScreen {
     @Override
     public void mouseClickMove(int x, int y, int lastButtonClicked, long timeSinceClick) {
         if (this.isDragging) {
-            BaseFeature closestFeature = null;
+            GuiFeature closestFeature = null;
             double closestDist = 999999;
 
             Vector2D screenSize = Utils.getScreenSize();
 
-            for (BaseFeature feature : HypixelUtils.features) {
+            for (GuiFeature feature : HypixelUtils.guiFeatures) {
                 Vector2D pos = feature.getPosition();
 
                 double dist = Utils.distance(

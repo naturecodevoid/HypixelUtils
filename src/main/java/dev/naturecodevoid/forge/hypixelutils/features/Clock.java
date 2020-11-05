@@ -1,8 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
-import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
@@ -11,15 +10,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Clock extends BaseFeature {
+public class Clock extends TextFeature {
     public static Clock instance;
 
     public Clock() {
         this.init();
-    }
-
-    public String getText() {
-        return getText(true);
     }
 
     public String getText(boolean showActual) {
@@ -53,26 +48,6 @@ public class Clock extends BaseFeature {
         if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
 
         return Utils.getColor(HypixelUtils.config.clockColor) + text;
-    }
-
-    @Override
-    public void render() {
-        this.render(true);
-    }
-
-    public void render(boolean showActual) {
-        String text = getText(showActual);
-        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.clockX, HypixelUtils.config.clockY);
-
-        pos.x += 4;
-        pos.y += 4;
-
-        DrawUtils.drawStringWithShadow(text, pos.x, pos.y - 12);
-    }
-
-    @Override
-    public void renderEditor() {
-        this.render(false);
     }
 
     @Override

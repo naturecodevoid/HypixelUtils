@@ -66,7 +66,7 @@ public class Utils {
     }
 
     public static EnumChatFormatting getColor(String str) {
-        String string = str.toUpperCase().replaceAll(" ", "_");
+        String string = str.toUpperCase().replaceAll(" ", "_").trim();
 
         switch (string) {
             case "BLACK":

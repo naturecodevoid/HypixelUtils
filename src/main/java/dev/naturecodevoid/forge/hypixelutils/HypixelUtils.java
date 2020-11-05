@@ -1,5 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils;
 
+import dev.naturecodevoid.forge.hypixelutils.base.BaseFeature;
+import dev.naturecodevoid.forge.hypixelutils.base.GuiFeature;
 import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
@@ -26,6 +28,7 @@ public class HypixelUtils {
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "@MOD_NAME@";
     public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
+    public static ArrayList<GuiFeature> guiFeatures = new ArrayList<GuiFeature>();
     public static ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
     public static Config config;
     public static GuiScreen gui = null;
@@ -39,13 +42,21 @@ public class HypixelUtils {
         MinecraftForge.EVENT_BUS.register(this);
         config = new Config();
 
+        //
         // Features
-        features.add(new CoinTracker());
-        features.add(new FPSDisplay());
-        features.add(new CPSDisplay());
-        features.add(new Clock());
+        //
 
+        // Gui
+        guiFeatures.add(new CoinTracker());
+        guiFeatures.add(new FPSDisplay());
+        guiFeatures.add(new CPSDisplay());
+        guiFeatures.add(new Clock());
+
+        // Other
+
+        //
         // Commands
+        //
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());
         ClientCommandHandler.instance.registerCommand(new GuiCommand());
         ClientCommandHandler.instance.registerCommand(new ConfigCommand());

@@ -1,21 +1,16 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
-import dev.naturecodevoid.forge.hypixelutils.BaseFeature;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
-import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
 
-public class FPSDisplay extends BaseFeature {
+public class FPSDisplay extends TextFeature {
     public static FPSDisplay instance;
 
     public FPSDisplay() {
         this.init();
-    }
-
-    public String getText() {
-        return getText(true);
     }
 
     public String getText(boolean showActualFPS) {
@@ -24,26 +19,6 @@ public class FPSDisplay extends BaseFeature {
         if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
 
         return Utils.getColor(HypixelUtils.config.fpsColor) + text;
-    }
-
-    @Override
-    public void render() {
-        this.render(true);
-    }
-
-    public void render(boolean showActualFPS) {
-        String text = getText(showActualFPS);
-        Vector2D pos = Utils.getPosFromPercent(HypixelUtils.config.fpsX, HypixelUtils.config.fpsY);
-
-        pos.x += 4;
-        pos.y += 4;
-
-        DrawUtils.drawStringWithShadow(text, pos.x, pos.y);
-    }
-
-    @Override
-    public void renderEditor() {
-        this.render(false);
     }
 
     @Override
