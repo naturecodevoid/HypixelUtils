@@ -300,9 +300,9 @@ public class Config extends Vigilant {
             type = PropertyType.SWITCH,
             name = "Ping on username",
             category = "Chat Ping",
-            description = "Toggle making a ping sound when your username is said in the chat (includes messages you send)."
+            description = "Toggle making a ping sound when your username is said in the chat."
     )
-    public boolean chatPingUsername = true;
+    public boolean chatPingUsername = false;
 
     @Property(
             type = PropertyType.SLIDER,
