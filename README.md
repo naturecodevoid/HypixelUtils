@@ -1,3 +1,3 @@
 # HypixelUtils
 
-Minecraft mod with hypixel utilities
+Minecraft mod with random stuff.
