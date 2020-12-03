@@ -93,8 +93,6 @@ public class EditorGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         super.onGuiClosed();
-        HypixelUtils.config.markDirty();
-        HypixelUtils.config.writeData();
-        Keyboard.enableRepeatEvents(false);
+        Utils.saveConfig();
     }
 }

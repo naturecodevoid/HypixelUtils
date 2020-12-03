@@ -7,6 +7,10 @@ public class DrawUtils {
     // STRING DRAWING
     //
 
+    public static int getStringWidth(String text) {
+        return Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
+    }
+
     public static int drawStringWithShadow(String text, int x, int y) {
         return DrawUtils.drawString(text, x, y, "ffffff", true);
     }

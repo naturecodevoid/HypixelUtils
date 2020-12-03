@@ -2,6 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -14,7 +15,7 @@ public class GeneralGui extends GuiScreen {
     public void initGui() {
         this.buttonList.add(new GuiButton(1,
                 this.width / 2 - 75,
-                this.height / 2 - 20 - 1,
+                this.height / 2 - 20 - 2,
                 150,
                 20,
                 "Open config GUI"
@@ -33,6 +34,13 @@ public class GeneralGui extends GuiScreen {
                 20,
                 "Reset coin tracker coins"
         ));
+        this.buttonList.add(new GuiButton(4,
+                this.width / 2 - 75,
+                this.height / 2 + 2 + 24 + 24,
+                150,
+                20,
+                "" // Import coin tracker coins from last session
+        ));
     }
 
     @Override
@@ -45,6 +53,12 @@ public class GeneralGui extends GuiScreen {
         fRender.drawStringWithShadow(text, ((float) this.width) / 2 - ((float) fRender.getStringWidth(text)) / 2, ((float) this.height) / 2 - 33, 0);
 
         super.drawScreen(x, y, partialTicks);
+
+        String text2 = EnumChatFormatting.WHITE + "Import coin tracker coins";
+        DrawUtils.drawString(text2, (this.width) / 2 - (DrawUtils.getStringWidth(text2)) / 2, this.height / 2 + 2 + 24 + 24 + 2);
+
+        String text3 = EnumChatFormatting.WHITE + "from last session";
+        DrawUtils.drawString(text3, (this.width) / 2 - (DrawUtils.getStringWidth(text3)) / 2, this.height / 2 + 2 + 24 + 24 + 10);
     }
 
     public void actionPerformed(GuiButton button) {
@@ -57,6 +71,9 @@ public class GeneralGui extends GuiScreen {
                 return;
             case 3:
                 CoinTracker.coins = 0;
+                return;
+            case 4:
+                CoinTracker.coins = HypixelUtils.config.coinTrackerCoins;
                 return;
         }
     }

@@ -93,6 +93,15 @@ public class Config extends Vigilant {
     )
     public int coinTrackerY = 0;
 
+    @Property(
+            type = PropertyType.SLIDER,
+            name = "Coin Tracker Coins",
+            category = "Coin Tracker",
+            description = "",
+            hidden = true
+    )
+    public int coinTrackerCoins = 0;
+
     ////
     //// FPS Display
     ////

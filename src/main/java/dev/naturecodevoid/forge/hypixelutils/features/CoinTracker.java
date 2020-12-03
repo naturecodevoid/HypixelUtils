@@ -71,6 +71,8 @@ public class CoinTracker extends TextFeature {
             message = message.replace(" ", "");
             int coins = Integer.parseInt(message);
             CoinTracker.coins += coins;
+            HypixelUtils.config.coinTrackerCoins = CoinTracker.coins;
+            Utils.saveConfig();
         }
     }
 }

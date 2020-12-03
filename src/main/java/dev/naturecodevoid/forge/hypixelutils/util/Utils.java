@@ -9,6 +9,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.util.regex.Matcher;
@@ -212,5 +213,11 @@ public class Utils {
         hex = hex.replaceAll("#", "");
         hex = "00" + hex;
         return Integer.parseInt(hex, 16);
+    }
+
+    public static void saveConfig() {
+        HypixelUtils.config.markDirty();
+        HypixelUtils.config.writeData();
+        Keyboard.enableRepeatEvents(false);
     }
 }
