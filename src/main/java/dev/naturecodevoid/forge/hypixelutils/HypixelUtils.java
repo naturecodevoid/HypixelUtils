@@ -29,7 +29,6 @@ public class HypixelUtils {
     public static ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
     public static Config config;
     public static GuiScreen gui = null;
-    public static int totalCoins = 0;
 
     @Mod.Instance(HypixelUtils.MODID)
     public static HypixelUtils instance;

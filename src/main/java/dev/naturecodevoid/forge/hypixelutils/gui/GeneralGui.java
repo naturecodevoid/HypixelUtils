@@ -1,6 +1,7 @@
 package dev.naturecodevoid.forge.hypixelutils.gui;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -25,6 +26,13 @@ public class GeneralGui extends GuiScreen {
                 20,
                 "Open GUI editor"
         ));
+        this.buttonList.add(new GuiButton(3,
+                this.width / 2 - 75,
+                this.height / 2 + 2 + 24,
+                150,
+                20,
+                "Reset coin tracker coins"
+        ));
     }
 
     @Override
@@ -46,6 +54,9 @@ public class GeneralGui extends GuiScreen {
                 return;
             case 2:
                 HypixelUtils.gui = new EditorGui();
+                return;
+            case 3:
+                CoinTracker.coins = 0;
                 return;
         }
     }

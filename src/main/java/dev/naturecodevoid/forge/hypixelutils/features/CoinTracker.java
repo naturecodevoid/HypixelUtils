@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CoinTracker extends TextFeature {
     public static CoinTracker instance;
+    public static int coins = 0;
 
     public CoinTracker() {
         this.init();
@@ -17,7 +18,7 @@ public class CoinTracker extends TextFeature {
 
     public String getText(boolean showActualCoins) {
         String text = HypixelUtils.config.coinsMessages[HypixelUtils.config.coinsMessage]
-                .replace("$1", Utils.getColor(HypixelUtils.config.coinsColor2) + String.valueOf(showActualCoins ? HypixelUtils.totalCoins : 1234))
+                .replace("$1", Utils.getColor(HypixelUtils.config.coinsColor2) + String.valueOf(showActualCoins ? coins : 1234))
                 .replace("$2", Utils.getColor(HypixelUtils.config.coinsColor1).toString())
                 .replace("$3", Utils.getColor(HypixelUtils.config.coinsColor2).toString());
 
@@ -69,7 +70,7 @@ public class CoinTracker extends TextFeature {
             message = splittedMessage[0].replace("+", "");
             message = message.replace(" ", "");
             int coins = Integer.parseInt(message);
-            HypixelUtils.totalCoins += coins;
+            CoinTracker.coins += coins;
         }
     }
 }
