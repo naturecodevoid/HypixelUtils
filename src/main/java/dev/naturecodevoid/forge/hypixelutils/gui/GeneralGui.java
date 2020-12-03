@@ -3,8 +3,6 @@ package dev.naturecodevoid.forge.hypixelutils.gui;
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.features.CoinTracker;
 import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -39,7 +37,7 @@ public class GeneralGui extends GuiScreen {
                 this.height / 2 + 2 + 24 + 24,
                 150,
                 20,
-                "" // Import coin tracker coins from last session
+                "Use coins from last session" // Import coin tracker coins from last session
         ));
     }
 
@@ -48,17 +46,10 @@ public class GeneralGui extends GuiScreen {
         if (mc.theWorld != null) this.drawGradientRect(0, 0, this.width, this.height, -1608507360, -1608507360);
         MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this));
 
-        FontRenderer fRender = Minecraft.getMinecraft().fontRendererObj;
         String text = EnumChatFormatting.WHITE + HypixelUtils.NAME + " v" + HypixelUtils.VERSION;
-        fRender.drawStringWithShadow(text, ((float) this.width) / 2 - ((float) fRender.getStringWidth(text)) / 2, ((float) this.height) / 2 - 33, 0);
+        DrawUtils.drawStringWithShadow(text, (int) (((float) this.width) / 2 - ((float) DrawUtils.getStringWidth(text)) / 2), (int) (((float) this.height) / 2 - 33));
 
         super.drawScreen(x, y, partialTicks);
-
-        String text2 = EnumChatFormatting.WHITE + "Import coin tracker coins";
-        DrawUtils.drawString(text2, (this.width) / 2 - (DrawUtils.getStringWidth(text2)) / 2, this.height / 2 + 2 + 24 + 24 + 2);
-
-        String text3 = EnumChatFormatting.WHITE + "from last session";
-        DrawUtils.drawString(text3, (this.width) / 2 - (DrawUtils.getStringWidth(text3)) / 2, this.height / 2 + 2 + 24 + 24 + 10);
     }
 
     public void actionPerformed(GuiButton button) {

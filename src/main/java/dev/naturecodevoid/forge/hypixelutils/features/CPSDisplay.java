@@ -2,14 +2,12 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
+import dev.naturecodevoid.forge.hypixelutils.util.Timer;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CPSDisplay extends TextFeature {
     public static CPSDisplay instance;
@@ -54,7 +52,7 @@ public class CPSDisplay extends TextFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText()) + Utils.textAdd + 1, 16);
+        return new Vector2D(DrawUtils.getStringWidth(getText()) + Utils.textAdd + 1, 16);
     }
 
     @Override
@@ -84,21 +82,11 @@ public class CPSDisplay extends TextFeature {
 
     public void addClick() {
         cps++;
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                cps--;
-            }
-        }, 1000);
+        new Timer(() -> cps--, 1000);
     }
 
     public void addClickRight() {
         cpsRight++;
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                cpsRight--;
-            }
-        }, 1000);
+        new Timer(() -> cpsRight--, 1000);
     }
 }

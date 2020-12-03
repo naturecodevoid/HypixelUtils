@@ -6,6 +6,7 @@ import dev.naturecodevoid.forge.hypixelutils.commands.ConfigCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GeneralCommand;
 import dev.naturecodevoid.forge.hypixelutils.commands.GuiCommand;
 import dev.naturecodevoid.forge.hypixelutils.features.*;
+import dev.naturecodevoid.forge.hypixelutils.util.Timer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
@@ -27,6 +28,7 @@ public class HypixelUtils {
     public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
     public static ArrayList<GuiFeature> guiFeatures = new ArrayList<GuiFeature>();
     public static ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
+    public static ArrayList<Timer> timers = new ArrayList<Timer>();
     public static Config config;
     public static GuiScreen gui = null;
 
@@ -64,6 +66,18 @@ public class HypixelUtils {
         if (gui != null) {
             Minecraft.getMinecraft().displayGuiScreen(gui);
             gui = null;
+        }
+
+        // Update timers here
+        ArrayList<Timer> done = new ArrayList<Timer>();
+
+        for (Timer timer : timers) {
+            if (!timer.done) timer.update();
+            else done.add(timer);
+        }
+
+        for (Timer timer : done) {
+            if (timers.size() - 1 <= timer.index && !timers.isEmpty()) timers.remove(timer.index);
         }
     }
 }

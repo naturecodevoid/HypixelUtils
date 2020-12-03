@@ -2,6 +2,7 @@ package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
+import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
 import net.minecraft.client.Minecraft;
@@ -41,7 +42,7 @@ public class FPSDisplay extends TextFeature {
 
     @Override
     public Vector2D getSize() {
-        return new Vector2D(Minecraft.getMinecraft().fontRendererObj.getStringWidth(getText(false)) + Utils.textAddSmall, 16);
+        return new Vector2D(DrawUtils.getStringWidth(getText(false)) + Utils.textAddSmall, 16);
     }
 
     @Override

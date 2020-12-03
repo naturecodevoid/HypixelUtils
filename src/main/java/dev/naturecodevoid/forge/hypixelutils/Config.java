@@ -119,7 +119,7 @@ public class Config extends Vigilant {
             name = "FPS Display Message",
             category = "FPS Display",
             description = "Change the FPS display message.",
-            options = {"FPS: 999", "999 FPS"}
+            options = {"FPS: 120", "120 FPS"}
     )
     public Integer fpsMessage = 1;
     public String[] fpsMessages = {"FPS: $1", "$1 FPS"};
@@ -128,7 +128,7 @@ public class Config extends Vigilant {
             type = PropertyType.SWITCH,
             name = "Brackets",
             category = "FPS Display",
-            description = "Toggle surrounding the FPS display with brackets (example: '[999 FPS]')."
+            description = "Toggle surrounding the FPS display with brackets (example: '[120 FPS]')."
     )
     public boolean fpsBrackets = true;
 
