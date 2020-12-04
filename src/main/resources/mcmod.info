@@ -1,11 +1,13 @@
 [
-{
-  "modid": "hypixelutils",
-  "name": "HypixelUtils",
-  "description": "Random hypixel utilities. Main command: /hypixelutils. Run /hypixelutilsconfig for configuration, and /hypixelutilsgui for GUI editing.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://github.com/naturecodevoid/HypixelUtils",
-  "authorList": ["naturecodevoid"]
-}
+  {
+    "modid": "${modid}",
+    "name": "${name}",
+    "description": "Random hypixel utilities. Main command: /hypixelutils. Run /hypixelutilsconfig for configuration, and /hypixelutilsgui for GUI editing.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/naturecodevoid/HypixelUtils",
+    "authorList": [
+      "naturecodevoid"
+    ]
+  }
 ]

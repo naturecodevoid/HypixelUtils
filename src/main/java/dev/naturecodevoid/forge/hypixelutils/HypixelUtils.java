@@ -40,9 +40,9 @@ public class HypixelUtils {
         MinecraftForge.EVENT_BUS.register(this);
         config = new Config();
 
-        //
-        // Features
-        //
+        ////
+        //// Features
+        ////
 
         // Gui
         guiFeatures.add(new CoinTracker());
@@ -53,9 +53,9 @@ public class HypixelUtils {
         // Other
         features.add(new ChatPing());
 
-        //
-        // Commands
-        //
+        ////
+        //// Commands
+        ////
         ClientCommandHandler.instance.registerCommand(new GeneralCommand());
         ClientCommandHandler.instance.registerCommand(new GuiCommand());
         ClientCommandHandler.instance.registerCommand(new ConfigCommand());
