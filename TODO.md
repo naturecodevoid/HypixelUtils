@@ -1,9 +1,11 @@
 # Todo
 
+HIGHLIGHTED: add a thing to gui editor that allows it to select an element and change text shadow, brackets, color, etc
+
 -   draw utils
     -   add scale to text
     -   add alignment (left, right, center and top, bottom, center) to text
-    -   add function to draw an item
+    -   add function to draw an item/potion effect
 -   Work on gui editor
     -   store percents as double so you can be more percise
 -   Make custom config gui, with config values defined per feature (?)
