@@ -31,6 +31,9 @@ jobs:
         name: HypixelUtils.jar
         path: build/libs/HypixelUtils-*.*.*.jar
 
+    - name: Rename release asset
+      run: mv ./build/libs/HypixelUtils-*.*.*.jar ./build/libs/HypixelUtils.jar
+
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
@@ -50,5 +53,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_name: HypixelUtils.jar
-        asset_path: build/libs/HypixelUtils-*.*.*.jar
+        asset_path: build/libs/HypixelUtils.jar
         asset_content_type: application/java-archive
