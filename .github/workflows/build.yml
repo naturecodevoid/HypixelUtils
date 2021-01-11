@@ -32,7 +32,7 @@ jobs:
         path: build/libs/HypixelUtils-*.*.*.jar
 
     - name: Rename release asset
-      run: mv ./build/libs/HypixelUtils-*.*.*.jar ./build/libs/HypixelUtils.jar
+      run: mv build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
 
     - name: Create release
       id: create_release
