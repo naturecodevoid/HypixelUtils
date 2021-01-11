@@ -9,7 +9,6 @@ Java 8 and git is required.
 ```sh
 git clone https://github.com/naturecodevoiddev/HypixelUtils.git
 cd ./HypixelUtils
-./gradlew setupDevWorkspace
 ./gradlew build
 ```
 
