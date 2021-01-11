@@ -17,7 +17,7 @@ public class FPSDisplay extends TextFeature {
     public String getText(boolean showActualFPS) {
         String text = HypixelUtils.config.fpsMessages[HypixelUtils.config.fpsMessage].replace("$1", showActualFPS ? String.valueOf(Minecraft.getDebugFPS()) : "999");
 
-        if (HypixelUtils.config.clockBrackets) text = "[" + text + "]";
+        if (HypixelUtils.config.fpsBrackets) text = "[" + text + "]";
 
         return Utils.getColor(HypixelUtils.config.fpsColor) + text;
     }
