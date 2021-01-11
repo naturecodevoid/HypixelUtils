@@ -1,5 +1,15 @@
 # Todo
 
+## Project todo
+
+-   Setup actions CI
+-   Issue/pr templates
+-   Make download link on naturecodevoid.dev that reads from actions api
+-   Revamp readme
+-   Move to projects
+
+## Code todo
+
 HIGHLIGHTED: add a thing to gui editor that allows it to select an element and change text shadow, brackets, color, etc
 
 -   draw utils
@@ -18,7 +28,7 @@ HIGHLIGHTED: add a thing to gui editor that allows it to select an element and c
 -   Toggle hypixel only per feature
 -   Toggle text shadow
 
-# Feature Ideas
+## Feature Ideas
 
 -   Particle Changer (disable/enable crits and sharp particles, always sharp, particle multiplier)
 -   XP tracker
