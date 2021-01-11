@@ -35,7 +35,7 @@ jobs:
         path: build/libs/HypixelUtils-*.*.*.jar
 
     - name: Copy release asset
-      run: cp build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
+      run: cp -T build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
 
     - name: Create release
       id: create_release
