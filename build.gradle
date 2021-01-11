@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    compile "club.sk1er:Vigilance:1-$project.mcVersion-SNAPSHOT"
+    compile "club.sk1er:Vigilance:78-$project.mcVersion-SNAPSHOT"
     compile "club.sk1er:Elementa:1.7.1-$project.mcVersion"
 }
 

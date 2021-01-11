@@ -732,3 +732,4 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,node,python,visualstudiocode,visualstudio,git
+.vscode/settings.json
