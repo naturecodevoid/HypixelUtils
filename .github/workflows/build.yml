@@ -25,14 +25,17 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: Copy release asset
+      run: cp build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
+
     - name: Upload jar artifact
       uses: actions/upload-artifact@v2
       with:
         name: HypixelUtils.jar
         path: build/libs/HypixelUtils-*.*.*.jar
 
-    - name: Rename release asset
-      run: mv build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
+    - name: Copy release asset
+      run: cp build/libs/HypixelUtils-*.*.*.jar build/libs/HypixelUtils.jar
 
     - name: Create release
       id: create_release
