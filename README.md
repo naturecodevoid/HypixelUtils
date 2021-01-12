@@ -1,4 +1,4 @@
-# HypixelUtils
+# HypixelUtils [![Travis-ci.com stable](https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils/stable?style=flat-square)](https://travis-ci.com/github/naturecodevoiddev/HypixelUtils)
 
 Minecraft mod with random stuff.
 
@@ -18,7 +18,8 @@ The jar will be in `HypixelUtils/build/lib/HypixelUtils-<VERSION>.jar`
 
 Java 8 and git is required.
 
-Fork the repository. git clone your fork, run the setupDecompWorkspace gradle task, run runClient task to run the client and build task to build the jar.
+Fork the repository. git clone your fork, run the setupDecompWorkspace gradle task, run runClient task to run the client
+and build task to build the jar.
 
 If you use intellij, run genIntelliRuns task and restart IntelliJ
 
