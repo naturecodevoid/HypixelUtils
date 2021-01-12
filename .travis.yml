@@ -20,4 +20,4 @@ deploy:
       draft: true
       on:
           tags: true
-          branch: stable
+#          branch: stable
