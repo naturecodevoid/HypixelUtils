@@ -1,9 +1,14 @@
 language: java
 jdk:
     - openjdk8
+
+install: skip
+script: ./gradlew build
+
 branches:
     only:
         - stable
+
 deploy:
     # Github Releases
     - provider: releases
@@ -14,5 +19,3 @@ deploy:
       draft: true
       on:
           branch: stable
-install: skip
-script: ./gradlew build
