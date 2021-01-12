@@ -10,7 +10,7 @@ jdk:
 install: skip
 script:
     - ./gradlew build
-    - rm ./build/libs/HypixelUtils-*.*.*-sources.jar
+    - rm --verbose ./build/libs/HypixelUtils-*.*.*-sources.jar
 
 deploy:
     - provider: releases

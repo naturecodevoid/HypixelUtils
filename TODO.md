@@ -3,10 +3,10 @@
 ## Project todo
 
 -   [x] Setup actions CI
--   [ ] Move to travis
+-   [x] Move to travis
 -   [ ] Make download link on naturecodevoid.dev that reads from latest release
 -   [ ] Revamp readme
--   [ ] Move to projects
+-   [ ] Move to projects?
 -   [ ] Issue/pr templates
 
 ## Code todo
