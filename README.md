@@ -1,4 +1,16 @@
-# HypixelUtils [![Travis-ci.com stable](https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils/stable?style=flat-square)](https://travis-ci.com/github/naturecodevoiddev/HypixelUtils)
+<h1 align="center">
+HypixelUtils
+
+<br>
+
+<a href="https://naturecodevoid.dev/downloads.html?name=hypixelutils"><img align="center" alt="GitHub release (latest)" src="https://img.shields.io/github/v/release/naturecodevoiddev/HypixelUtils?label=latest%20release%20%28click%20to%20download%29&style=for-the-badge"></a>
+<br>
+<a href="https://travis-ci.com/github/naturecodevoiddev/HypixelUtils"><img align="center" alt="Travis-ci.com" src="https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils?style=for-the-badge"></a>
+
+</h1>
+
+<!-- [![GitHub release (latest by date)](https://img.shields.io/github/v/release/naturecodevoiddev/HypixelUtils?label=latest%20release%20%28click%20to%20download%29&style=for-the-badge)](https://naturecodevoid.dev/downloads.html?name=hypixelutils)
+[![Travis-ci.com stable](https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils?style=for-the-badge)](https://travis-ci.com/github/naturecodevoiddev/HypixelUtils) -->
 
 Minecraft mod with random stuff.
 
