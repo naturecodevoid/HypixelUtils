@@ -1,0 +1,18 @@
+language: java
+jdk: oraclejdk8
+branches:
+    only:
+        - stable
+script:
+    - chmod +x ./gradlew
+    - ./gradlew build
+deploy:
+    # Github Releases
+    - provider: releases
+      api_key: $GITHUB_OAUTH_TOKEN
+      file_glob: true
+      file: build/libs/HypixelUtils-*.*.*.jar
+      skip_cleanup: true
+      draft: true
+      on:
+          tags: true

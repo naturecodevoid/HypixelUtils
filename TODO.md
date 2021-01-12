@@ -3,11 +3,11 @@
 ## Project todo
 
 -   [x] Setup actions CI
--   [ ] Make download link on naturecodevoid.dev that reads from actions api
+-   [ ] Move to travis
+-   [ ] Make download link on naturecodevoid.dev that reads from latest release
 -   [ ] Revamp readme
 -   [ ] Move to projects
 -   [ ] Issue/pr templates
--   [ ] Move to travis if needed
 
 ## Code todo
 

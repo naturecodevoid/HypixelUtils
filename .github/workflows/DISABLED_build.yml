@@ -1,3 +1,5 @@
+# disabled, we now use travis ci
+
 name: HypixelUtils Build
 
 on:
