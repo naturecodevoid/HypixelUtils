@@ -13,7 +13,7 @@ branches:
 deploy:
     # Github Releases
     - provider: releases
-      api_key: $GITHUB_OAUTH_TOKEN
+      api_key: $GITHUB_TOKEN
       file_glob: true
       file: build/libs/HypixelUtils-*.*.*.jar
       skip_cleanup: true
