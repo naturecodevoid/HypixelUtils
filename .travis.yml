@@ -4,9 +4,9 @@ jdk:
 branches:
     only:
         - stable
-script:
-    - chmod +x ./gradlew
-    - ./gradlew build
+#script:
+#    - chmod +x ./gradlew
+#    - ./gradlew build
 deploy:
     # Github Releases
     - provider: releases
