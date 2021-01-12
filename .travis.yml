@@ -7,7 +7,8 @@ script: ./gradlew build
 
 branches:
     only:
-        - stable
+        - /release-v[0-9].[0-9].[0-9]/
+#        - stable
 
 deploy:
     # Github Releases
