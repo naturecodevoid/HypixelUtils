@@ -12,7 +12,7 @@ deploy:
       file: build/libs/HypixelUtils-*.*.*.jar
       skip_cleanup: true
       draft: true
-      on:
-          tags: true
+#      on:
+#          tags: true
 install: skip
 script: ./gradlew build
