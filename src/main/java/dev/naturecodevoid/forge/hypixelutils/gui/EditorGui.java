@@ -8,11 +8,15 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
+import org.apache.commons.lang3.NotImplementedException;
 
 import java.io.IOException;
 
 public class EditorGui extends GuiScreen {
     private boolean isDragging = false;
+    private GuiFeature currentDragging = null;
+    private GuiFeature lastDragging = null;
+    private Vector2D anchor = null;
     private int lastX = 0;
     private int lastY = 0;
 
@@ -24,6 +28,14 @@ public class EditorGui extends GuiScreen {
                 20,
                 "Reset Positions"
         ));
+        this.buttonList.add(new GuiButton(2,
+                -100,
+                -100,
+                30,
+                20,
+                "Edit"
+        ));
+        this.buttonList.get(1).visible = false;
     }
 
     public void actionPerformed(GuiButton button) {
@@ -31,7 +43,97 @@ public class EditorGui extends GuiScreen {
             case 1:
                 HypixelUtils.guiFeatures.forEach(GuiFeature::resetPosition);
                 return;
+            case 2:
+                HypixelUtils.gui = lastDragging.getEditor();
+                return;
         }
+    }
+
+    public void checkForDragging(int x, int y) {
+        GuiFeature closestFeature = null;
+        Vector2D anchor2 = null;
+
+        if (currentDragging == null || Utils.distance(new Vector2D(x, y), new Vector2D(lastX, lastY)) >= 5) {
+            for (GuiFeature f : HypixelUtils.guiFeatures) {
+                Vector2D pos = Utils.getPosFromPercent(f.getPosition());
+                Vector2D size = f.getSize();
+
+                if (Utils.checkIfPosInsideRect(new Vector2D(x, y), pos, new Vector2D(pos.x + size.x, pos.y + size.y))) {
+                    closestFeature = f;
+                    anchor2 = new Vector2D(x - pos.x, y - pos.y);
+                    break;
+                }
+            }
+
+            if (closestFeature != null) {
+                lastDragging = closestFeature;
+            }
+            currentDragging = closestFeature;
+            anchor = anchor2;
+        }
+
+        if (currentDragging != null) {
+            Vector2D screenSize = Utils.getScreenSize();
+
+            Vector2D anchor3;
+
+            if (anchor != null)
+                anchor3 = anchor;
+            else anchor3 = new Vector2D(currentDragging.getSize().x / 2, currentDragging.getSize().y / 2);
+
+            Vector2D percent = Utils.getPercentFromPos(
+                    Math.min(x - anchor3.x, screenSize.x - currentDragging.getSize().x),
+                    Utils.clamp(y - anchor3.y, 0, screenSize.y - currentDragging.getSize().y)
+            );
+
+            currentDragging.setPosition(percent);
+
+            try {
+                currentDragging.getEditor();
+
+                Vector2D newPos = Utils.getPosFromPercent(currentDragging.getPosition().x, currentDragging.getPosition().y);
+                this.buttonList.get(1).xPosition = newPos.x + 3;
+                this.buttonList.get(1).yPosition = newPos.y + currentDragging.getSize().y - 2;
+                this.buttonList.get(1).visible = true;
+                this.buttonList.get(1).enabled = true;
+            } catch (NotImplementedException ignored) {
+                this.buttonList.get(1).visible = false;
+                this.buttonList.get(1).enabled = false;
+            }
+        }
+    }
+
+    @Override
+    public void mouseClicked(int x, int y, int time) throws IOException {
+        if ((y != lastY) || (x != lastX)) {
+            this.isDragging = true;
+
+            checkForDragging(x, y);
+
+            this.lastX = x;
+            this.lastY = y;
+        } else {
+            this.isDragging = false;
+            currentDragging = null;
+            this.buttonList.get(1).visible = false;
+            this.buttonList.get(1).enabled = false;
+        }
+        super.mouseClicked(x, y, time);
+    }
+
+    @Override
+    public void mouseClickMove(int x, int y, int lastButtonClicked, long timeSinceClick) {
+        if (this.isDragging) {
+            checkForDragging(x, y);
+
+            this.lastX = x;
+            this.lastY = y;
+        } else {
+            currentDragging = null;
+            this.buttonList.get(1).visible = false;
+            this.buttonList.get(1).enabled = false;
+        }
+        super.mouseClickMove(x, y, lastButtonClicked, timeSinceClick);
     }
 
     @Override
@@ -42,51 +144,6 @@ public class EditorGui extends GuiScreen {
         super.drawScreen(x, y, partialTicks);
 
         HypixelUtils.guiFeatures.forEach(GuiFeature::renderEditor);
-    }
-
-    @Override
-    public void mouseClicked(int x, int y, int time) throws IOException {
-        if ((y != lastY) || (x != lastX)) {
-            this.isDragging = true;
-            this.lastX = x;
-            this.lastY = y;
-        } else {
-            this.isDragging = false;
-        }
-        super.mouseClicked(x, y, time);
-    }
-
-    @Override
-    public void mouseClickMove(int x, int y, int lastButtonClicked, long timeSinceClick) {
-        if (this.isDragging) {
-            GuiFeature closestFeature = null;
-            double closestDist = 999999;
-
-            Vector2D screenSize = Utils.getScreenSize();
-
-            for (GuiFeature feature : HypixelUtils.guiFeatures) {
-                Vector2D pos = feature.getPosition();
-
-                double dist = Utils.distance(
-                        new Vector2D(x, y),
-                        Utils.getPosFromPercent(pos.x, pos.y)
-                );
-
-                if (dist <= closestDist && dist <= 25) {
-                    closestFeature = feature;
-                    closestDist = dist;
-                }
-            }
-
-            if (closestDist != 999999) {
-                Vector2D percent = Utils.getPercentFromPos(Math.min(x, screenSize.x - closestFeature.getSize().x), Utils.clamp(y, 0, screenSize.y - closestFeature.getSize().y));
-                closestFeature.setPosition(percent);
-            }
-
-            this.lastX = x;
-            this.lastY = y;
-        }
-        super.mouseClickMove(x, y, lastButtonClicked, timeSinceClick);
     }
 
     @Override
