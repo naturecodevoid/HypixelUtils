@@ -25,20 +25,29 @@ public class HypixelUtils {
     public static final String MODID = "@MOD_ID@";
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "@MOD_NAME@";
-    public static final String prefix = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
-    public static ArrayList<GuiFeature> guiFeatures = new ArrayList<GuiFeature>();
-    public static ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
-    public static ArrayList<Timer> timers = new ArrayList<Timer>();
+    public static final String PREFIX = EnumChatFormatting.GREEN + "[HypixelUtils] " + EnumChatFormatting.RESET;
+    public static final ArrayList<GuiFeature> guiFeatures = new ArrayList<GuiFeature>();
+    public static final ArrayList<BaseFeature> features = new ArrayList<BaseFeature>();
+    public static final ArrayList<Timer> timers = new ArrayList<Timer>();
     public static Config config;
     public static GuiScreen gui = null;
 
-    @Mod.Instance(HypixelUtils.MODID)
-    public static HypixelUtils instance;
+    private static HypixelUtils instance = null;
+
+    public HypixelUtils() {
+        instance = this;
+    }
+
+    public static HypixelUtils get() {
+        return instance;
+    }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         config = new Config();
+
+        new VersionChecker();
 
         ////
         //// Features
