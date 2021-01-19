@@ -1,19 +1,28 @@
 package dev.naturecodevoid.forge.hypixelutils.features;
 
 import dev.naturecodevoid.forge.hypixelutils.HypixelUtils;
+import dev.naturecodevoid.forge.hypixelutils.base.GuiFeatureEditor;
 import dev.naturecodevoid.forge.hypixelutils.base.TextFeature;
+import dev.naturecodevoid.forge.hypixelutils.base.TextFeatureEditor;
 import dev.naturecodevoid.forge.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import dev.naturecodevoid.forge.hypixelutils.util.Vector2D;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CoinTracker extends TextFeature {
-    public static CoinTracker instance;
+public class CoinTracker extends TextFeature.TextMethods implements TextFeature {
     public static int coins = 0;
+    private static CoinTracker instance = null;
 
     public CoinTracker() {
-        this.init();
+        instance = this;
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public static CoinTracker get() {
+        return instance;
     }
 
     public String getText(boolean showActualCoins) {
@@ -52,8 +61,64 @@ public class CoinTracker extends TextFeature {
     }
 
     @Override
-    public boolean isEnabled() {
+    public GuiFeatureEditor getEditor() {
+        return new Editor();
+    }
+
+    @Override
+    public boolean getEnabled() {
         return HypixelUtils.config.coinsEnabled;
+    }
+
+    @Override
+    public boolean setEnabled(boolean enabled) {
+        HypixelUtils.config.coinsEnabled = enabled;
+        return HypixelUtils.config.coinsEnabled;
+    }
+
+    @Override
+    public boolean getBrackets() {
+        return HypixelUtils.config.coinsBrackets;
+    }
+
+    @Override
+    public boolean setBrackets(boolean brackets) {
+        HypixelUtils.config.coinsBrackets = brackets;
+        return HypixelUtils.config.coinsBrackets;
+    }
+
+    @Override
+    public int getMessageIndex() {
+        return HypixelUtils.config.coinsMessage;
+    }
+
+    @Override
+    public int setMessageIndex(int messageIndex) {
+        if (messageIndex > getMessages().length - 1) {
+            messageIndex = 0;
+        }
+        HypixelUtils.config.coinsMessage = messageIndex;
+        return HypixelUtils.config.coinsMessage;
+    }
+
+    @Override
+    public String[] getMessages() {
+        return HypixelUtils.config.coinsMessages;
+    }
+
+    @Override
+    public String[] getMessagesFriendly() {
+        return HypixelUtils.config.coinsMessagesFriendly;
+    }
+
+    @Override
+    public int getColor() {
+        return 0;
+    }
+
+    @Override
+    public int setColor(int color) {
+        return 0;
     }
 
     @Override
@@ -73,6 +138,47 @@ public class CoinTracker extends TextFeature {
             CoinTracker.coins += coins;
             HypixelUtils.config.coinTrackerCoins = CoinTracker.coins;
             Utils.saveConfig();
+        }
+    }
+
+    private static class Editor extends TextFeatureEditor {
+        @Override
+        public TextFeature getFeature() {
+            return CoinTracker.get();
+        }
+
+        @Override
+        public void init() {
+            this.title = "Coin Tracker";
+            this.showColor = false;
+
+            super.init();
+
+            makeButton(
+                    "Message color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]),
+                    (GuiButton btn) -> {
+                        HypixelUtils.config.coinsColor1 = Utils.limitArrayIndexToArraySize(HypixelUtils.config.colors, HypixelUtils.config.coinsColor1 + 1);
+                        btn.displayString = "Message color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]);
+                        return null;
+                    },
+                    (GuiButton btn) -> {
+                        btn.displayString = "Message color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor1]);
+                        return null;
+                    }
+            );
+
+            makeButton(
+                    "Coin color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]),
+                    (GuiButton btn) -> {
+                        HypixelUtils.config.coinsColor2 = Utils.limitArrayIndexToArraySize(HypixelUtils.config.colors, HypixelUtils.config.coinsColor2 + 1);
+                        btn.displayString = "Coin color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]);
+                        return null;
+                    },
+                    (GuiButton btn) -> {
+                        btn.displayString = "Coin color: " + Utils.getColorText(HypixelUtils.config.colors[HypixelUtils.config.coinsColor2]);
+                        return null;
+                    }
+            );
         }
     }
 }

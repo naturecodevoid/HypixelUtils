@@ -7,17 +7,33 @@ import dev.naturecodevoid.forge.hypixelutils.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ChatPing extends BaseFeature {
-    public static ChatPing instance;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
+    private static ChatPing instance = null;
+    public final Pattern formattingCodesPattern = Pattern.compile("§([a-z]|[0-9])");
 
     public ChatPing() {
-        this.init();
+        instance = this;
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    public static ChatPing get() {
+        return instance;
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean getEnabled() {
+        return HypixelUtils.config.chatPingEnabled;
+    }
+
+    @Override
+    public boolean setEnabled(boolean enabled) {
+        HypixelUtils.config.chatPingEnabled = enabled;
         return HypixelUtils.config.chatPingEnabled;
     }
 
@@ -28,7 +44,7 @@ public class ChatPing extends BaseFeature {
 
     @SubscribeEvent
     public void onChat(ClientChatReceivedEvent event) {
-        if (!(this.isEnabled())) return;
+        if (!(this.getEnabled())) return;
 
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -39,11 +55,19 @@ public class ChatPing extends BaseFeature {
                 .replaceFirst(".+:", "");
 
         if (text.contains(mc.thePlayer.getName().toLowerCase())) {
+            Matcher formattingCodesMatcher = formattingCodesPattern.matcher(event.message.getFormattedText());
+
+            String formattingCodes = "";
+
+            while (formattingCodesMatcher.find()) {
+                formattingCodes += formattingCodesMatcher.group();
+            }
+
             if (HypixelUtils.config.chatPingUsername) mc.getSoundHandler().playSound(new OrbSound());
             if (HypixelUtils.config.chatPingHighlight) {
                 String text2 = event.message.getFormattedText();
 
-                String nameText = mc.thePlayer.getName() + EnumChatFormatting.RESET;
+                String nameText = mc.thePlayer.getName() + EnumChatFormatting.RESET + formattingCodes;
 
                 if (HypixelUtils.config.chatPingUnderline) nameText = EnumChatFormatting.UNDERLINE + nameText;
 
