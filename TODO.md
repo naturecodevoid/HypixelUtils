@@ -4,14 +4,21 @@
 
 -   [x] Setup actions CI
 -   [x] Move to travis
--   [ ] Make download link on naturecodevoid.dev that reads from latest release
+-   [x] Make download link on naturecodevoid.dev that reads from latest release
 -   [ ] Revamp readme
 -   [ ] Move to projects?
 -   [ ] Issue/pr templates
 
 ## Code todo
 
-HIGHLIGHTED: add a thing to gui editor that allows it to select an element and change text shadow, brackets, color, etc
+HIGHLIGHTED:
+
+-   Use vigilance color for colors
+-   Draw utils (**make sure to consider width with different alignments**) + add to config and editor
+-   Text feature shadow
+-   Feature backgrounds
+
+Other:
 
 -   draw utils
     -   add scale to text
