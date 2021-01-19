@@ -14,9 +14,31 @@ HypixelUtils
 
 Minecraft mod with random stuff.
 
-## Building from source
+Table of Contents:
 
-Java 8 and git is required.
+-   [Building from source without git](#building-from-source-without-git)
+-   [Building from source with git (recommended)](#building-from-source-with-git-recommended)
+-   [Developing](#developing)
+
+## Building from source without git
+
+JDK 8 is required.
+
+Download the source code at https://github.com/naturecodevoiddev/HypixelUtils/archive/dev.zip. Unzip it and then run
+this:
+
+```sh
+cd ./HypixelUtils-dev
+./gradlew build
+```
+
+The jar will be in `HypixelUtils-dev/build/lib/HypixelUtils-<VERSION>.jar`
+
+## Building from source with git (recommended)
+
+JDK 8 and git is required.
+
+Run this:
 
 ```sh
 git clone https://github.com/naturecodevoiddev/HypixelUtils.git
@@ -26,15 +48,22 @@ cd ./HypixelUtils
 
 The jar will be in `HypixelUtils/build/lib/HypixelUtils-<VERSION>.jar`
 
+If there's an update, and you want to rebuild, run this:
+
+```sh
+cd ./HypixelUtils
+git fetch
+git pull
+./gradlew build
+```
+
+The jar will be in `HypixelUtils/build/lib/HypixelUtils-<VERSION>.jar`
+
 ## Developing
 
-Java 8 and git is required.
+JDK 8 and git is required.
 
 Fork the repository. git clone your fork, run the setupDecompWorkspace gradle task, run runClient task to run the client
 and build task to build the jar.
 
-If you use intellij, run genIntelliRuns task and restart IntelliJ
-
-### Commit naming conventions
-
-TODO
+If you use IntelliJ, run genIntelliRuns task and restart IntelliJ
