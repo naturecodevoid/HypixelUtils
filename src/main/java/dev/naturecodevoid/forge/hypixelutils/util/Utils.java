@@ -19,25 +19,16 @@ public class Utils {
     public static final int textAdd = 18;
     public static final int textAddSmall = 7;
 
-    public static int clamp(int value, int min, int max) {
-        return Math.max(min, Math.min(max, value));
-    }
-
-    public static boolean hasGuiOpen() {
-        if (Minecraft.getMinecraft().gameSettings.showDebugInfo) return true;
-        return Minecraft.getMinecraft().currentScreen != null && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat);
-    }
-
     public static void sendMessage(ICommandSender sender, String text) {
-        sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
+        sender.addChatMessage(new ChatComponentText(HypixelUtils.PREFIX + text));
+    }
+
+    public static void sendMessage(EntityPlayerSP sender, String text) {
+        sender.addChatMessage(new ChatComponentText(HypixelUtils.PREFIX + text));
     }
 
     public static void sendMessageNoPrefix(ICommandSender sender, String text) {
         sender.addChatMessage(new ChatComponentText(text));
-    }
-
-    public static void sendMessage(EntityPlayerSP sender, String text) {
-        sender.addChatMessage(new ChatComponentText(HypixelUtils.prefix + text));
     }
 
     public static void sendMessageNoPrefix(EntityPlayerSP sender, String text) {
@@ -63,19 +54,27 @@ public class Utils {
         return new Vector2D(width, height);
     }
 
+    public static Vector2D getPosFromPercent(Vector2D percent) {
+        return getPosFromPercent(percent.x, percent.y);
+    }
+
     public static Vector2D getPosFromPercent(float percentX, float percentY) {
         Vector2D size = getScreenSize();
         return new Vector2D(
-                Math.round((percentX / 100) * size.x),
-                Math.round((percentY / 100) * size.y)
+                Math.round((percentX / 1000) * size.x),
+                Math.round((percentY / 1000) * size.y)
         );
+    }
+
+    public static Vector2D getPercentFromPos(Vector2D pos) {
+        return getPercentFromPos(pos.x, pos.y);
     }
 
     public static Vector2D getPercentFromPos(float posX, float posY) {
         Vector2D size = getScreenSize();
         return new Vector2D(
-                clamp(Math.round((posX * 100) / size.x), 0, 100),
-                clamp(Math.round((posY * 100) / size.y), 0, 100)
+                clamp(Math.round((posX * 1000) / size.x), 0, 1000),
+                clamp(Math.round((posY * 1000) / size.y), 0, 1000)
         );
     }
 
@@ -83,22 +82,24 @@ public class Utils {
         String string = str.toUpperCase().replaceAll(" ", "_").trim();
 
         switch (string) {
-            case "BLACK":
-                return EnumChatFormatting.BLACK;
             case "DARK_BLUE":
                 return EnumChatFormatting.DARK_BLUE;
+            case "DARK_GREEN":
+                return EnumChatFormatting.DARK_GREEN;
             case "DARK_AQUA":
                 return EnumChatFormatting.DARK_AQUA;
             case "DARK_RED":
                 return EnumChatFormatting.DARK_RED;
             case "DARK_PURPLE":
                 return EnumChatFormatting.DARK_PURPLE;
+            case "DARK_GRAY":
+                return EnumChatFormatting.DARK_GRAY;
+            case "BLACK":
+                return EnumChatFormatting.BLACK;
             case "GOLD":
                 return EnumChatFormatting.GOLD;
             case "GRAY":
                 return EnumChatFormatting.GRAY;
-            case "DARK_GRAY":
-                return EnumChatFormatting.DARK_GRAY;
             case "BLUE":
                 return EnumChatFormatting.BLUE;
             case "GREEN":
@@ -123,36 +124,88 @@ public class Utils {
         return Utils.getColor(HypixelUtils.config.colors[index]);
     }
 
-    // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/java/codes/biscuit/skyblockaddons/utils/Utils.java#L189
-    public static boolean isOnHypixel() {
-        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
-        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+    public static String getBooleanText(boolean bool) {
+        return bool ? EnumChatFormatting.GREEN + "Yes" : EnumChatFormatting.RED + "No";
+    }
 
-        Minecraft mc = Minecraft.getMinecraft();
-
-        if (!mc.isSingleplayer() && mc.thePlayer.getClientBrand() != null) {
-            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
-
-            if (matcher.find()) {
-                // Group 1 is the server brand.
-                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
-            } else {
-                return false;
-            }
-        } else {
-            return false;
+    public static String getColorText(EnumChatFormatting color) {
+        switch (color) {
+            case DARK_BLUE:
+                return color + "Dark Blue" + EnumChatFormatting.RESET;
+            case DARK_GREEN:
+                return color + "Dark Green" + EnumChatFormatting.RESET;
+            case DARK_AQUA:
+                return color + "Dark Aqua" + EnumChatFormatting.RESET;
+            case DARK_RED:
+                return color + "Dark Red" + EnumChatFormatting.RESET;
+            case DARK_PURPLE:
+                return color + "Dark Purple" + EnumChatFormatting.RESET;
+            case DARK_GRAY:
+                return color + "Dark Gray" + EnumChatFormatting.RESET;
+            case BLACK:
+                return color + "Black" + EnumChatFormatting.RESET;
+            case GOLD:
+                return color + "Gold" + EnumChatFormatting.RESET;
+            case GRAY:
+                return color + "Gray" + EnumChatFormatting.RESET;
+            case BLUE:
+                return color + "Blue" + EnumChatFormatting.RESET;
+            case GREEN:
+                return color + "Green" + EnumChatFormatting.RESET;
+            case AQUA:
+                return color + "Aqua" + EnumChatFormatting.RESET;
+            case RED:
+                return color + "Red" + EnumChatFormatting.RESET;
+            case LIGHT_PURPLE:
+                return color + "Light Purple" + EnumChatFormatting.RESET;
+            case YELLOW:
+                return color + "Yellow" + EnumChatFormatting.RESET;
+            case WHITE:
+                return color + "White" + EnumChatFormatting.RESET;
+            default:
+                return EnumChatFormatting.RESET + "None (this might be a bug)";
         }
     }
 
-    public static boolean isModEnabled(boolean hypixel) {
-        if (!HypixelUtils.config.otherServers && hypixel) return HypixelUtils.config.enabled && isOnHypixel();
-        return HypixelUtils.config.enabled;
-    }
+    public static String getColorText(String color) {
+        color = color.toUpperCase().replaceAll(" ", "_").trim();
 
-    public static double distance(Vector2D pos1, Vector2D pos2) {
-        int x = pos1.x - pos2.x;
-        int y = pos1.y - pos2.y;
-        return new Vector2D(x, y).length();
+        switch (color) {
+            case "DARK_BLUE":
+                return EnumChatFormatting.DARK_BLUE + "Dark Blue" + EnumChatFormatting.RESET;
+            case "DARK_GREEN":
+                return EnumChatFormatting.DARK_GREEN + "Dark Green" + EnumChatFormatting.RESET;
+            case "DARK_AQUA":
+                return EnumChatFormatting.DARK_AQUA + "Dark Aqua" + EnumChatFormatting.RESET;
+            case "DARK_RED":
+                return EnumChatFormatting.DARK_RED + "Dark Red" + EnumChatFormatting.RESET;
+            case "DARK_PURPLE":
+                return EnumChatFormatting.DARK_PURPLE + "Dark Purple" + EnumChatFormatting.RESET;
+            case "DARK_GRAY":
+                return EnumChatFormatting.DARK_GRAY + "Dark Gray" + EnumChatFormatting.RESET;
+            case "BLACK":
+                return EnumChatFormatting.BLACK + "Black" + EnumChatFormatting.RESET;
+            case "GOLD":
+                return EnumChatFormatting.GOLD + "Gold" + EnumChatFormatting.RESET;
+            case "GRAY":
+                return EnumChatFormatting.GRAY + "Gray" + EnumChatFormatting.RESET;
+            case "BLUE":
+                return EnumChatFormatting.BLUE + "Blue" + EnumChatFormatting.RESET;
+            case "GREEN":
+                return EnumChatFormatting.GREEN + "Green" + EnumChatFormatting.RESET;
+            case "AQUA":
+                return EnumChatFormatting.AQUA + "Aqua" + EnumChatFormatting.RESET;
+            case "RED":
+                return EnumChatFormatting.RED + "Red" + EnumChatFormatting.RESET;
+            case "LIGHT_PURPLE":
+                return EnumChatFormatting.LIGHT_PURPLE + "Light Purple" + EnumChatFormatting.RESET;
+            case "YELLOW":
+                return EnumChatFormatting.YELLOW + "Yellow" + EnumChatFormatting.RESET;
+            case "WHITE":
+                return EnumChatFormatting.WHITE + "White" + EnumChatFormatting.RESET;
+            default:
+                return EnumChatFormatting.RESET + "None (this might be a bug)";
+        }
     }
 
     public static boolean getNotEnabled(RenderGameOverlayEvent event, boolean hypixel) {
@@ -219,5 +272,56 @@ public class Utils {
         HypixelUtils.config.markDirty();
         HypixelUtils.config.writeData();
         Keyboard.enableRepeatEvents(false);
+    }
+
+    public static int limitArrayIndexToArraySize(Object[] array, int index) {
+        if (index > array.length - 1) index = 0;
+        return index;
+    }
+
+    public static boolean checkIfPosInsideRect(Vector2D pos, Vector2D startRect, Vector2D endRect) {
+        return ((pos.x >= startRect.x) && (pos.x <= endRect.x)) &&
+                ((pos.y >= startRect.y) && (pos.y <= endRect.y));
+    }
+
+    // https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/java/codes/biscuit/skyblockaddons/utils/Utils.java#L189
+    public static boolean isOnHypixel() {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+
+        Minecraft mc = Minecraft.getMinecraft();
+
+        if (!mc.isSingleplayer() && mc.thePlayer.getClientBrand() != null) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isModEnabled(boolean hypixel) {
+        if (!HypixelUtils.config.otherServers && hypixel) return HypixelUtils.config.enabled && isOnHypixel();
+        return HypixelUtils.config.enabled;
+    }
+
+    public static double distance(Vector2D pos1, Vector2D pos2) {
+        int x = pos1.x - pos2.x;
+        int y = pos1.y - pos2.y;
+        return new Vector2D(x, y).length();
+    }
+
+    public static int clamp(int value, int min, int max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    public static boolean hasGuiOpen() {
+        if (Minecraft.getMinecraft().gameSettings.showDebugInfo) return true;
+        return Minecraft.getMinecraft().currentScreen != null && !(Minecraft.getMinecraft().currentScreen instanceof GuiChat);
     }
 }
