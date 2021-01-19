@@ -1,39 +1,70 @@
 package dev.naturecodevoid.forge.hypixelutils.base;
 
-import net.minecraftforge.common.MinecraftForge;
-import org.apache.commons.lang3.NotImplementedException;
+public interface BaseFeature {
+    BaseFeature instance = null;
 
-public abstract class BaseFeature {
-    public BaseFeature instance;
-
-    /*
-    public static CHANGEME instance;
-
-    public CHANGEME() {
-        this.init();
-    }
-    */
-
-    public void init() {
-        instance = this;
-        MinecraftForge.EVENT_BUS.register(this);
+    static BaseFeature get() {
+        return instance;
     }
 
-    public boolean isEnabled() {
-        throw new NotImplementedException("Please override the isEnabled function! This checks if the feature is enabled.");
-    }
+    boolean getEnabled();
 
-    public boolean isHypixel() {
-        throw new NotImplementedException("Please override the isHypixel function! This checks if the feature is hypixel only.");
-    }
+    boolean setEnabled(boolean enabled);
 
-    public boolean isGui() {
-        return false;
-    }
+    boolean isHypixel();
 
-    @Override
-    public String toString() {
-        String[] array = getClass().getName().split("\\.");
-        return array[array.length - 1];
+    boolean isGui();
+
+    abstract class BaseMethods implements BaseFeature {
+        public boolean isGui() {
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            String[] array = getClass().getName().split("\\.");
+            return array[array.length - 1];
+        }
     }
 }
+
+//public abstract class BaseFeature {
+//    public BaseFeature instance;
+//    public Integer index;
+//
+//    /*
+//    public static CHANGEME instance;
+//    public static Integer index;
+//
+//    public CHANGEME() {
+//        instance = this;
+//        MinecraftForge.EVENT_BUS.register(this);
+//    }
+//    */
+//
+//    public BaseFeature(int index) {
+//        this.index = index;
+//    }
+//
+//    public static BaseFeature get() {
+//        return HypixelUtils.features.get(index);
+//    }
+//
+//    public boolean getEnabled() {
+//        throw new NotImplementedException("Please override the getEnabled function! This checks if the feature is enabled.");
+//    }
+//
+//    public boolean isHypixel() {
+//        throw new NotImplementedException("Please override the isHypixel function! This checks if the feature is hypixel only.");
+//    }
+//
+//    public boolean isGui() {
+//        return false;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        String[] array = getClass().getName().split("\\.");
+//        return array[array.length - 1];
+//    }
+//}
