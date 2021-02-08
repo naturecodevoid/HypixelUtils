@@ -2,6 +2,9 @@
 
 ## Project todo
 
+-   [ ] Feature list, discord link
+
+
 -   [x] Setup actions CI
 -   [x] Move to travis
 -   [x] Make download link on naturecodevoid.dev that reads from latest release
