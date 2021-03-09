@@ -2,15 +2,14 @@
 
 ## Project todo
 
--   [ ] Feature list, discord link
+-   [ ] Discord link
 
-
--   [x] Setup actions CI
--   [x] Move to travis
--   [x] Make download link on naturecodevoid.dev that reads from latest release
--   [ ] Revamp readme
--   [ ] Move to projects?
--   [ ] Issue/pr templates
+*   [x] Setup actions CI
+*   [x] Move to travis
+*   [x] Make download link on naturecodevoid.dev that reads from latest release
+*   [x] Revamp readme
+*   [ ] Move to projects?
+*   [ ] Issue/pr templates
 
 ## Code todo
 

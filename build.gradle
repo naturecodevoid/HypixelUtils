@@ -70,6 +70,8 @@ processResources {
 shadowJar {
     minimize()
     classifier = ''
+
+    manifest.attributes("Main-Class": "dev.naturecodevoid.hypixelutils.DefinitelyNotSkyblockAddonsInstaller")
 }
 
 
