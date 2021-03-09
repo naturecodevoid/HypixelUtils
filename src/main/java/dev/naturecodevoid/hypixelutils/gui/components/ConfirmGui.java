@@ -57,15 +57,7 @@ public class ConfirmGui extends CustomGuiScreen {
     }
 
     public void initGui() {
-        // this.buttonList.add(new GuiButton(1,
-        //         1,
-        //         1,
-        //         30,
-        //         20,
-        //         "Back"
-        // ));
-
-        this.buttonList.add(new GuiButton(2,
+        this.buttonList.add(new GuiButton(1,
                 this.width / 2 - 74 - this.spacing,
                 this.height / 2 + 5,
                 74,
@@ -73,7 +65,7 @@ public class ConfirmGui extends CustomGuiScreen {
                 this.yesText
         ));
 
-        this.buttonList.add(new GuiButton(3,
+        this.buttonList.add(new GuiButton(2,
                 this.width / 2 + this.spacing,
                 this.height / 2 + 5,
                 74,
@@ -99,15 +91,11 @@ public class ConfirmGui extends CustomGuiScreen {
 
     public void actionPerformed(GuiButton button) {
         switch(button.id) {
-            // case 1:
-            //     // Back
-            //     HypixelUtils.gui = backScreen;
-            //     return;
-            case 2:
+            case 1:
                 // Yes
                 this.onYes.run();
                 return;
-            case 3:
+            case 2:
                 // No
                 this.onNo.run();
                 return;

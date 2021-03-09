@@ -77,21 +77,6 @@ public class FeatureListGui extends CustomGuiScreen {
             this.makeFeature(feature);
         }
 
-        // Back button
-        // {
-        //     GuiButton btn = new GuiButton(this.buttons.size() + 1, this.width - 1 - 30, 1, 30, 20, "Back");
-        //     this.buttons.put(
-        //             btn,
-        //             new Runnable[]{
-        //                     () -> {
-        //                         HypixelUtils.gui = new GeneralGui();
-        //                     },
-        //                     () -> {
-        //                     }
-        //             }
-        //     );
-        // }
-
         this.buttons.forEach((GuiButton button, Runnable[] ignored) -> {
             this.buttonList.add(button);
         });

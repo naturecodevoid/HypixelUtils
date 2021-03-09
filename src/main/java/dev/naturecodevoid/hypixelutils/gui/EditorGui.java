@@ -63,14 +63,6 @@ public class EditorGui extends CustomGuiScreen {
         this.buttonList.get(1).visible = false;
         this.buttonList.get(1).enabled = false;
 
-        // this.buttonList.add(new GuiButton(3,
-        //         this.width / 2 - 50 - 35,
-        //         this.height - 20,
-        //         30,
-        //         20,
-        //         "Back"
-        // ));
-
         this.backButtonPos.set(this.width / 2 - 50 - 35, this.height - 20);
 
         super.initGui();
@@ -95,10 +87,6 @@ public class EditorGui extends CustomGuiScreen {
                 // Open the last feature's editor
                 HypixelUtils.gui = this.lastDragging.getEditor(new EditorGui(this.backScreen));
                 return;
-            // case 3:
-            //     // Go back to the general GUI
-            //     HypixelUtils.gui = new GeneralGui();
-            //     return;
         }
 
         super.actionPerformed(button);

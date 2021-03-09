@@ -145,21 +145,6 @@ public interface BaseFeature {
          * Initializes the editor and creates any needed buttons. Make sure to super.init()!
          */
         public void init() {
-            // Back button
-            // {
-            //     GuiButton btn = new GuiButton(this.buttons.size() + 1, 1, 1, 30, 20, "Back");
-            //     this.buttons.put(
-            //             btn,
-            //             new Runnable[]{
-            //                     () -> {
-            //                         HypixelUtils.gui = this.backScreen;
-            //                     },
-            //                     () -> {
-            //                     }
-            //             }
-            //     );
-            // }
-
             BaseFeature f = this.getFeature();
 
             if (showEnabled) {
