@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Request a feature to be added
+name: Feature request or Enhancement
+about: Request a feature to be added or suggest an enhancement
 title: ""
 labels: feature
 assignees: ""
