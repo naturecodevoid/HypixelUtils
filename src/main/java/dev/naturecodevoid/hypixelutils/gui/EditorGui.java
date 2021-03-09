@@ -100,6 +100,8 @@ public class EditorGui extends CustomGuiScreen {
 
         if (this.currentDragging == null || Utils.distance(new Vector2(x, y), new Vector2(this.lastX, this.lastY)) >= 5) {
             for (GuiFeature f : HypixelUtils.guiFeatures) {
+                if (!f.getEnabled()) continue;
+
                 Vector2 pos = Utils.getPosFromPercent(f.getPosition());
                 Vector2 size = f.getSize();
 
@@ -124,6 +126,8 @@ public class EditorGui extends CustomGuiScreen {
         }
 
         if (this.currentDragging != null) {
+            if (!this.currentDragging.getEnabled()) return;
+
             Vector2 screenSize = Utils.getScreenSize();
 
             Vector2 size = this.currentDragging.getSize();
@@ -206,11 +210,12 @@ public class EditorGui extends CustomGuiScreen {
     public void drawScreen(int x, int y, float partialTicks) {
         super.drawScreen(x, y, partialTicks);
 
-        // Render each feature.
-        HypixelUtils.guiFeatures.forEach(GuiFeature::renderEditor);
-
-        // Render the white line around each feature if it's not the one we are currently dragging.
+        // Render each feature and draw a white line around each feature if it's not the one we are currently dragging.
         HypixelUtils.guiFeatures.forEach(guiFeature -> {
+            if (!guiFeature.getEnabled()) return;
+
+            guiFeature.renderEditor();
+
             if (guiFeature == this.currentDragging) return;
 
             Vector2 size = guiFeature.getSize();
@@ -231,22 +236,24 @@ public class EditorGui extends CustomGuiScreen {
 
         // Draw a green line around the feature we are currently dragging.
         if (this.currentDragging != null) {
-            Vector2 size = this.currentDragging.getSize();
-            Vector2 pos = Utils.getPosFromPercent(this.currentDragging.getPosition());
+            if (currentDragging.getEnabled()) {
+                Vector2 size = this.currentDragging.getSize();
+                Vector2 pos = Utils.getPosFromPercent(this.currentDragging.getPosition());
 
-            pos.y -= 1;
+                pos.y -= 1;
 
-            int x1 = pos.x;
-            int x2 = pos.x + size.x;
-            int y1 = pos.y;
-            int y2 = pos.y + size.y;
+                int x1 = pos.x;
+                int x2 = pos.x + size.x;
+                int y1 = pos.y;
+                int y2 = pos.y + size.y;
 
-            String color = "00ff19";
+                String color = "00ff19";
 
-            drawHorizontalLine(x1, x2, y1, Utils.toHex(color));
-            drawHorizontalLine(x1, x2, y2, Utils.toHex(color));
-            drawVerticalLine(x1, y1, y2, Utils.toHex(color));
-            drawVerticalLine(x2, y1, y2, Utils.toHex(color));
+                drawHorizontalLine(x1, x2, y1, Utils.toHex(color));
+                drawHorizontalLine(x1, x2, y2, Utils.toHex(color));
+                drawVerticalLine(x1, y1, y2, Utils.toHex(color));
+                drawVerticalLine(x2, y1, y2, Utils.toHex(color));
+            }
         }
     }
 
