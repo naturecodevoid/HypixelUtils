@@ -41,10 +41,10 @@ public class CPSDisplay extends TextFeature.TextMethods implements TextFeature {
         final String otherLine = "|";
 
         // Left CPS text
-        String cpsText = "" + this.cpsLeft;
+        String cpsText = "" + cpsLeft;
         // Right CPS text
         if (HypixelUtils.config.cpsRight)
-            cpsText += " " + (HypixelUtils.config.cpsStraightLine ? straightLine : otherLine) + " " + this.cpsRight;
+            cpsText += " " + (HypixelUtils.config.cpsStraightLine ? straightLine : otherLine) + " " + cpsRight;
 
         // Fake left CPS text
         String cpsTextFake = "10";

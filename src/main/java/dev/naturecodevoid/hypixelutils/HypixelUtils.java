@@ -19,12 +19,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.ArrayList;
 
 @Mod(
-    modid = HypixelUtils.MODID,
-    version = HypixelUtils.VERSION,
-    name = HypixelUtils.NAME,
-    clientSideOnly = true,
-    acceptedMinecraftVersions = "@MOD_ACCEPTED@",
-    guiFactory = "dev.naturecodevoid.hypixelutils.HypixelUtilsGuiFactory"
+        modid = HypixelUtils.MODID,
+        version = HypixelUtils.VERSION,
+        name = HypixelUtils.NAME,
+        clientSideOnly = true,
+        acceptedMinecraftVersions = "@MOD_ACCEPTED@",
+        guiFactory = "dev.naturecodevoid.hypixelutils.HypixelUtilsGuiFactory"
 )
 public class HypixelUtils {
     public static final String MODID = "@MOD_ID@";
@@ -89,7 +89,8 @@ public class HypixelUtils {
         }
 
         for (Timer timer : done) {
-            if (HypixelUtils.timers.size() - 1 <= timer.index && !HypixelUtils.timers.isEmpty()) HypixelUtils.timers.remove(timer.index);
+            if (HypixelUtils.timers.size() - 1 <= timer.index && !HypixelUtils.timers.isEmpty())
+                HypixelUtils.timers.remove(timer.index);
         }
     }
 }

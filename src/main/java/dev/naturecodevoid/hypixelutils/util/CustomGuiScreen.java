@@ -10,8 +10,7 @@ public class CustomGuiScreen extends GuiScreen {
         if (mc.theWorld != null) {
             this.drawGradientRect(0, 0, this.width, this.height, Utils.toHex("202020", 200), Utils.toHex("202020", 200));
             MinecraftForge.EVENT_BUS.post(new GuiScreenEvent.BackgroundDrawnEvent(this));
-        }
-        else this.drawDefaultBackground();
+        } else this.drawDefaultBackground();
 
         super.drawScreen(x, y, partialTicks);
     }

@@ -9,12 +9,7 @@ import net.minecraft.client.gui.GuiScreen;
 import org.apache.commons.lang3.NotImplementedException;
 import org.lwjgl.input.Keyboard;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -24,8 +19,8 @@ import java.util.stream.Collectors;
  */
 public interface BaseFeature {
     /**
-     * The instance of the feature. Should be assigned in the constructor and be static and private. Use get() to get the
-     * instance.
+     * The instance of the feature. Should be assigned in the constructor and be static and private. Use get() to get
+     * the instance.
      */
     BaseFeature instance = null;
 
@@ -213,7 +208,7 @@ public interface BaseFeature {
             // Will be assigned in following switch; holds the X positions for buttons in an array; index = column[ - 1]
             final int[] columnsX;
 
-            switch(columns) {
+            switch (columns) {
                 case 2:
                     columnsX = new int[]{ this.width / 2 - 150 - 5, this.width / 2 + 5 };
                     break;
@@ -261,14 +256,14 @@ public interface BaseFeature {
         }
 
         public void actionPerformed(GuiButton button) {
-            final boolean[] foundButton = {false};
+            final boolean[] foundButton = { false };
             this.buttons.forEach((GuiButton btn, Runnable[] run) -> {
                 if (btn.id == button.id && !foundButton[0]) {
                     run[0].run();
                     foundButton[0] = true;
                 }
             });
-            if(!foundButton[0])
+            if (!foundButton[0])
                 System.out.println("[HypixelUtils] Failed to find button in gui " + this.toString() + " with id " + button.id + ", displayString " + button.displayString);
         }
 

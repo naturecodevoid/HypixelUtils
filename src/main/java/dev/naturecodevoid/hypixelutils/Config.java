@@ -179,11 +179,11 @@ public class Config extends Vigilant {
             name = "Coins Message",
             category = "Coin Tracker",
             description = "Change the coin tracker message.",
-            options = {"Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins"}
+            options = { "Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins" }
     )
     public int coinsMessage = 1;
-    public String[] coinsMessages = {"$2Session Coins: $3$1", "$3$1 $2Session Coins", "$2Coins: $3$1", "$3$1 $2Coins", "$2Earned Coins: $3$1", "$3$1 $2Earned Coins"};
-    public String[] coinsMessagesFriendly = {"Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins"};
+    public String[] coinsMessages = { "$2Session Coins: $3$1", "$3$1 $2Session Coins", "$2Coins: $3$1", "$3$1 $2Coins", "$2Earned Coins: $3$1", "$3$1 $2Earned Coins" };
+    public String[] coinsMessagesFriendly = { "Session Coins: 1234", "1234 Session Coins", "Coins: 1234", "1234 Coins", "Earned Coins: 1234", "1234 Earned Coins" };
 
     @Property(
             type = PropertyType.SWITCH,
@@ -291,11 +291,11 @@ public class Config extends Vigilant {
             name = "FPS Display Message",
             category = "FPS Display",
             description = "Change the FPS display message.",
-            options = {"FPS: 120", "120 FPS"}
+            options = { "FPS: 120", "120 FPS" }
     )
     public int fpsMessage = 1;
-    public String[] fpsMessages = {"FPS: $1", "$1 FPS"};
-    public String[] fpsMessagesFriendly = {"FPS: 120", "120 FPS"};
+    public String[] fpsMessages = { "FPS: $1", "$1 FPS" };
+    public String[] fpsMessagesFriendly = { "FPS: 120", "120 FPS" };
 
     @Property(
             type = PropertyType.SWITCH,
@@ -368,11 +368,11 @@ public class Config extends Vigilant {
             name = "CPS Display Message",
             category = "CPS Display",
             description = "Change the CPS display message.",
-            options = {"CPS: 10", "10 CPS", "10"}
+            options = { "CPS: 10", "10 CPS", "10" }
     )
     public int cpsMessage = 1;
-    public String[] cpsMessages = {"CPS: $1", "$1 CPS", "$1"};
-    public String[] cpsMessagesFriendly = {"CPS: 10", "10 CPS", "10"};
+    public String[] cpsMessages = { "CPS: $1", "$1 CPS", "$1" };
+    public String[] cpsMessagesFriendly = { "CPS: 10", "10 CPS", "10" };
 
     @Property(
             type = PropertyType.SWITCH,

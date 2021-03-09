@@ -71,14 +71,14 @@ public class EditorGui extends CustomGuiScreen {
             case 1:
                 // Reset position
                 HypixelUtils.gui = new ConfirmGui(
-                    new EditorGui(),
-                    "If possible you should only reset the position of each feature.",
-                    () -> {
-                        HypixelUtils.guiFeatures.forEach(GuiFeature::resetPosition);
-                        HypixelUtils.gui = new EditorGui();
-                    },
-                    () -> HypixelUtils.gui = new EditorGui(),
-                    "Are you sure you want to reset the positions of all GUI features?"
+                        new EditorGui(),
+                        "If possible you should only reset the position of each feature.",
+                        () -> {
+                            HypixelUtils.guiFeatures.forEach(GuiFeature::resetPosition);
+                            HypixelUtils.gui = new EditorGui();
+                        },
+                        () -> HypixelUtils.gui = new EditorGui(),
+                        "Are you sure you want to reset the positions of all GUI features?"
                 );
                 return;
             case 2:

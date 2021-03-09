@@ -106,14 +106,14 @@ public class FeatureListGui extends CustomGuiScreen {
     }
 
     public void actionPerformed(GuiButton button) {
-        final boolean[] foundButton = {false};
+        final boolean[] foundButton = { false };
         buttons.forEach((GuiButton btn, Runnable[] run) -> {
             if (btn.id == button.id && !foundButton[0]) {
                 run[0].run();
                 foundButton[0] = true;
             }
         });
-        if(!foundButton[0])
+        if (!foundButton[0])
             System.out.println("[HypixelUtils] Failed to find button in gui " + this.toString() + " with id " + button.id + ", displayString " + button.displayString);
     }
 }

@@ -1,7 +1,5 @@
 package dev.naturecodevoid.hypixelutils.gui.components;
 
-import javax.annotation.Nonnull;
-
 import dev.naturecodevoid.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.hypixelutils.util.CustomGuiScreen;
 import dev.naturecodevoid.hypixelutils.util.DrawUtils;
@@ -30,10 +28,10 @@ public class ConfirmGui extends CustomGuiScreen {
     }
 
     /**
-     * @param backScreen  What GuiScreen to go to once the back button is clicked.
-     * @param confirmText The confirmation text (example: Are you sure you want to delete?)
-     * @param onYes       The runnable to run when the user clicks yes
-     * @param onNo        The runnable to run when the user clicks no
+     * @param backScreen       What GuiScreen to go to once the back button is clicked.
+     * @param confirmText      The confirmation text (example: Are you sure you want to delete?)
+     * @param onYes            The runnable to run when the user clicks yes
+     * @param onNo             The runnable to run when the user clicks no
      * @param upperConfirmText The text above confirmText
      */
     public ConfirmGui(GuiScreen backScreen, String confirmText, Runnable onYes, Runnable onNo, String upperConfirmText) {
@@ -41,12 +39,12 @@ public class ConfirmGui extends CustomGuiScreen {
     }
 
     /**
-     * @param backScreen  What GuiScreen to go to once the back button is clicked.
-     * @param confirmText The confirmation text (example: Are you sure you want to delete?)
-     * @param onYes       The runnable to run when the user clicks yes
-     * @param onNo        The runnable to run when the user clicks no
-     * @param yesText     The yes button text
-     * @param noText      The no button text
+     * @param backScreen       What GuiScreen to go to once the back button is clicked.
+     * @param confirmText      The confirmation text (example: Are you sure you want to delete?)
+     * @param onYes            The runnable to run when the user clicks yes
+     * @param onNo             The runnable to run when the user clicks no
+     * @param yesText          The yes button text
+     * @param noText           The no button text
      * @param upperConfirmText The text above confirmText
      */
     public ConfirmGui(GuiScreen backScreen, String confirmText, Runnable onYes, Runnable onNo, String yesText, String noText, String upperConfirmText) {
