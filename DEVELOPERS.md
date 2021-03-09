@@ -25,4 +25,6 @@ If you use IntelliJ, run genIntelliRuns task and restart IntelliJ
 -   When dealing with subclasses use the top level class to access static properties instead of nothing. Example:
     instead of `get()` use `Feature.get()`
 -   Please comment most methods/properties so people know what its for
+-   Please try to prefix commits with what you did in that commit. Example: `chore: clean up code` or
+    `features: add clock features`
 -   The IntelliJ IDEA formatter is recommended but not needed as all code is regularly formatted.
