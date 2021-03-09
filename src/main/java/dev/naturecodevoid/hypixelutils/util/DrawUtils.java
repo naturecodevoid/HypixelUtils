@@ -22,7 +22,7 @@ public class DrawUtils {
         int move = 0;
 
         // TODO: fix
-        switch (alignment) {
+        switch(alignment) {
             case Middle:
                 move = width / 2;
                 break;

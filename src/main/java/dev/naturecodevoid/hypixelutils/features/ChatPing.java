@@ -10,6 +10,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.Session;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -56,10 +57,10 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
     /**
      * Separated from the chat event to be usable in the Editor.
      */
-    private String changeText(Minecraft mc, String formattedText) {
+    private String changeText(String formattedText) {
         // Get all the formatting codes from the first part of the message.
 
-        Matcher formattingCodesMatcher = this.formattingCodesPattern.matcher(formattedText.split(mc.thePlayer.getName())[0]);
+        Matcher formattingCodesMatcher = this.formattingCodesPattern.matcher(formattedText.split(Utils.getPlayerName())[0]);
         String formattingCodes = "";
 
         while (formattingCodesMatcher.find()) {
@@ -70,7 +71,7 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
 
         if (HypixelUtils.config.chatPingHighlight) {
             // Adds the highlighting/special effects to the username text
-            String nameText = mc.thePlayer.getName() + EnumChatFormatting.RESET + formattingCodes;
+            String nameText = Utils.getPlayerName() + EnumChatFormatting.RESET + formattingCodes;
 
             if (HypixelUtils.config.chatPingUnderline) nameText = EnumChatFormatting.UNDERLINE + nameText;
 
@@ -82,17 +83,17 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
                 nameText = Utils.getColor(HypixelUtils.config.chatPingColor) + nameText;
 
             text2 = text2
-                    .replaceAll(mc.thePlayer.getName(), nameText);
+                    .replaceAll(Utils.getPlayerName(), nameText);
 
             String[] tmp = text2.split(" ");
             int count = 0;
             for (String s : tmp) {
-                if (s.contains(mc.thePlayer.getName()))
+                if (s.contains(Utils.getPlayerName()))
                     count++;
             }
 
             if (count >= 2)
-                text2 = text2.replaceFirst(nameText, mc.thePlayer.getName());
+                text2 = text2.replaceFirst(nameText, Utils.getPlayerName());
         }
 
         return text2;
@@ -110,12 +111,12 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
                 .replaceFirst("<.+>", "")
                 .replaceFirst(".+:", "");
 
-        if (text.contains(mc.thePlayer.getName().toLowerCase())) {
+        if (text.contains(Utils.getPlayerName().toLowerCase())) {
             // Play the ping sound.
             if (HypixelUtils.config.chatPingUsername) mc.getSoundHandler().playSound(new OrbSound());
 
             // Changes the text to highlight the username if needed.
-            String text2 = this.changeText(mc, event.message.getFormattedText());
+            String text2 = this.changeText(event.message.getFormattedText());
 
             // Cancel the event and resend the message.
 
@@ -279,11 +280,9 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
         public void drawScreen(int x, int y, float partialTicks) {
             super.drawScreen(x, y, partialTicks);
 
-            Minecraft mc = Minecraft.getMinecraft();
-
             // Custom preview
 
-            String text = "Preview: " + ChatPing.get().changeText(mc, EnumChatFormatting.WHITE + "Hey " + mc.thePlayer.getName() + "! " + EnumChatFormatting.GREEN + "Want to play " + EnumChatFormatting.GOLD + "some minecraft? :D");
+            String text = "Preview: " + ChatPing.get().changeText(EnumChatFormatting.WHITE + "Hey " + Utils.getPlayerName() + "! " + EnumChatFormatting.GREEN + "Want to play " + EnumChatFormatting.GOLD + "some minecraft? :D");
             DrawUtils.drawString(text, this.width / 2 - DrawUtils.getPositionDifference(text, DrawUtils.TextAlignment.Middle), this.startHeight + this.startHeightButtonAdd);
         }
     }

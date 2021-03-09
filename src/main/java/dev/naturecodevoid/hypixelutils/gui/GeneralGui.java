@@ -14,14 +14,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class GeneralGui extends CustomGuiScreen {
-    private final GuiScreen backScreen;
-
-    public GeneralGui() {
-        this.backScreen = null;
-    }
-
     public GeneralGui(GuiScreen backScreen) {
-        this.backScreen = backScreen;
+        super(backScreen);
     }
 
     public void initGui() {
@@ -58,13 +52,7 @@ public class GeneralGui extends CustomGuiScreen {
                     EnumChatFormatting.GREEN + "Download update"
             ));
 
-        if (this.backScreen != null) this.buttonList.add(new GuiButton(5,
-                1,
-                1,
-                30,
-                20,
-                "Back"
-        ));
+        super.initGui();
     }
 
     @Override
@@ -77,14 +65,14 @@ public class GeneralGui extends CustomGuiScreen {
     }
 
     public void actionPerformed(GuiButton button) {
-        switch (button.id) {
+        switch(button.id) {
             case 1:
                 // GUI Editor
-                HypixelUtils.gui = new EditorGui();
+                HypixelUtils.gui = new EditorGui(new GeneralGui(this.backScreen));
                 return;
             case 2:
                 // Features
-                HypixelUtils.gui = new FeatureListGui();
+                HypixelUtils.gui = new FeatureListGui(new GeneralGui(this.backScreen));
                 return;
             case 3:
                 // Config GUI
@@ -97,9 +85,8 @@ public class GeneralGui extends CustomGuiScreen {
                     e.printStackTrace();
                 }
                 return;
-            case 5:
-                if (this.backScreen != null) HypixelUtils.gui = this.backScreen;
-                return;
         }
+
+        super.actionPerformed(button);
     }
 }

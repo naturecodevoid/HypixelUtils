@@ -147,7 +147,7 @@ public class CPSDisplay extends TextFeature.TextMethods implements TextFeature {
 
     @SubscribeEvent
     public void onMouseClick(MouseEvent event) {
-        if (event.buttonstate) switch (event.button) {
+        if (event.buttonstate) switch(event.button) {
             case 0:
                 // Left click
                 addLeftClick();

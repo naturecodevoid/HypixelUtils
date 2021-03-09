@@ -7,6 +7,8 @@ import dev.naturecodevoid.hypixelutils.util.CustomGuiScreen;
 import dev.naturecodevoid.hypixelutils.util.Utils;
 import dev.naturecodevoid.hypixelutils.util.Vector2;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.lwjgl.input.Keyboard;
 
@@ -38,6 +40,10 @@ public class EditorGui extends CustomGuiScreen {
      */
     private int lastY = 0;
 
+    public EditorGui(GuiScreen backScreen) {
+        super(backScreen);
+    }
+
     public void initGui() {
         this.buttonList.add(new GuiButton(1,
                 this.width / 2 - 50,
@@ -57,39 +63,45 @@ public class EditorGui extends CustomGuiScreen {
         this.buttonList.get(1).visible = false;
         this.buttonList.get(1).enabled = false;
 
-        this.buttonList.add(new GuiButton(3,
-                this.width / 2 - 50 - 35,
-                this.height - 20,
-                30,
-                20,
-                "Back"
-        ));
+        // this.buttonList.add(new GuiButton(3,
+        //         this.width / 2 - 50 - 35,
+        //         this.height - 20,
+        //         30,
+        //         20,
+        //         "Back"
+        // ));
+
+        this.backButtonPos.set(this.width / 2 - 50 - 35, this.height - 20);
+
+        super.initGui();
     }
 
     public void actionPerformed(GuiButton button) {
-        switch (button.id) {
+        switch(button.id) {
             case 1:
                 // Reset position
                 HypixelUtils.gui = new ConfirmGui(
-                        new EditorGui(),
+                        new EditorGui(this.backScreen),
                         "If possible you should only reset the position of each feature.",
                         () -> {
                             HypixelUtils.guiFeatures.forEach(GuiFeature::resetPosition);
-                            HypixelUtils.gui = new EditorGui();
+                            HypixelUtils.gui = new EditorGui(this.backScreen);
                         },
-                        () -> HypixelUtils.gui = new EditorGui(),
+                        () -> HypixelUtils.gui = new EditorGui(this.backScreen),
                         "Are you sure you want to reset the positions of all GUI features?"
                 );
                 return;
             case 2:
                 // Open the last feature's editor
-                HypixelUtils.gui = this.lastDragging.getEditor(new EditorGui());
+                HypixelUtils.gui = this.lastDragging.getEditor(new EditorGui(this.backScreen));
                 return;
-            case 3:
-                // Go back to the general GUI
-                HypixelUtils.gui = new GeneralGui();
-                return;
+            // case 3:
+            //     // Go back to the general GUI
+            //     HypixelUtils.gui = new GeneralGui();
+            //     return;
         }
+
+        super.actionPerformed(button);
     }
 
     /**
@@ -143,7 +155,7 @@ public class EditorGui extends CustomGuiScreen {
             this.currentDragging.setPosition(percent);
 
             try {
-                this.currentDragging.getEditor(new EditorGui());
+                this.currentDragging.getEditor(new EditorGui(this.backScreen));
 
                 Vector2 pos = this.currentDragging.getPosition();
 

@@ -534,7 +534,7 @@ public class DefinitelyNotSkyblockAddonsInstaller extends JFrame implements Acti
 
     public File getFile(String userHome, String minecraftPath) {
         File workingDirectory;
-        switch (getOperatingSystem()) {
+        switch(getOperatingSystem()) {
             case LINUX:
             case SOLARIS: {
                 workingDirectory = new File(userHome, '.' + minecraftPath + '/');

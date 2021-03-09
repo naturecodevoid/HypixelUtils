@@ -145,7 +145,7 @@ public class Utils {
     public static EnumChatFormatting getColor(String str) {
         String string = str.toUpperCase().replaceAll(" ", "_").trim();
 
-        switch (string) {
+        switch(string) {
             case "DARK_BLUE":
                 return EnumChatFormatting.DARK_BLUE;
             case "DARK_GREEN":
@@ -202,7 +202,7 @@ public class Utils {
      * Gets formatted text from an EnumChatFormatting.
      */
     public static String getColorText(EnumChatFormatting color) {
-        switch (color) {
+        switch(color) {
             case DARK_BLUE:
                 return color + "Dark Blue" + EnumChatFormatting.RESET;
             case DARK_GREEN:
@@ -246,7 +246,7 @@ public class Utils {
     public static String getColorText(String color) {
         color = color.toUpperCase().replaceAll(" ", "_").trim();
 
-        switch (color) {
+        switch(color) {
             case "DARK_BLUE":
                 return EnumChatFormatting.DARK_BLUE + "Dark Blue" + EnumChatFormatting.RESET;
             case "DARK_GREEN":
@@ -472,5 +472,26 @@ public class Utils {
                         !(Minecraft.getMinecraft().currentScreen instanceof GuiChat) &&
                         !(Minecraft.getMinecraft().currentScreen instanceof GuiInventory) &&
                         !(Minecraft.getMinecraft().currentScreen instanceof GuiContainer);
+    }
+
+    /**
+     * Gets the name of the player currently logged in.
+     */
+    public static String getPlayerName() {
+        Minecraft mc = Minecraft.getMinecraft();
+
+        String nameString;
+
+        try {
+            nameString = mc.thePlayer.getName();
+        } catch(NullPointerException ignored) {
+            try {
+                nameString = mc.getSession().getUsername();
+            } catch(NullPointerException ignored2) {
+                nameString = "Player";
+            }
+        }
+
+        return nameString;
     }
 }

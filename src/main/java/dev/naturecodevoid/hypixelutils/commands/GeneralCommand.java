@@ -31,6 +31,6 @@ public class GeneralCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        HypixelUtils.gui = new GeneralGui();
+        HypixelUtils.gui = new GeneralGui(null);
     }
 }

@@ -101,10 +101,6 @@ public interface BaseFeature {
          */
         protected final int startHeightButtonAdd = 25;
         /**
-         * The screen to return to when the back button is pressed.
-         */
-        protected final GuiScreen backScreen;
-        /**
          * The height to add new buttons at. After adding a button add startHeightButtonAdd to it.
          */
         protected int startHeight = 30; //81;
@@ -121,7 +117,7 @@ public interface BaseFeature {
          * @param backScreen What GuiScreen to go to once the back button is clicked.
          */
         public BaseEditor(GuiScreen backScreen) {
-            this.backScreen = backScreen;
+            super(backScreen);
         }
 
         /**
@@ -150,19 +146,19 @@ public interface BaseFeature {
          */
         public void init() {
             // Back button
-            {
-                GuiButton btn = new GuiButton(this.buttons.size() + 1, 1, 1, 30, 20, "Back");
-                this.buttons.put(
-                        btn,
-                        new Runnable[]{
-                                () -> {
-                                    HypixelUtils.gui = this.backScreen;
-                                },
-                                () -> {
-                                }
-                        }
-                );
-            }
+            // {
+            //     GuiButton btn = new GuiButton(this.buttons.size() + 1, 1, 1, 30, 20, "Back");
+            //     this.buttons.put(
+            //             btn,
+            //             new Runnable[]{
+            //                     () -> {
+            //                         HypixelUtils.gui = this.backScreen;
+            //                     },
+            //                     () -> {
+            //                     }
+            //             }
+            //     );
+            // }
 
             BaseFeature f = this.getFeature();
 
@@ -208,7 +204,7 @@ public interface BaseFeature {
             // Will be assigned in following switch; holds the X positions for buttons in an array; index = column[ - 1]
             final int[] columnsX;
 
-            switch (columns) {
+            switch(columns) {
                 case 2:
                     columnsX = new int[]{ this.width / 2 - 150 - 5, this.width / 2 + 5 };
                     break;
@@ -234,7 +230,7 @@ public interface BaseFeature {
                 GuiButton button = info.getKey();
 
                 // We don't want to do anything with the "Back" button except add it to the GUI
-                if (button.id != 1) {
+                if (button.id != this.backButtonId) {
                     // If we've put enough buttons in this column
                     if (i >= this.maxPerColumn) {
                         // Reset and move to next column
@@ -253,18 +249,24 @@ public interface BaseFeature {
 
                 this.buttonList.add(button);
             }
+
+            super.initGui();
         }
 
         public void actionPerformed(GuiButton button) {
             final boolean[] foundButton = { false };
+
             this.buttons.forEach((GuiButton btn, Runnable[] run) -> {
                 if (btn.id == button.id && !foundButton[0]) {
                     run[0].run();
                     foundButton[0] = true;
                 }
             });
-            if (!foundButton[0])
+
+            if (!foundButton[0] && button.id != this.backButtonId)
                 System.out.println("[HypixelUtils] Failed to find button in gui " + this.toString() + " with id " + button.id + ", displayString " + button.displayString);
+
+            super.actionPerformed(button);
         }
 
         @Override

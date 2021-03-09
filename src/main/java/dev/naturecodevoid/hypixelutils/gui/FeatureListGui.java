@@ -7,6 +7,7 @@ import dev.naturecodevoid.hypixelutils.util.CustomGuiScreen;
 import dev.naturecodevoid.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.hypixelutils.util.Vector2;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.util.HashMap;
@@ -21,6 +22,10 @@ public class FeatureListGui extends CustomGuiScreen {
     protected int startHeight = 30; //81;
     protected int startWidth = 7;
     protected Vector2 guiFeaturesPos = new Vector2(-100, -100);
+
+    public FeatureListGui(GuiScreen backScreen) {
+        super(backScreen);
+    }
 
     /**
      * Makes a button with automatic positioning
@@ -49,7 +54,7 @@ public class FeatureListGui extends CustomGuiScreen {
         if (feature.showInFeaturesList()) this.makeButton(
                 feature.displayName(),
                 (GuiButton btn) -> {
-                    HypixelUtils.gui = feature.getEditor(new FeatureListGui());
+                    HypixelUtils.gui = feature.getEditor(new FeatureListGui(this.backScreen));
                     return null;
                 },
                 (GuiButton btn) -> null
@@ -73,23 +78,27 @@ public class FeatureListGui extends CustomGuiScreen {
         }
 
         // Back button
-        {
-            GuiButton btn = new GuiButton(this.buttons.size() + 1, this.width - 1 - 30, 1, 30, 20, "Back");
-            this.buttons.put(
-                    btn,
-                    new Runnable[]{
-                            () -> {
-                                HypixelUtils.gui = new GeneralGui();
-                            },
-                            () -> {
-                            }
-                    }
-            );
-        }
+        // {
+        //     GuiButton btn = new GuiButton(this.buttons.size() + 1, this.width - 1 - 30, 1, 30, 20, "Back");
+        //     this.buttons.put(
+        //             btn,
+        //             new Runnable[]{
+        //                     () -> {
+        //                         HypixelUtils.gui = new GeneralGui();
+        //                     },
+        //                     () -> {
+        //                     }
+        //             }
+        //     );
+        // }
 
         this.buttons.forEach((GuiButton button, Runnable[] ignored) -> {
             this.buttonList.add(button);
         });
+
+        this.backButtonPos.set(this.width - 1 - 30, 1);
+
+        super.initGui();
     }
 
     @Override
@@ -107,13 +116,17 @@ public class FeatureListGui extends CustomGuiScreen {
 
     public void actionPerformed(GuiButton button) {
         final boolean[] foundButton = { false };
+
         buttons.forEach((GuiButton btn, Runnable[] run) -> {
             if (btn.id == button.id && !foundButton[0]) {
                 run[0].run();
                 foundButton[0] = true;
             }
         });
-        if (!foundButton[0])
+
+        if (!foundButton[0] && button.id != this.backButtonId)
             System.out.println("[HypixelUtils] Failed to find button in gui " + this.toString() + " with id " + button.id + ", displayString " + button.displayString);
+
+        super.actionPerformed(button);
     }
 }

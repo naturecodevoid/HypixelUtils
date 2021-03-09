@@ -8,7 +8,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.EnumChatFormatting;
 
 public class ConfirmGui extends CustomGuiScreen {
-    private final GuiScreen backScreen;
     private final String confirmText;
     private final String yesText;
     private final String noText;
@@ -48,7 +47,7 @@ public class ConfirmGui extends CustomGuiScreen {
      * @param upperConfirmText The text above confirmText
      */
     public ConfirmGui(GuiScreen backScreen, String confirmText, Runnable onYes, Runnable onNo, String yesText, String noText, String upperConfirmText) {
-        this.backScreen = backScreen;
+        super(backScreen);
         this.confirmText = confirmText;
         this.onYes = onYes;
         this.onNo = onNo;
@@ -58,13 +57,13 @@ public class ConfirmGui extends CustomGuiScreen {
     }
 
     public void initGui() {
-        this.buttonList.add(new GuiButton(1,
-                1,
-                1,
-                30,
-                20,
-                "Back"
-        ));
+        // this.buttonList.add(new GuiButton(1,
+        //         1,
+        //         1,
+        //         30,
+        //         20,
+        //         "Back"
+        // ));
 
         this.buttonList.add(new GuiButton(2,
                 this.width / 2 - 74 - this.spacing,
@@ -81,6 +80,8 @@ public class ConfirmGui extends CustomGuiScreen {
                 20,
                 this.noText
         ));
+
+        super.initGui();
     }
 
     @Override
@@ -97,11 +98,11 @@ public class ConfirmGui extends CustomGuiScreen {
     }
 
     public void actionPerformed(GuiButton button) {
-        switch (button.id) {
-            case 1:
-                // Back
-                HypixelUtils.gui = backScreen;
-                return;
+        switch(button.id) {
+            // case 1:
+            //     // Back
+            //     HypixelUtils.gui = backScreen;
+            //     return;
             case 2:
                 // Yes
                 this.onYes.run();
@@ -111,5 +112,7 @@ public class ConfirmGui extends CustomGuiScreen {
                 this.onNo.run();
                 return;
         }
+
+        super.actionPerformed(button);
     }
 }
