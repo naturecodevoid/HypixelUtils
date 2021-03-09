@@ -8,7 +8,6 @@ import dev.naturecodevoid.hypixelutils.util.Utils;
 import dev.naturecodevoid.hypixelutils.util.Vector2;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-
 import org.apache.commons.lang3.NotImplementedException;
 import org.lwjgl.input.Keyboard;
 

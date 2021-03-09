@@ -484,10 +484,10 @@ public class Utils {
 
         try {
             nameString = mc.thePlayer.getName();
-        } catch(NullPointerException ignored) {
+        } catch (NullPointerException ignored) {
             try {
                 nameString = mc.getSession().getUsername();
-            } catch(NullPointerException ignored2) {
+            } catch (NullPointerException ignored2) {
                 nameString = "Player";
             }
         }

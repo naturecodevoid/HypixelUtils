@@ -1,6 +1,5 @@
 package dev.naturecodevoid.hypixelutils.gui.components;
 
-import dev.naturecodevoid.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.hypixelutils.util.CustomGuiScreen;
 import dev.naturecodevoid.hypixelutils.util.DrawUtils;
 import net.minecraft.client.gui.GuiButton;

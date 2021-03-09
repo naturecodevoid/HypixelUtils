@@ -20,9 +20,10 @@ public class CustomGuiScreen extends GuiScreen {
      */
     protected final GuiScreen backScreen;
     /**
-     * The position of the created back button. Use this.backButtonPos.set() in initGui() before calling super.initGui()
+     * The position of the created back button. Use this.backButtonPos.set() in initGui() before calling
+     * super.initGui()
      */
-    protected final Vector2 backButtonPos = new Vector2(1,1);
+    protected final Vector2 backButtonPos = new Vector2(1, 1);
     /**
      * The id of the back button.
      */

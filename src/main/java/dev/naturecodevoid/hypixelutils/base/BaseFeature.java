@@ -1,6 +1,5 @@
 package dev.naturecodevoid.hypixelutils.base;
 
-import dev.naturecodevoid.hypixelutils.HypixelUtils;
 import dev.naturecodevoid.hypixelutils.util.CustomGuiScreen;
 import dev.naturecodevoid.hypixelutils.util.DrawUtils;
 import dev.naturecodevoid.hypixelutils.util.Utils;
