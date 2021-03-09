@@ -142,27 +142,6 @@ public class ChatPing extends BaseFeature.BaseMethods implements BaseFeature {
             return ChatPing.get();
         }
 
-        // /**
-        //  * Special version of makeButton that splits the buttons into 2 columns.
-        //  */
-        // @Override
-        // public void makeButton(String text, Function<GuiButton, Void> onClick, Function<GuiButton, Void> onRender) {
-        //     if (startHeight + 90 > this.height) {
-        //         startHeight = 30;
-        //         startWidth += 135;
-        //     }
-
-        //     GuiButton btn = new GuiButton(buttons.size() + 1, startWidth, startHeight - 7, 125, 20, text);
-        //     this.buttons.put(
-        //             btn,
-        //             new Runnable[]{
-        //                     () -> onClick.apply(btn),
-        //                     () -> onRender.apply(btn)
-        //             }
-        //     );
-        //     startHeight += startHeightButtonAdd;
-        // }
-
         @Override
         public void init() {
             this.maxPerColumn = 5;
