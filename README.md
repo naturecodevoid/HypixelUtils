@@ -3,13 +3,13 @@ HypixelUtils
 
 <br>
 
-<a href="https://naturecodevoid.dev/downloads/?name=hypixelutils"><img align="center" alt="GitHub release (latest)" src="https://img.shields.io/github/v/release/naturecodevoiddev/HypixelUtils?label=latest%20release%20%28click%20to%20download%29&style=for-the-badge"></a>
+<a href="https://naturecodevoid.dev/downloads/?name=hypixelutils"><img align="center" alt="GitHub release (latest)" src="https://img.shields.io/github/v/release/naturecodevoiddev/HypixelUtils?label=latest%20release%20%28click%20to%20download%29&style=for-the-badge&logo=github"></a>
 <br>
-<a href="https://naturecodevoid.dev/downloads/?name=hypixelutils"><img align="center" alt="Total downloads" src="https://img.shields.io/github/downloads/naturecodevoiddev/HypixelUtils/total?style=for-the-badge"></a>
+<a href="https://naturecodevoid.dev/downloads/?name=hypixelutils"><img align="center" alt="Total downloads" src="https://img.shields.io/github/downloads/naturecodevoiddev/HypixelUtils/total?style=for-the-badge&logo=github"></a>
 <br>
-<a href="https://travis-ci.com/github/naturecodevoiddev/HypixelUtils"><img align="center" alt="Travis CI" src="https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils?style=for-the-badge"></a>
+<a href="https://travis-ci.com/github/naturecodevoiddev/HypixelUtils"><img align="center" alt="Travis CI" src="https://img.shields.io/travis/com/naturecodevoiddev/HypixelUtils?style=for-the-badge&logo=travis"></a>
 <br>
-<a href="https://discord.gg/"><img align="center" alt="Discord" src="https://img.shields.io/discord/0?logo=discord&style=for-the-badge"></a>
+<a href="https://discord.gg/"><img align="center" alt="Discord" src="https://img.shields.io/discord/0?logo=discord&style=for-the-badge&label=Discord"></a>
 
 </h1>
 
