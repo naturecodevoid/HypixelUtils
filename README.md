@@ -99,5 +99,4 @@ You may be worried that this mod will steal stuff from your computer. Here's a f
 If you want announcements for mod updates, sneak peeks, and other things, you can join our
 [discord](https://discord.gg/). You can also ask questions or contact the developers there.
 
-If you're still worried, you can build the mod yourself with [this guide](#building-from-source-without-git) or contact
-me on our [discord](https://discord.gg/).
+If you're still worried, you can build the mod yourself with [this guide](#building-from-source-without-git) and look through the [source code](/src/main/java/dev/naturecodevoid/hypixelutils).
