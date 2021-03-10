@@ -23,7 +23,7 @@ import java.nio.charset.StandardCharsets;
 // https://stackoverflow.com/a/4308662
 public class VersionChecker {
     public static boolean updateAvailable = false;
-    public static String updateUrl = "https://github.com/naturecodevoiddev/HypixelUtils";
+    public static String updateUrl = "https://github.com/naturecodevoiddev/HypixelUtils/releases/latest";
     private ChatComponentText message = null;
     private boolean sentMessage = false;
 
